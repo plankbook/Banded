@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :connexions_as_user2, class_name: "User", foreign_key: :user2_id
   has_many :user_instruments
   has_many :instruments, through: :user_instruments
+  has_many :projects, through: :user_projects
 end
