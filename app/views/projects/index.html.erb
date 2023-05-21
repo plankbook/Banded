@@ -1,0 +1,7 @@
+<h1> All my projects </h1>
+
+<ul>
+  <% @projects.each do |project| %>
+    <li><%= link_to project.name, user_project_path(current_user, project.id) %></li>
+  <% end %>
+</ul>

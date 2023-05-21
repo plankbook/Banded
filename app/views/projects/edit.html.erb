@@ -1,0 +1,8 @@
+<h1>Update <%= @project.name %></h1>
+
+<%= simple_form_for (@project), url: user_project_path(current_user, @project) do |f| %>
+  <%= f.input :name, label: 'Project Name', error: 'Project Name is mandatory, please specify one' %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to "home", root_path %>

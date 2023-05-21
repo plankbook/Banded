@@ -1,0 +1,10 @@
+<div class='container'>
+  <h1> New project </h1>
+
+  <%= simple_form_for (@project), url: user_projects_path(current_user) do |f| %>
+    <%= f.input :name, label: 'Project Name', error: 'Project Name is mandatory, please specify one' %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <%= link_to "home", root_path %>
+</div>

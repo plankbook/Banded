@@ -1,0 +1,7 @@
+<h1><%= @project.name %></h1>
+
+<%= link_to "Edit project", edit_user_project_path(current_user, @project) %>
+
+<%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+<%= link_to "home", root_path %>
