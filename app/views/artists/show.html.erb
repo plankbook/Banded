@@ -3,4 +3,8 @@
   <h1><%= @artist.email %></h1>
 </div>
 
-<%= link_to "Submit Connect Request", user_connections_path(@artist), method: :post %>
+<div data-controller="submit-connection-request" data-submit-connection-request-user-id-value=<%= current_user.id %>>
+  <button data-submit-connection-request-target="connect-button" data-action="click->submit-connection-request#send">
+    Connect
+  </button>
+</div>
