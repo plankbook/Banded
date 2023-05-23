@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_012858) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_021907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,13 +25,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_012858) do
   end
 
   create_table "connections", force: :cascade do |t|
-    t.bigint "user1_id"
-    t.bigint "user2_id"
+    t.bigint "requester_id", null: false
+    t.bigint "receiver_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
-    t.index ["user1_id"], name: "index_connections_on_user1_id"
-    t.index ["user2_id"], name: "index_connections_on_user2_id"
+    t.string "status", default: "pending", null: false
+    t.index ["receiver_id"], name: "index_connections_on_receiver_id"
+    t.index ["requester_id"], name: "index_connections_on_requester_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -123,8 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_012858) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "connections", "users", column: "user1_id"
-  add_foreign_key "connections", "users", column: "user2_id"
+  add_foreign_key "connections", "users", column: "receiver_id"
+  add_foreign_key "connections", "users", column: "requester_id"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "posts", "projects"
   add_foreign_key "posts", "users", column: "sender_id"

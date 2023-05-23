@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :projects
+    resources :connections, only: %i[create update]
   end
-
   resources :artists, only: %i[index show]
-
+  resources :connections, only: %i[index]
 end
