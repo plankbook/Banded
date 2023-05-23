@@ -1,0 +1,15 @@
+<h1>Connection Requests</h1>
+
+<ul>
+  <% @connections_requested.each do |connection| %>
+    <li><%= connection.id %></li>
+  <% end %>
+</ul>
+
+<h1>Pending Connections</h1>
+
+<ul>
+  <% @connections_received.each do |connection| %>
+    <li><%= connection.id %></li>
+  <% end %>
+</ul>
