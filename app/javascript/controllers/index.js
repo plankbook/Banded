@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SubmitConnectionRequestController from "./submit_connection_request_controller"
+application.register("submit-connection-request", SubmitConnectionRequestController)
