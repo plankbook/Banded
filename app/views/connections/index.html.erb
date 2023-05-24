@@ -10,10 +10,10 @@
 
 <ul>
   <% @connections_received.each do |connection| %>
-    <li>
+    <li class="d-flex align-middle">
       <%= connection.requester.email %>
-      <%= button_to "Accept", connection_accept_path(connection), method: :patch %>
-      <%= button_to "Decline", connection_reject_path(connection), method: :patch %>
+      <%= button_to "Accept", connection_accept_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
+      <%= button_to "Decline", connection_reject_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
     </li>
   <% end %>
 </ul>
