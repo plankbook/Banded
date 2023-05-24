@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :projects
-    resources :connections, only: %i[create update]
+    resources :connections, only: %i[create]
   end
   resources :artists, only: %i[index show]
   resources :connections, only: %i[index]
+  patch "/connections/:id/accept", to: "connections#accept", as: :connection_accept
+  patch "/connections/:id/reject", to: "connections#reject", as: :connection_reject
 end
