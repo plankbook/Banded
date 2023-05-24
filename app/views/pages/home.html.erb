@@ -2,9 +2,3 @@
   <h1>Banded</h1>
   <p><%= link_to 'list of all artists', artists_path %></p>
 </div>
-
-<% if current_user %>
-  <%= link_to "New project", new_user_project_path(current_user) %>
-  <%= link_to "All my projects", user_projects_path(current_user) %>
-<% else %>
-<% end %>
