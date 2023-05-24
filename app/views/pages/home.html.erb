@@ -2,9 +2,24 @@
   <h1>Banded</h1>
   <p><%= link_to 'list of all artists', artists_path %></p>
 </div>
-
-<% if current_user %>
-  <%= link_to "New project", new_user_project_path(current_user) %>
-  <%= link_to "All my projects", user_projects_path(current_user) %>
-<% else %>
-<% end %>
+<div>
+  <h1>Suggested Musicians</h1>
+  <% suggested = User.all %>
+  <% selections = [] %>
+  <% user = suggested.sample %>
+  <% 5.times do %>
+    <% user = suggested.sample %>
+    <% selections.push(user) %>
+  <% end %>
+  <ul style="flex-direction: row;">
+    <% selections.each do |selected| %>
+      <div class="container", style="display:block;" >
+        <li>
+          <p><%= link_to selected.name, artist_path(selected) %></p>
+          <p><%= selected.location %></p>
+          <p><%= selected.bio %></p>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+</div>
