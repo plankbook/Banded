@@ -3,8 +3,13 @@
   <h1><%= @artist.email %></h1>
 </div>
 
-<div data-controller="submit-connection-request" data-submit-connection-request-user-id-value=<%= current_user.id %>>
-  <button data-submit-connection-request-target="connect-button" data-action="click->submit-connection-request#send">
-    Connect
-  </button>
-</div>
+
+<%= button_to "Connect", user_connections_path(@artist) %>
+
+<%# To pick up for AJAX buttons %>
+<%# <div data-controller="submit-connection-request" data-submit-connection-request-requester-id-value=<%= current_user.id %>
+  <%# data-submit-connection-request-receiver-id-value=<%= @artist.id %>
+  <%# <button data-submit-connection-request-target="connect-button" data-action="click->submit-connection-request#send"> %>
+    <%# Connect %>
+  <%# </button> %>
+<%# </div> %>
