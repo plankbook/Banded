@@ -24,4 +24,9 @@ class ConnectionsController < ApplicationController
     @connection = Connection.find(params[:id])
     @connection.update(status: "rejected")
   end
+
+  def show
+    @connection = Connection.find(params[:id])
+    @message = Message.new
+  end
 end
