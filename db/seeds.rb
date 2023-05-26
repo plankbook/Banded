@@ -8,6 +8,10 @@
 require 'faker'
 
 puts "Database clean-up"
+Genre.delete_all
+UserInstrument.delete_all
+Message.delete_all
+Connection.delete_all
 Instrument.delete_all
 User.delete_all
 
@@ -22,9 +26,20 @@ end
 all_instruments = Instrument.all
 puts "#{Instrument.count} instruments created"
 
+puts 'Create genres'
+genre_list = ['Jazz', 'Smooth jazz', 'Rock', 'Folk', 'World music', 'Pop', 'RnB', 'Classical']
+8.times do
+  Genre.create!(
+    name: genre_list.shuffle!.pop
+  )
+end
+
+all_genres = Genre.all
+puts "#{Genre.count} genres created"
+
 puts "Create new users..."
 20.times do
-  User.create!(
+  artist = User.create!(
     name: Faker::Name.unique.name,
     email: "#{Faker::Music.unique.chord}@gmail.com",
     password: 'asdfasdf',
@@ -33,7 +48,20 @@ puts "Create new users..."
     bio: Faker::Quote.famous_last_words,
     phone: Faker::PhoneNumber.cell_phone,
     gender: ['male', 'female', 'other'].sample,
-    #user_instruments: all_instruments.sample.name
+    #instrument_ids: all_instruments.sample(3).map(&:id)
+    )
+  all_instruments.sample(3).each do |instrument|
+    UserInstrument.create!(
+      proficiency: ['beginner', 'intermediate', 'expert', 'God'].sample,
+      user: artist,
+      instrument:
     )
   end
+  # all_genres.sample(3).each do |genre|
+  #   UserGenre.create!(
+  #     user: artist,
+  #     genre:
+  #   )
+  # end
+end
 puts "#{User.count} artists created"
