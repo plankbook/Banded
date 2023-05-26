@@ -1,6 +1,7 @@
 <h1>Connection Requests</h1>
 
 <ul>
+<%# raise %>
   <% @connections_requested.each do |connection| %>
     <li><%= connection.receiver.email %></li>
   <% end %>
@@ -15,5 +16,19 @@
       <%= button_to "Accept", connection_accept_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
       <%= button_to "Decline", connection_reject_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
     </li>
+  <% end %>
+</ul>
+
+<h1>My Connections</h1>
+
+<ul>
+<%# raise %>
+  <% @my_connections.each do |connection| %>
+    <% if current_user.id == connection.receiver_id %>
+      <li><%= link_to connection.requester.name, artist_path(connection.requester) %></li>
+    <% else %>
+      <li><%= link_to connection.receiver.name, artist_path(connection.receiver) %></li>
+    <% end %>
+      <p><%= link_to 'message user', connection_path(connection) %></p>
   <% end %>
 </ul>
