@@ -1,0 +1,79 @@
+.profile-card {
+  width: 252px;
+  height: 356px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  .profile-banner {
+    height: 142px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 11px;
+    opacity: .7;
+    margin: 0;
+  }
+
+
+  .profile-top {
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid #E4E5E7;
+
+    .profile-title{
+      font-weight: 600;
+    }
+
+    .profile-location{
+      font-weight: 600;
+      color: #FFBE5B;
+    }
+
+    .profile-user {
+      margin-right: 10px;
+    }
+  }
+
+  .profile-bio {
+    padding: 10px;
+  }
+
+  .profile-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #E4E5E7;
+
+    .profile-instruments {
+
+      .instrument-icons {
+        display: flex;
+        .instrument-icon {
+          font-size: 17px;
+        }
+      }
+    }
+
+    .profile-genres {
+      .genre-pill {
+        width: 48px;
+        height: 14px;
+        background-color: #B1A9FF;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
