@@ -33,8 +33,16 @@
                 required: true %>
     <%= f.input :gender,
                 required: true %>
-    <%= f.input :instruments,
-                required: true %>
+    <%= f.association :genres, as: :check_boxes, input_html: { multiple: true }, include_hidden: false %>
+    <h3>Instruments:</h3>
+      <div id='instruments'>
+        <%= f.simple_fields_for :user_instruments do |user_instrument| %>
+          <%= render 'user_instrument_fields', f: user_instrument %>
+        <% end %>
+        <div class='links'>
+          <%= link_to_add_association 'add instrument', f, :user_instruments %>
+        </div>
+      </div>
   </div>
 
   <div class="form-actions">

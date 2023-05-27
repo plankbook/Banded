@@ -1,0 +1,5 @@
+<div class='nested-fields'>
+  <%= f.association :instrument, label_method: :name, value_method: :id, prompt: 'Select an instrument' %>
+  <%= f.input :proficiency %>
+  <%= link_to_remove_association "remove instrument", f %>
+</div>
