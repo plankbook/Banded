@@ -1,7 +1,5 @@
-
 <div class="banner">
   <div class="container">
-
     <div class="logo">
     </div>
     <div class="anthem">
@@ -41,4 +39,25 @@
     <% end %>
   </div>
   <h2>New Projects</h2>
+  </ul>
+  <div class="homepage-container">
+    <div class="homepage-subcontainer">
+      <h2 class="cards-title">Suggested <span class="musicians-title">Musicians</span></h2>
+
+      <div class="profile-cards">
+        <% 16.times do %>
+          <%= render "profile_card" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="homepage-subcontainer">
+      <h2 class="cards-title">New <span class="projects-title">Projects</span></h2>
+
+      <div class="project-cards">
+        <% 16.times do %>
+          <%= render "project_card" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

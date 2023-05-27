@@ -1,4 +1,5 @@
 // Specific CSS for your home-page
+
 .logo{
   height: 50vh;
 }
@@ -19,7 +20,22 @@
   text-shadow: 25px 15px rgb(95, 136, 71);
   font-size: 54px;
   font-weight: bold;
-}
+
+
+// .homepage-container {
+//   margin: 50px 196px;
+//   .homepage-subcontainer {
+//     margin: 50px 0px;
+//   }
+  //}
+  
+// .banner {
+//   background-size: cover;
+//   background-position: center;
+//   height: 100vh;
+//   padding: 100px 0;
+// }
+
 
 .banner p {
   background-position: center;
@@ -41,3 +57,21 @@ h2 {
 .list-element {
   margin: 20px;
 }
+
+// .banner h1 {
+//   background-position: center;
+//   margin: 0;
+//   color: white;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+//   font-size: 54px;
+//   font-weight: bold;
+// }
+
+// .banner p {
+//   background-position: center;
+//   font-size: 24px;
+//   color: white;
+//   opacity: .9;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+// }
+

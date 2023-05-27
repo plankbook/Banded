@@ -1,0 +1,110 @@
+.project-card {
+  width: 252px;
+  height: 356px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  .project-banner {
+    height: 142px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 11px;
+    // opacity: .7;
+    margin: 0;
+  }
+
+
+  .project-top {
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid #E4E5E7;
+    align-items: center;
+
+    .project-users {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-right: 20px;
+      margin-left: 5px;
+
+      .project-user {
+        flex: none;
+        margin: 0px -5px;
+
+      }
+
+      // &:nth-child(1) {
+      //   position: absolute;
+      // }
+    }
+
+    .project-title {
+      font-weight: 600;
+    }
+
+    .project-location {
+      font-weight: 600;
+      color: #FFBE5B;
+    }
+
+    .project-user {
+      margin-right: 10px;
+    }
+  }
+
+  .project-bio {
+    padding: 10px;
+  }
+
+  .project-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #E4E5E7;
+
+    .project-instruments {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .instrument-icons {
+        display: flex;
+        .instrument-icon {
+          font-size: 17px;
+        }
+      }
+    }
+
+    .project-genres {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      .genre-pill {
+        width: 48px;
+        height: 14px;
+        background-color: #B1A9FF;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        margin: auto;
+        font-size: 10px;
+      }
+    }
+  }
+}

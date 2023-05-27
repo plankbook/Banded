@@ -1,10 +1,17 @@
 <div class='container'>
   <h1><%= @artist.name %></h1>
-  <h1><%= @artist.email %></h1>
+  <p><%= @artist.age %></p>
+  <p><%= @artist.location %></p>
+  <p><%= @artist.bio %></p>
+  <p><%= @artist.instruments %></p>
+  <p><%= @artist.genres %></p>
+
+  <%# raise %>
 </div>
 
 
 <%= button_to "Connect", user_connections_path(@artist) %>
+<%= link_to "My connections", connections_path %>
 
 <%# To pick up for AJAX buttons %>
 <%# <div data-controller="submit-connection-request" data-submit-connection-request-requester-id-value=<%= current_user.id %>
