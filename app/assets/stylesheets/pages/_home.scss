@@ -22,3 +22,95 @@
   opacity: .9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+// box-sizing: border-box;
+
+// position: absolute;
+// width: 252px;
+// height: 356px;
+// left: 0px;
+// top: 0px;
+
+// background: #FFFFFF;
+// border: 1px solid #E4E5E7;
+
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.card-artists {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-artists > a > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-artists > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-artists h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-artists p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-artists .card-artists-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-artists-infos .card-artists-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.footer {
+  background: #186343;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: #FFFFFF;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: #FFFFFF;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
