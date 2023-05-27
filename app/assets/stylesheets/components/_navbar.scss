@@ -1,6 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +12,9 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 120px;
+}
+
+img.img_preview{
+  width: 50%;
+  height: auto;
 }

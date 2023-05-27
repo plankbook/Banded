@@ -14,8 +14,12 @@
 
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+  <div style="height: 60px">
+  <%= render "shared/navbar" %>
+  <%= render "shared/flashes" %>
+  </div>
+
 
     <%= yield %>
   </body>
