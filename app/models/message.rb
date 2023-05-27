@@ -1,4 +1,4 @@
 class Message < ApplicationRecord
-  has_one :connexion
-  has_one :user
+  belongs_to :connection
+  belongs_to :sender, class_name: "User"
 end

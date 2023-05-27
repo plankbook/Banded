@@ -1,27 +1,37 @@
 // Specific CSS for your home-page
+
+.homepage-container {
+  margin: 50px 0px;
+  .homepage-subcontainer {
+    margin: 50px 0px;
+  }
+}
+
 .banner {
+  background-image: url("homepage_banner.png");
   background-size: cover;
   background-position: center;
   height: 100vh;
   padding: 100px 0;
+  margin-bottom: 20px;
 }
 
 .banner h1 {
   background-position: center;
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 25px 15px rgb(95, 136, 71);
   font-size: 54px;
   font-weight: bold;
 }
 
-.banner p {
-  background-position: center;
-  font-size: 24px;
-  color: white;
-  opacity: .9;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
+// .banner p {
+//   background-position: center;
+//   font-size: 24px;
+//   color: white;
+//   opacity: .9;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+// }
 
 // box-sizing: border-box;
 
@@ -35,58 +45,58 @@
 // border: 1px solid #E4E5E7;
 
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 10px;
-  flex-grow: 1;
-}
+// .cards {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr 1fr;
+//   grid-gap: 16px;
+//   padding: 10px;
+//   flex-grow: 1;
+// }
 
-.card-artists {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
+// .card-artists {
+//   overflow: hidden;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+// }
 
-.card-artists > a > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
+// .card-artists > a > img {
+//   height: 200px;
+//   width: 100%;
+//   object-fit: cover;
+// }
 
-.card-artists > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
+// .card-artists > img {
+//   height: 200px;
+//   width: 100%;
+//   object-fit: cover;
+// }
 
-.card-artists h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
+// .card-artists h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
 
-.card-artists p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
+// .card-artists p {
+//   font-size: 12px;
+//   opacity: .7;
+//   margin: 0;
+// }
 
-.card-artists .card-artists-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
+// .card-artists .card-artists-infos {
+//   padding: 16px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   position: relative;
+// }
 
-.card-artists-infos .card-artists-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
+// .card-artists-infos .card-artists-user {
+//   position: absolute;
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+// }
 
 .footer {
   background: #186343;
@@ -114,3 +124,34 @@
 .footer .fa-heart {
   color: #D23333;
 }
+
+// .homepage-container {
+//   margin: 50px 196px;
+//   .homepage-subcontainer {
+//     margin: 50px 0px;
+//   }
+//   }
+
+// .banner {
+//   background-size: cover;
+//   background-position: center;
+//   height: 100vh;
+//   padding: 100px 0;
+// }
+
+// .banner h1 {
+//   background-position: center;
+//   margin: 0;
+//   color: white;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+//   font-size: 54px;
+//   font-weight: bold;
+// }
+
+// .banner p {
+//   background-position: center;
+//   font-size: 24px;
+//   color: white;
+//   opacity: .9;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+// }
