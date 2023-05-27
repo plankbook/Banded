@@ -61,3 +61,35 @@
     </div>
   </div>
 </div>
+     
+<!-- <div class="cards">
+
+<div class="card-artists">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-artists-infos">
+    <div>
+      <h2>Title here</h2>
+      <p>Short description here!</p>
+    </div>
+    <h2 class="card-artists-pricing">£99.99</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-artists-user avatar-bordered" />
+  </div>
+</div>
+</div> -->
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    Made with <i class="fas fa-heart"></i> in Mtl.
+  </div>
+</div>
+
+<% if current_user %>
+  <%= link_to "New project", new_user_project_path(current_user) %>
+  <%= link_to "All my projects", user_projects_path(current_user) %>
+<% else %>
+<% end %>
