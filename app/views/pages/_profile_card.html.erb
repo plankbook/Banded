@@ -3,15 +3,13 @@
     <div class="profile-top">
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
       <div>
-        <h2 class="profile-title">Robert Li</h2>
-        <p class="profile-location">Montreal, Canada</p>
+        <h2 class="profile-title"><%= user.name %></h2>
+        <p class="profile-location"><%= user.location %></p>
       </div>
     </div>
     <div class="profile-bio">
       <p>
-        English singer, songwriter and composer.
-        He is internationally known as a singer and bassist of the Beatles.
-        With singer and guitarist John Lennon,...
+        <%= user.bio %>
       </p>
     </div>
     <div class="profile-bottom">
@@ -26,7 +24,7 @@
       <div class="profile-genres">
         <p>Genres</p>
         <div class="genre-pill">
-          <p>Rock</p>
+          <p><%= user.genres.first.name %></p>
         </div>
       </div>
     </div>
