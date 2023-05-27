@@ -3,7 +3,7 @@
     <div class="profile-top">
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
       <div>
-        <h2 class="profile-title"><%= user.name %></h2>
+        <h2 class="profile-title"><%= link_to user.name, artist_path(user) %></h2>
         <p class="profile-location"><%= user.location %></p>
       </div>
     </div>
