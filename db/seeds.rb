@@ -8,8 +8,8 @@
 require 'faker'
 
 puts "Database clean-up"
-Genre.delete_all
 UserGenre.delete_all
+Genre.delete_all
 UserInstrument.delete_all
 Message.delete_all
 Connection.delete_all
@@ -28,7 +28,7 @@ all_instruments = Instrument.all
 puts "#{Instrument.count} instruments created"
 
 puts 'Create genres'
-genre_list = ['Jazz', 'Smooth jazz', 'Rock', 'Folk', 'World music', 'Pop', 'RnB', 'Classical']
+genre_list = ['Jazz', 'Rock', 'Folk', 'Pop', 'RnB', 'Rap']
 8.times do
   Genre.create!(
     name: genre_list.shuffle!.pop

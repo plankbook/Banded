@@ -1,17 +1,16 @@
 <div class="profile-card">
-    <img class="profile-banner" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <%= image_tag "user_seed_banner.png", class: "profile-banner" %>
+    <%# <img class="profile-banner" src="user_seed_banner.png" /> %>
     <div class="profile-top">
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
       <div>
-        <h2 class="profile-title">Robert Li</h2>
-        <p class="profile-location">Montreal, Canada</p>
+        <h2 class="profile-title"><%= link_to user.name, artist_path(user) %></h2>
+        <p class="profile-location"><%= user.location %></p>
       </div>
     </div>
     <div class="profile-bio">
       <p>
-        English singer, songwriter and composer.
-        He is internationally known as a singer and bassist of the Beatles.
-        With singer and guitarist John Lennon,...
+        <%= user.bio %>
       </p>
     </div>
     <div class="profile-bottom">
@@ -26,7 +25,7 @@
       <div class="profile-genres">
         <p>Genres</p>
         <div class="genre-pill">
-          <p>Rock</p>
+          <p><%= user.genres.first.name %></p>
         </div>
       </div>
     </div>

@@ -8,5 +8,6 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = User.find(params[:id])
+    @my_instruments = UserInstrument.where(user_id: params[:id])
   end
 end

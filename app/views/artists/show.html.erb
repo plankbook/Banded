@@ -2,11 +2,19 @@
   <h1><%= @artist.name %></h1>
   <p><%= @artist.age %></p>
   <p><%= @artist.location %></p>
+  <h4>Artist bio:</h4>
   <p><%= @artist.bio %></p>
-  <p><%= @artist.instruments %></p>
-  <p><%= @artist.genres %></p>
+  <h4>Plays:</h4>
+  <% @artist.instruments.each do |instrument| %>
+    <ul><%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency} in #{instrument.name}" %></ul>
+  <% end %>
 
-  <%# raise %>
+  <h4>Interested in:</h4>
+    <% @artist.genres.each do |genre| %>
+        <ul><%= genre.name %>  </ul>
+    <% end %>
+  </p>
+
 </div>
 
 
