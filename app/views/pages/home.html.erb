@@ -15,24 +15,24 @@
   </div>
 </div>
 <div class="container">
-  <h2>Suggested Musicians</h2>
-  <div class="list-container">
-    <% suggested = User.all %>
-    <% selections = [] %>
-    <% 5.times do %>
-      <% user = suggested.sample %>
-      <% selections.push(user) %>
-    <% end %>
-    <% selections.each do |selected| %>
-      <div class="list-element">
-        <p><%= link_to selected.name, artist_path(selected) %></p>
-        <p><%= selected.location %></p>
-        <p><%= selected.bio %></p>
-      </div>
-    <% end %>
-  </div>
-  <h2>New Projects</h2>
-  </ul>
+  <%# <h2>Suggested Musicians</h2> %>
+  <%# <div class="list-container"> %>
+    <%# <% suggested = User.all %>
+    <%# <% selections = [] %>
+    <%# <% 5.times do %>
+      <%# <% user = suggested.sample %>
+      <%# <% selections.push(user) %>
+    <%# <% end %>
+    <%# <% selections.each do |selected| %>
+      <%# <div class="list-element"> %>
+        <%# <p><%= link_to selected.name, artist_path(selected) %>
+        <%# <p><%= selected.location %>
+        <%# <p><%= selected.bio %>
+      <%# </div> %>
+    <%# <% end %>
+  <%# </div> %>
+  <%# <h2>New Projects</h2> %>
+  <%# </ul> %>
   <div class="homepage-container">
     <div class="homepage-subcontainer">
       <h2 class="cards-title">Suggested <span class="musicians-title">Musicians</span></h2>
