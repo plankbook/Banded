@@ -7,6 +7,10 @@
   }
 }
 
+.logo {
+  height: 30vh;
+}
+
 .banner {
   background-image: url("homepage_banner.png");
   background-size: cover;
@@ -20,8 +24,8 @@
   background-position: center;
   margin: 0;
   color: white;
-  text-shadow: 25px 15px rgb(95, 136, 71);
-  font-size: 54px;
+  // text-shadow: 25px 15px rgb(95, 136, 71);
+  font-size: 70px;
   font-weight: bold;
 }
 
