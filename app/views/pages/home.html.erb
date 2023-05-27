@@ -45,8 +45,8 @@
       <h2 class="cards-title">Suggested <span class="musicians-title">Musicians</span></h2>
 
       <div class="profile-cards">
-        <% 16.times do %>
-          <%= render "profile_card" %>
+        <% 5.times do %>
+          <%= render partial: "profile_card", locals: {user: @suggested_users.sample} %>
         <% end %>
       </div>
     </div>
@@ -61,7 +61,7 @@
     </div>
   </div>
 </div>
-     
+
 <!-- <div class="cards">
 
 <div class="card-artists">
