@@ -1,3 +1,11 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(../assets/homepage_banner);">
+  <div class="container banner-info">
+    <h1>Join Forces, Make <strong>Music</strong>!</h1>
+    <p>The only place where musicians get to connect and create awesome music!</p>
+    <%= render "search_bar" %>
+  </div>
+ </div>
+
 <div class='container'>
   <h1>Banded</h1>
   <p><%= link_to 'list of all artists', artists_path %></p>
@@ -22,37 +30,24 @@
       </div>
     <% end %>
   </ul>
+  <div class="homepage-container">
+    <div class="homepage-subcontainer">
+      <h2 class="cards-title">Suggested <span class="musicians-title">Musicians</span></h2>
 
-  <div class="profile-card">
-    <img class="profile-banner" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-    <div class="profile-top">
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered" />
-      <div>
-        <h2 class="profile-title">Robert Li</h2>
-        <p class="profile-location">Montreal, Canada</p>
+      <div class="profile-cards">
+        <% 16.times do %>
+          <%= render "profile_card" %>
+        <% end %>
       </div>
     </div>
-    <div class="profile-bio">
-      <p>
-        English singer, songwriter and composer.
-        He is internationally known as a singer and bassist of the Beatles.
-        With singer and guitarist John Lennon,...
-      </p>
-    </div>
-    <div class="profile-bottom">
-      <div class="profile-instruments">
-        <p>Instruments</p>
-        <div class="instrument-icons">
-          <p class="instrument-icon">🎸</p>
-          <p class="instrument-icon">🥁</p>
-          <p class="instrument-icon">🎻</p>
-        </div>
-      </div>
-      <div class="profile-genres">
-        <p>Genres</p>
-        <p class="genre-pill">Rock</p>
+    <div class="homepage-subcontainer">
+      <h2 class="cards-title">New <span class="projects-title">Projects</span></h2>
+
+      <div class="project-cards">
+        <% 16.times do %>
+          <%= render "project_card" %>
+        <% end %>
       </div>
     </div>
   </div>
-
 </div>

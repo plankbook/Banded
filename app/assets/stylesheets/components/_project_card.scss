@@ -1,11 +1,11 @@
-.profile-card {
+.project-card {
   width: 252px;
   height: 356px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
-  .profile-banner {
+  .project-banner {
     height: 142px;
     width: 100%;
     object-fit: cover;
@@ -24,37 +24,57 @@
   }
 
 
-  .profile-top {
+  .project-top {
     padding: 10px;
     display: flex;
     align-items: flex-end;
     border-bottom: 1px solid #E4E5E7;
+    align-items: center;
 
-    .profile-title{
+    .project-users {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-right: 20px;
+      margin-left: 5px;
+
+      .project-user {
+        flex: none;
+        margin: 0px -5px;
+
+      }
+
+      // &:nth-child(1) {
+      //   position: absolute;
+      // }
+    }
+
+    .project-title {
       font-weight: 600;
     }
 
-    .profile-location{
+    .project-location {
       font-weight: 600;
       color: #FFBE5B;
     }
 
-    .profile-user {
+    .project-user {
       margin-right: 10px;
     }
   }
 
-  .profile-bio {
+  .project-bio {
     padding: 10px;
   }
 
-  .profile-bottom {
+  .project-bottom {
     display: flex;
     justify-content: space-between;
     padding: 10px;
     border-top: 1px solid #E4E5E7;
 
-    .profile-instruments {
+    .project-instruments {
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -68,7 +88,7 @@
       }
     }
 
-    .profile-genres {
+    .project-genres {
       display: flex;
       align-items: center;
       flex-direction: column;
