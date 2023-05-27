@@ -6,7 +6,32 @@
     margin: 50px 0px;
   }
 }
-  
+
+.banner {
+  background-image: url("homepage-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 100px 0;
+  margin-bottom: 20px;
+}
+
+.banner h1 {
+  background-position: center;
+  margin: 0;
+  color: white;
+  text-shadow: 25px 15px rgb(95, 136, 71);
+  font-size: 54px;
+  font-weight: bold;
+}
+
+// .homepage-container {
+//   margin: 50px 196px;
+//   .homepage-subcontainer {
+//     margin: 50px 0px;
+//   }
+  //}
+
 // .banner {
 //   background-size: cover;
 //   background-position: center;
