@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_24_040633) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_27_140726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,9 +55,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_040633) do
   end
 
   create_table "user_genres", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "genre_id"
+    t.index ["genre_id"], name: "index_user_genres_on_genre_id"
+    t.index ["user_id"], name: "index_user_genres_on_user_id"
   end
 
   create_table "user_instruments", force: :cascade do |t|
@@ -102,6 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_040633) do
   add_foreign_key "connections", "users", column: "requester_id"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "projects", "users"
+  add_foreign_key "user_genres", "genres"
+  add_foreign_key "user_genres", "users"
   add_foreign_key "user_instruments", "instruments"
   add_foreign_key "user_instruments", "users"
   add_foreign_key "user_projects", "projects"

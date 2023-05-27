@@ -9,6 +9,7 @@ require 'faker'
 
 puts "Database clean-up"
 Genre.delete_all
+UserGenre.delete_all
 UserInstrument.delete_all
 Message.delete_all
 Connection.delete_all
@@ -57,11 +58,11 @@ puts "Create new users..."
       instrument:
     )
   end
-  # all_genres.sample(3).each do |genre|
-  #   UserGenre.create!(
-  #     user: artist,
-  #     genre:
-  #   )
-  # end
+  all_genres.sample(3).each do |genre|
+    UserGenre.create!(
+      user: artist,
+      genre:
+    )
+  end
 end
 puts "#{User.count} artists created"
