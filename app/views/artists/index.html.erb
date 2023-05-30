@@ -11,9 +11,19 @@
   </div>
 </div>
 
-<h1>All artists</h1>
-<% @artists.each do |artist| %>
-  <p><%= link_to artist.name, artist_path(artist) %></p>
-  <p><%= artist.location %></p>
-  <p><%= artist.bio %></p>
-<% end %>
+<div class="container">
+  <div class="homepage-container">
+    <div class="homepage-subcontainer">
+      <% if params[:query].present? %>
+        <h2 class="cards-title">All <span class="musicians-title">Artists</span> in <%= params[:query] %></h2>
+      <% else %>
+        <h2 class="cards-title">All <span class="musicians-title">Artists</span></h2>
+      <% end %>
+      <div class="profile-cards">
+        <% @artists.each do |user| %>
+          <%= render partial: "profile_card", locals: {user: user} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

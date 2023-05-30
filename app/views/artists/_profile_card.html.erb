@@ -1,0 +1,38 @@
+<div class="profile-card">
+    <%= cl_image_tag user.photo.key, class: "profile-banner" %>
+    <%# <img class="profile-banner" src="user_seed_banner.png" /> %>
+    <div class="profile-top">
+      <% if user.photo.key? %>
+        <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "profile-user avatar-bordered-profile" %>
+      <% else %>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
+      <% end %>
+      <div>
+        <h2 class="profile-title"><%= link_to user.name, artist_path(user) %></h2>
+        <p class="profile-location"><%= user.location %></p>
+      </div>
+    </div>
+    <div class="profile-bio">
+      <p>
+        <%= user.bio.truncate(200) %>
+      </p>
+    </div>
+    <div class="profile-bottom">
+      <div class="profile-instruments">
+        <p>Instruments</p>
+        <div class="instrument-icons">
+          <p class="instrument-icon">🎸</p>
+          <p class="instrument-icon">🥁</p>
+          <p class="instrument-icon">🎻</p>
+        </div>
+      </div>
+      <div class="profile-genres">
+        <% if user.genres.exists? %>
+          <p>Genres</p>
+          <div class="genre-pill">
+            <p><%= user.genres.first.name %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
