@@ -33,6 +33,7 @@
                 required: true %>
     <%= f.input :gender,
                 required: true %>
+    <%= f.input :photo, as: :file %>
     <%= f.association :genres, as: :check_boxes, input_html: { multiple: true }, include_hidden: false %>
     <h3>Instruments:</h3>
       <div id='instruments'>
