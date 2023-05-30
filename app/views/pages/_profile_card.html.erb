@@ -1,5 +1,5 @@
 <div class="profile-card">
-    <%= image_tag "user_seed_banner.png", class: "profile-banner" %>
+    <%= cl_image_tag user.photo.key, class: "profile-banner" %>
     <%# <img class="profile-banner" src="user_seed_banner.png" /> %>
     <div class="profile-top">
       <% if user.photo.key? %>
@@ -14,7 +14,7 @@
     </div>
     <div class="profile-bio">
       <p>
-        <%= user.bio %>
+        <%= user.bio.truncate(200) %>
       </p>
     </div>
     <div class="profile-bottom">
