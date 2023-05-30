@@ -2,7 +2,11 @@
     <%= image_tag "user_seed_banner.png", class: "profile-banner" %>
     <%# <img class="profile-banner" src="user_seed_banner.png" /> %>
     <div class="profile-top">
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
+      <% if user.photo.key? %>
+        <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "profile-user avatar-bordered-profile" %>
+      <% else %>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
+      <% end %>
       <div>
         <h2 class="profile-title"><%= link_to user.name, artist_path(user) %></h2>
         <p class="profile-location"><%= user.location %></p>
@@ -23,10 +27,12 @@
         </div>
       </div>
       <div class="profile-genres">
-        <p>Genres</p>
-        <div class="genre-pill">
-          <p><%= user.genres.first.name %></p>
-        </div>
+        <% if user.genres.exists? %>
+          <p>Genres</p>
+          <div class="genre-pill">
+            <p><%= user.genres.first.name %></p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
