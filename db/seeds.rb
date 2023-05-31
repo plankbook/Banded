@@ -137,3 +137,36 @@ puts "Create new users..."
   end
 end
 puts "#{User.count} artists created"
+
+requester = User.create!(
+  name: "Requester",
+  email: "requester@banded.com",
+  password: "123456"
+)
+puts "Requester User is created!"
+
+receiver = User.create!(
+  name: "Receiver",
+  email: "receiver@banded.com",
+  password: "123456"
+)
+
+puts "Receiver User is created!"
+
+connection = Connection.create!(
+  requester:,
+  receiver:,
+  status: "accepted"
+)
+
+puts "Connection #{connection.id} is created!"
+
+10.times do
+  Message.create(
+    content: Faker::Quote.famous_last_words,
+    connection:,
+    sender: [requester, receiver].sample
+  )
+end
+
+puts "Sample Messages created!"
