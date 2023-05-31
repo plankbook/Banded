@@ -8,7 +8,7 @@
       </h1>
       <p>The only place where musicians get to connect and create awesome music!</p>
       <div class="col-sm-8 my-3">
-        <%= render "search_bar" %>
+        <%= render "shared/search_bar" %>
       </div>
     </div>
     <!-- <p><%= link_to 'list of all artists', artists_path %></p> -->
@@ -39,7 +39,7 @@
 
       <div class="profile-cards">
         <% 5.times do %>
-          <%= render partial: "profile_card", locals: {user: @suggested_users.sample} %>
+          <%= render partial: "shared/profile_card", locals: {user: @suggested_users.sample} %>
         <% end %>
       </div>
     </div>
@@ -48,7 +48,7 @@
 
       <div class="project-cards">
         <% 16.times do %>
-          <%= render "project_card" %>
+          <%= render "shared/project_card" %>
         <% end %>
       </div>
     </div>
