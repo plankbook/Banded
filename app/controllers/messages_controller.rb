@@ -5,7 +5,11 @@ class MessagesController < ApplicationController
     @message.connection = @connection
     @message.sender = current_user
     if @message.save
-      redirect_to connection_path(@connection)
+      ConnectionChannel.broadcast_to(
+        @connection,
+        render_to_string(partial: "message", locals: { message: @message })
+      )
+      head :ok
     else
       render "connections/show", status: :unprocessable_entity
     end

@@ -1,19 +1,17 @@
-<div class="container chatroom">
+<div class="container chatroom"
+  data-controller="connection-subscription"
+  data-connection-subscription-connection-id-value="<%= @connection.id %>"
+>
   <h1><%= "Chat between #{@connection.receiver.name} and #{@connection.requester.name}" %></h1>
-  <div class="messages">
+  <div class="messages" data-connection-subscription-target="messages">
     <% @connection.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.sender.name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
 
   <%= simple_form_for [@connection, @message],
-    html: {class: "d-flex"} do |f|
+    html: { data: { action: "turbo:submit-end->connection-subscription#resetForm" },
+    class: "d-flex" } do |f|
   %>
     <%= f.input :content,
       label: false,
