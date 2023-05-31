@@ -14,7 +14,9 @@
     </div>
     <div class="profile-bio">
       <p>
+      <% if user.bio? %>
         <%= user.bio.truncate(200) %>
+      <% end %>
       </p>
     </div>
     <div class="profile-bottom">
