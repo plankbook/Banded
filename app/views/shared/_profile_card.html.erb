@@ -27,11 +27,32 @@
       <div class="profile-instruments">
         <p>Instruments</p>
         <div class="instrument-icons">
-          <p class="instrument-icon">🎸</p>
-          <p class="instrument-icon">🥁</p>
-          <p class="instrument-icon">🎻</p>
+        <% user.instruments.each do |instrument| %>
+          <% if instrument.name == 'Piano' %>
+            <p class="instrument-icon">🎹</p>
+          <% elsif instrument.name == 'Guitar' %>
+            <p class="instrument-icon">🎸</p>
+          <% elsif instrument.name == 'Violin' %>
+            <p class="instrument-icon">🎻</p>
+          <% elsif instrument.name == 'Drums' %>
+            <p class="instrument-icon">🥁</p>
+          <% elsif instrument.name == 'Saxophone' %>
+            <p class="instrument-icon">🎷</p>
+          <% elsif instrument.name == 'Flute' %>
+            <p class="instrument-icon">🪈</p>
+          <% elsif instrument.name == 'Trumpet' %>
+            <p class="instrument-icon">🎺</p>
+          <% elsif instrument.name == 'Banjo' %>
+            <p class="instrument-icon">🪕</p>
+          <% elsif instrument.name == 'Accordion' %>
+            <p class="instrument-icon">🪗</p>
+          <% elsif instrument.name == 'Maracas' %>
+            <p class="instrument-icon">🪇</p>
+          <% end %>
+        <% end %>
         </div>
       </div>
+        <%# raise %>
       <div class="profile-genres">
         <% if user.genres.exists? %>
           <p>Genres</p>

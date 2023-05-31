@@ -8,6 +8,7 @@
 require 'faker'
 
 puts "Database clean-up"
+Project.delete_all
 UserGenre.delete_all
 Genre.delete_all
 UserInstrument.delete_all
@@ -17,8 +18,8 @@ Instrument.delete_all
 User.delete_all
 
 puts 'Create instruments'
-instrument_list = ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Clarinet', 'Cello']
-8.times do
+instrument_list = ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Trumpet', 'Banjo', 'Accordion', 'Maracas']
+10.times do
   Instrument.create!(
     name: instrument_list.shuffle!.pop
   )
@@ -122,14 +123,14 @@ puts "Create new users..."
   #     Properties::Images::Publisher.(image)
   # )
 
-  all_instruments.sample(3).each do |instrument|
+  all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
-      proficiency: ['beginner', 'intermediate', 'expert', 'God'].sample,
+      proficiency: ['beginner', 'intermediate', 'expert', 'God level'].sample,
       user: artist,
       instrument:
     )
   end
-  all_genres.sample(3).each do |genre|
+  all_genres.sample((rand(1..5))).each do |genre|
     UserGenre.create!(
       user: artist,
       genre:
