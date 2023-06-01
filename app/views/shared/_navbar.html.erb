@@ -16,7 +16,8 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "My Connections", connections_path, class: "nav-link" %>
+            <%#= link_to "My Connections", connections_path, class: "nav-link" %>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myConnections">My Connections</a>
           </li>
           <li class="nav-item">
           <%# raise %>
@@ -48,6 +49,32 @@
           </li>
         <% end %>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myConnections" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class=connections_title>Connection <span class="requests">Requests</span></h2>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "connections/requests", connections_requested: @connections_requested %>
+      </div>
+      <div class="modal-header">
+        <h2 class=connections_title><span class="pending">Pending</span> Connections</h2>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "connections/pending", connections_received: @connections_received %>
+      </div>
+      <div class="modal-header">
+        <h2 class=connections_title><span class="my">My</span> Connections</h2>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "connections/my", my_connections: @my_connections %>
+      </div>
+      </div>
     </div>
   </div>
 </div>

@@ -3,7 +3,7 @@
 <ul>
 <%# raise %>
   <% @connections_requested.each do |connection| %>
-    <li><%= connection.receiver.email %></li>
+    <li><%= connection.receiver.name %></li>
   <% end %>
 </ul>
 
@@ -12,7 +12,7 @@
 <ul>
   <% @connections_received.each do |connection| %>
     <li class="d-flex align-middle">
-      <%= connection.requester.email %>
+      <%= connection.requester.name %>
       <%= button_to "Accept", connection_accept_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
       <%= button_to "Decline", connection_reject_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
     </li>

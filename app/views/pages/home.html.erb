@@ -15,24 +15,6 @@
   </div>
 </div>
 <div class="container">
-  <%# <h2>Suggested Musicians</h2> %>
-  <%# <div class="list-container"> %>
-    <%# <% suggested = User.all %>
-    <%# <% selections = [] %>
-    <%# <% 5.times do %>
-      <%# <% user = suggested.sample %>
-      <%# <% selections.push(user) %>
-    <%# <% end %>
-    <%# <% selections.each do |selected| %>
-      <%# <div class="list-element"> %>
-        <%# <p><%= link_to selected.name, artist_path(selected) %>
-        <%# <p><%= selected.location %>
-        <%# <p><%= selected.bio %>
-      <%# </div> %>
-    <%# <% end %>
-  <%# </div> %>
-  <%# <h2>New Projects</h2> %>
-  <%# </ul> %>
   <div class="homepage-container">
     <div class="homepage-subcontainer">
       <h2 class="cards-title">Suggested <span class="musicians-title">Musicians</span></h2>
@@ -55,21 +37,6 @@
   </div>
 </div>
 
-<!-- <div class="cards">
-
-<div class="card-artists">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-artists-infos">
-    <div>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
-    </div>
-    <h2 class="card-artists-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-artists-user avatar-bordered" />
-  </div>
-</div>
-</div> -->
-
 <div class="footer">
   <div class="footer-links">
     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -85,4 +52,8 @@
   <%= link_to "New project", new_user_project_path(current_user) %>
   <%= link_to "All my projects", user_projects_path(current_user) %>
 <% else %>
+<% end %>
+
+<% @suggested_users.each do |artist| %>
+  <p><%= artist.email %></p>
 <% end %>
