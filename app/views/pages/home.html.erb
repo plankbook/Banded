@@ -37,23 +37,7 @@
   </div>
 </div>
 
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    Made with <i class="fas fa-heart"></i> in Mtl.
-  </div>
-</div>
 
-<% if current_user %>
-  <%= link_to "New project", new_user_project_path(current_user) %>
-  <%= link_to "All my projects", user_projects_path(current_user) %>
-<% else %>
-<% end %>
-
-<% @suggested_users.each do |artist| %>
-  <p><%= artist.email %></p>
-<% end %>
+<%# @suggested_users.each do |artist| %>
+  <p><%#= artist.email %></p>
+<%# end %>
