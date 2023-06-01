@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
     if @message.save
       ConnectionChannel.broadcast_to(
         @connection,
-        render_to_string(partial: "message", locals: { message: @message })
+        message: render_to_string(partial: "message", locals: { message: @message }),
+        sender_id: @message.sender.id
       )
       head :ok
     else
