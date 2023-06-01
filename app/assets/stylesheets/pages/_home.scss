@@ -118,10 +118,15 @@ a {
   height: 100px;
   padding: 0px 50px;
   color: #FFFFFF;
-  position: fixed;
-  bottom: 0;
+  position: sticky;
+
   width: 100%;
 }
+
+.content-wrap {
+  padding-bottom: 4px;
+}
+
 .footer-links {
   display: flex;
   align-items: center;
