@@ -142,15 +142,29 @@ puts "#{User.count} artists created"
 requester = User.create!(
   name: "Requester",
   email: "requester@banded.com",
-  password: "123456"
+  password: "123456",
+  location: "Laval"
 )
+
+requester.photo.attach(
+  filename: 'avatar.jpg',
+  io: URI.open('https://avatars.githubusercontent.com/u/117036801')
+)
+
 puts "Requester User is created!"
 
 receiver = User.create!(
   name: "Receiver",
   email: "receiver@banded.com",
-  password: "123456"
+  password: "123456",
+  location: "Montreal"
 )
+
+receiver.photo.attach(
+  filename: 'avatar.jpg',
+  io: URI.open('https://avatars.githubusercontent.com/u/121645038')
+)
+
 
 puts "Receiver User is created!"
 
