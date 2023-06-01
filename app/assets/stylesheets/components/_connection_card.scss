@@ -1,0 +1,108 @@
+.connection-card {
+    width: 252px;
+    height: 252px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+    .connection-banner {
+        height: 142px;
+        width: 100%;
+        object-fit: cover;
+      }
+    
+      h2 {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0;
+      }
+    
+      p {
+        font-size: 11px;
+        // opacity: .7;
+        margin: 0;
+      }
+    
+    
+      .connection-top {
+        padding: 10px;
+        display: flex;
+        align-items: flex-end;
+        border-bottom: 1px solid #E4E5E7;
+    
+        .connection-title{
+          font-weight: 600;
+        }
+    
+        .connection-location{
+          font-weight: 600;
+          color: #FFBE5B;
+        }
+    
+        .connection-user {
+          margin-right: 10px;
+        }
+      }
+    
+      .connection-bio {
+        padding: 10px;
+        height: 96px;
+      }
+    
+      .connection-bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-top: 1px solid #E4E5E7;
+    
+        .connection-instruments {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+    
+          .instrument-icons {
+            display: flex;
+            .instrument-icon {
+              font-size: 17px;
+            }
+          }
+        }
+    
+        .connection-genres {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: space-between;
+          .genre-pill {
+            width: 48px;
+            height: 14px;
+            background-color: #B1A9FF;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            margin: auto;
+            font-size: 10px;
+          }
+        }
+        .connection-buttons {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          border-top: 1px solid #E4E5E7;
+      
+          .connection-instruments {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+      
+            .instrument-icons {
+              display: flex;
+              .instrument-icon {
+                font-size: 17px;
+              }
+            }
+          }
+      }
+    }}
