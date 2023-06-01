@@ -1,11 +1,16 @@
 <div class="container chatroom"
   data-controller="connection-subscription"
   data-connection-subscription-connection-id-value="<%= @connection.id %>"
+  data-connection-subscription-current-user-id-value="<%= current_user.id %>"
 >
   <h1><%= "Chat between #{@connection.receiver.name} and #{@connection.requester.name}" %></h1>
   <div class="messages" data-connection-subscription-target="messages">
     <% @connection.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+    <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+      <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+        <%= render "messages/message", message: message %>
+     </div>
+    </div>
     <% end %>
   </div>
 
