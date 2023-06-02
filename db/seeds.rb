@@ -185,3 +185,28 @@ puts "Connection #{connection.id} is created!"
 end
 
 puts "Sample Messages created!"
+
+projects = []
+10.times do
+  project = Project.create(name: Faker::Music.band)
+  projects << project
+end
+
+puts "Projects created!"
+
+10.times do
+  post = Post.create(
+    content: Faker::Quote.famous_last_words,
+    project: projects[0],
+    sender: [requester, receiver].sample
+  )
+  10.times do
+    Comment.create(
+      content: Faker::Quote.famous_last_words,
+      post:,
+      sender: [requester, receiver].sample
+    )
+  end
+end
+
+puts "Sample posts and comments are created!"
