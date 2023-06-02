@@ -1,9 +1,9 @@
 <div class="connection-cards">
   <% connections_requested.each do |connection| %>
     <% if current_user.id == connection.receiver_id %>
-      <%= render partial: "shared/connection_card", locals: {user: connection.requester} %>
+      <%= render partial: "shared/connection_card", locals: {user: connection.requester, connection: connection } %>
     <% else %>
-      <%= render partial: "shared/connection_card", locals: {user: connection.receiver} %>
+      <%= render partial: "shared/connection_card", locals: {user: connection.receiver, connection: connection } %>
     <% end %>
   <% end %>
 </div>
