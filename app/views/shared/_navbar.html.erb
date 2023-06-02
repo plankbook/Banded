@@ -1,7 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%#= image_tag  "Logo.png", :class => "img_preview" %>
       <%= image_tag "banded.svg" %>
     <% end %>
 
@@ -16,11 +15,9 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%#= link_to "My Connections", connections_path, class: "nav-link" %>
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myConnections">My Connections</a>
           </li>
           <li class="nav-item">
-          <%# raise %>
             <%= link_to current_user.name, artist_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
@@ -32,7 +29,6 @@
             <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
               <%= link_to current_user.name, artist_path(current_user), class: "dropdown-item" %>
               <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "All my projects", user_projects_path(current_user), class: "dropdown-item" %>
@@ -56,25 +52,13 @@
 <div class="modal fade" id="myConnections" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h2 class=connections_title>Connection <span class="requests">Requests</span></h2>
-      </div>
-      <div class="modal-body">
-        <%= render partial: "connections/requests", connections_requested: @connections_requested %>
-      </div>
-      <div class="modal-header">
-        <h2 class=connections_title><span class="pending">Pending</span> Connections</h2>
-      </div>
-      <div class="modal-body">
-        <%= render partial: "connections/pending", connections_received: @connections_received %>
-      </div>
-      <div class="modal-header">
-        <h2 class=connections_title><span class="my">My</span> Connections</h2>
-      </div>
-      <div class="modal-body">
-        <%= render partial: "connections/my", my_connections: @my_connections %>
-      </div>
-      </div>
+      <div class="modal-header"><h2 class=connections_title>Connection <span class="requests">Requests</span></h2></div>
+      <div class="modal-body"><%= render partial: "connections/requests", connections_requested: @connections_requested %></div>
+      <div class="modal-header"><h2 class=connections_title><span class="pending">Pending</span> Connections</h2></div>
+      <div class="modal-body"><%= render partial: "connections/pending", connections_received: @connections_received %></div>
+      <div class="modal-header"><h2 class=connections_title><span class="my">My</span> Connections</h2></div>
+      <div class="modal-body"><%= render partial: "connections/my", my_connections: @my_connections %></div>
+
     </div>
   </div>
 </div>
