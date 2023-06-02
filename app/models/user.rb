@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :projects, through: :user_projects
   has_many :user_genres
   has_many :genres, through: :user_genres
+  has_many :posts
   accepts_nested_attributes_for :user_instruments, reject_if: :all_blank, allow_destroy: true
   has_one_attached :photo
 end
