@@ -5,29 +5,38 @@
   <% end %>
 
   <div class='profile-page-top'>
-    <div class=''>
+    <div>
       <h1><%= @artist.name %></h1>
-      <p><%= @artist.location %></p>
+      <p class='location'><%= @artist.location %></p>
     </div>
     <%= button_to "Connect", user_connections_path(@artist), class:"btn btn-flat"%>
   </div>
 
-  <h4>Artist bio:</h4>
-  <p><%= @artist.bio %></p>
+  <%# <h4>Artist bio:</h4> %>
+  <p class='bio'><%= @artist.bio %></p>
+
+  <%# <div class='genres'>
+    <h4>Genres</h4>
+      <% @artist.genres.each do |genre| %>
+        <%# <ul> <%= genre.name %>
+      <%# <% end %>
+    <%# </p>
+  </div> %>
+
+      <div class="profile-genres">
+        <% if @artist.genres.exists? %>
+          <h4>Genres</h4>
+          <div class="genre-pill">
+            <p><%= @artist.genres.first.name %></p>
+          </div>
+      <% end %>
+      </div>
 
   <div class='instruments'>
-    <h4>Plays:</h4>
+    <h4>Instruments</h4>
     <% @artist.instruments.each do |instrument| %>
       <ul><%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency} in #{instrument.name}" %></ul>
     <% end %>
-  </div>
-
-  <div class='genres'>
-    <h4>Interested in:</h4>
-      <% @artist.genres.each do |genre| %>
-        <ul><%= genre.name %>  </ul>
-      <% end %>
-    </p>
   </div>
 </div>
 
