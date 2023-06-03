@@ -1,8 +1,28 @@
-<img class="theme" src="http://res.cloudinary.com/dpqolyzbh/image/upload/c_fill,h_300,w_300/v1/development/4ty516md6xyruam4cmiuobqhblcb" alt="Profil's theme">
-<h1><%= @project.name %></h1>
-
-<%= link_to "Edit project", edit_user_project_path(current_user, @project) %>
-
-<%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-
-<%= link_to "home", root_path %>
+<div
+  data-controller="project-subscription"
+  data-project-subscription-project-id-value="<%= @project.id %>"
+>
+  <h1><%= @project.name %></h1>
+  <%= link_to "Edit project", edit_user_project_path(current_user, @project) %>
+  <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <div class="posts">
+    <div data-project-subscription-target="posts">
+      <% @project.posts.each do |post| %>
+        <%= render "posts/post", post: post %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= simple_form_for [@project, @post],
+      html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
+      class: "post-form"} do |f|
+      %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@project.name}",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Post", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>
