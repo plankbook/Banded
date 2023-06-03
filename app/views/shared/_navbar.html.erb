@@ -52,13 +52,21 @@
 <div class="modal fade" id="myConnections" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header"><h2 class=connections_title>Connection <span class="requests">Requests</span></h2></div>
-      <div class="modal-body"><%= render partial: "connections/requests", connections_requested: @connections_requested %></div>
-      <div class="modal-header"><h2 class=connections_title><span class="pending">Pending</span> Connections</h2></div>
-      <div class="modal-body"><%= render partial: "connections/pending", connections_received: @connections_received %></div>
-      <div class="modal-header"><h2 class=connections_title><span class="my">My</span> Connections</h2></div>
-      <div class="modal-body"><%= render partial: "connections/my", my_connections: @my_connections %></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col" style='flex: 0 0 auto; width: 35%;'>
+            <div class="modal-header"><h2 class=connections_title>Connection <span class="requests">Requests</span></h2></div>
+            <div class="modal-body"><%= render partial: "connections/requests", connections_requested: @connections_requested %></div>
 
+            <div class="modal-header"><h2 class=connections_title><span class="pending">Pending</span> Connections</h2></div>
+            <div class="modal-body"><%= render partial: "connections/pending", connections_received: @connections_received %></div>
+          </div>
+          <div class="col-lg-4">
+            <div class="modal-header"><h2 class=connections_title><span class="my">My</span> Connections</h2></div>
+            <div class="modal-body"><%= render partial: "connections/my", my_connections: @my_connections %></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
