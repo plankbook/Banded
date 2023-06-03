@@ -110,6 +110,12 @@ a {
 //   width: 40px;
 // }
 
+.content-wrapper {
+  min-height: calc(100vh - 100px - 60px);
+  padding-bottom: 100px;
+  position: relative;
+}
+
 .footer {
   background: #186343;
   display: flex;
@@ -118,7 +124,15 @@ a {
   height: 100px;
   padding: 0px 50px;
   color: #FFFFFF;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
+
+.content-wrap {
+  padding-bottom: 4px;
+}
+
 .footer-links {
   display: flex;
   align-items: center;
@@ -133,9 +147,9 @@ a {
 .footer-links a:hover {
   opacity: 1;
 }
-.footer .fa-heart {
-  color: #D23333;
-}
+// .footer .fa-heart {
+//   color: #D23333;
+// }
 
 // .homepage-container {
 //   margin: 50px 196px;

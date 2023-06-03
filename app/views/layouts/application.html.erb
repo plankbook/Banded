@@ -15,12 +15,16 @@
   </head>
 
   <body>
-  <div style="height: 60px">
-  <%= render "shared/navbar" %>
-  <%= render "shared/flashes" %>
-  </div>
+    <div style="height: 60px">
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    </div>
 
+    <div class='content-wrapper'>
+      <%= yield %>
+    </div>
 
-    <%= yield %>
+      <%= render "shared/footer" %>
+
   </body>
 </html>
