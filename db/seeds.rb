@@ -124,7 +124,7 @@ puts "Create new users..."
 
   all_instruments.sample(3).each do |instrument|
     UserInstrument.create!(
-      proficiency: ['beginner', 'intermediate', 'expert', 'God'].sample,
+      proficiency: ['Beginner', 'Intermediate', 'Expert', 'God'].sample,
       user: artist,
       instrument:
     )
