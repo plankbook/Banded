@@ -1,0 +1,11 @@
+.connection-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 33px;
+  }
+
+.my-connection-cards {
+  display: flex;
+  grid-gap: 10px;
+  flex-direction: column;
+}

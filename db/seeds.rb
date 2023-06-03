@@ -8,6 +8,7 @@
 require 'faker'
 
 puts "Database clean-up"
+Project.delete_all
 UserGenre.delete_all
 Genre.delete_all
 UserInstrument.delete_all
@@ -17,8 +18,8 @@ Instrument.delete_all
 User.delete_all
 
 puts 'Create instruments'
-instrument_list = ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Clarinet', 'Cello']
-8.times do
+instrument_list = ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Trumpet', 'Banjo', 'Accordion', 'Maracas']
+10.times do
   Instrument.create!(
     name: instrument_list.shuffle!.pop
   )
@@ -122,14 +123,14 @@ puts "Create new users..."
   #     Properties::Images::Publisher.(image)
   # )
 
-  all_instruments.sample(3).each do |instrument|
+  all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
-      proficiency: ['beginner', 'intermediate', 'expert', 'God'].sample,
+      proficiency: ['beginner', 'intermediate', 'expert', 'God level'].sample,
       user: artist,
       instrument:
     )
   end
-  all_genres.sample(3).each do |genre|
+  all_genres.sample((rand(1..5))).each do |genre|
     UserGenre.create!(
       user: artist,
       genre:
@@ -137,3 +138,75 @@ puts "Create new users..."
   end
 end
 puts "#{User.count} artists created"
+
+requester = User.create!(
+  name: "Requester",
+  email: "requester@banded.com",
+  password: "123456",
+  location: "Laval"
+)
+
+requester.photo.attach(
+  filename: 'avatar.jpg',
+  io: URI.open('https://avatars.githubusercontent.com/u/117036801')
+)
+
+puts "Requester User is created!"
+
+receiver = User.create!(
+  name: "Receiver",
+  email: "receiver@banded.com",
+  password: "123456",
+  location: "Montreal"
+)
+
+receiver.photo.attach(
+  filename: 'avatar.jpg',
+  io: URI.open('https://avatars.githubusercontent.com/u/121645038')
+)
+
+
+puts "Receiver User is created!"
+
+connection = Connection.create!(
+  requester:,
+  receiver:,
+  status: "accepted"
+)
+
+puts "Connection #{connection.id} is created!"
+
+10.times do
+  Message.create(
+    content: Faker::Quote.famous_last_words,
+    connection:,
+    sender: [requester, receiver].sample
+  )
+end
+
+puts "Sample Messages created!"
+
+projects = []
+10.times do
+  project = Project.create(name: Faker::Music.band)
+  projects << project
+end
+
+puts "Projects created!"
+
+10.times do
+  post = Post.create(
+    content: Faker::Quote.famous_last_words,
+    project: projects[0],
+    sender: [requester, receiver].sample
+  )
+  10.times do
+    Comment.create(
+      content: Faker::Quote.famous_last_words,
+      post:,
+      sender: [requester, receiver].sample
+    )
+  end
+end
+
+puts "Sample posts and comments are created!"

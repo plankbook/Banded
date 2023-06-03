@@ -21,7 +21,7 @@
       <% end %>
       <div class="profile-cards">
         <% @artists.each do |user| %>
-          <%= render partial: "pages/profile_card", locals: {user: user} %>
+          <%= render partial: "shared/profile_card", locals: {user: user} %>
         <% end %>
       </div>
     </div>
