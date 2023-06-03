@@ -1,17 +1,32 @@
 <img class="theme" src="http://res.cloudinary.com/dpqolyzbh/image/upload/c_fill,h_300,w_300/v1/development/4ty516md6xyruam4cmiuobqhblcb" alt="Profil's theme">
 <div class='container'>
   <% if @artist.photo.key? %>
-    <img class="profil" <%= cl_image_tag @artist.photo.key, height: 300, width: 300, crop: :fill %>
+    <div class="profil-picture">
+      <img class="profil" <%= cl_image_tag @artist.photo.key, height: 300, width: 300, crop: :fill %>
+      <%= image_tag "connection-status/circle-48.png", class:"connected" %>
+    </div>
   <% end %>
   <h1><%= @artist.name %></h1>
   <p><%= @artist.age %></p>
   <p><%= @artist.location %></p>
   <h4>Artist bio:</h4>
   <p><%= @artist.bio %></p>
-  <h4>Plays:</h4>
-  <% @artist.instruments.each do |instrument| %>
-    <ul><%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency} in #{instrument.name}" %></ul>
-  <% end %>
+
+  <div class="genre">
+    <h4>Instruments</h4>
+    <div class="instruments">
+      <% @artist.instruments.each do |instrument| %>
+        <div class="instrument">
+          <div class="instrument-name">
+            <%= "#{instrument.name}" %>
+          </div>
+          <div class="proficiency">
+            <%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency}" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <h4>Interested in:</h4>
     <% @artist.genres.each do |genre| %>
