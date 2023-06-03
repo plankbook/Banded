@@ -1,0 +1,8 @@
+.comments {
+  border: 1px solid red;
+  margin-left: 20px;
+  // To style the message itself
+  .comment {
+    border: 1px solid red;
+  }
+}

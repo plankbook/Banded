@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :posts, only: :create
   end
 
-  resources :posts, only: %i[index] do
+  resources :posts, only: :show do
     resources :comments, only: :create
   end
 end
