@@ -111,12 +111,13 @@ img.connected {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #670BFF;
+  background: #186343;
   // transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
+  background: #186343;
+  opacity: 0.8;
   color: white;
 }
 
@@ -140,9 +141,56 @@ img.connected {
   justify-content: space-between;
 }
 
-.container-profile {
-  margin-inline: 12vw;
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
 }
+
+.location {
+  font-size: 24px;
+  // opacity: .7;
+  margin: 0;
+  color: #FFBE5B;
+}
+
+.bio {
+  color: black;
+}
+
+h4 {
+  font-size: 32px;
+  // opacity: .7;
+  margin: 0;
+  color: black;
+}
+
+.instruments {
+  font-size: 32px;
+  // opacity: .7;
+  margin: 0;
+  color: black;
+}
+
+.profile-genres {
+//   display: flex;
+  align-items: center;
+//   flex-direction: column;
+//   justify-content: space-between;
+  .genre-pill {
+    width: 48px;
+    height: 14px;
+    background-color: #B1A9FF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    align-content: center;
+    flex-wrap: wrap;
+    // margin: auto;
+    // font-size: 10px;
+  }
 
 .container-profile {
   margin-inline: 12vw;
