@@ -21,13 +21,13 @@
             <%= link_to current_user.name, artist_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <% if current_user.photo.key? %>
-              <%= cl_image_tag current_user.photo.key, :gravity=>"face", :width=>300, :height=>300, :radius=>"max", :crop=>"fill", class: "avatar", alt: "dropdown menu" %>
-            <% else %>
-              <%= image_tag "Chris.jpg", class: "avatar", alt: "dropdown menu" %>
-            <% end %>
-          </a>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.photo.key? %>
+                <%= cl_image_tag current_user.photo.key, :gravity=>"face", :width=>300, :height=>300, :radius=>"max", :crop=>"fill", class: "avatar", alt: "dropdown menu" %>
+              <% else %>
+                <%= image_tag "Chris.jpg", class: "avatar", alt: "dropdown menu" %>
+              <% end %>
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to current_user.name, artist_path(current_user), class: "dropdown-item" %>
               <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
@@ -49,24 +49,27 @@
   </div>
 </div>
 
-<div class="modal fade" id="myConnections" tabindex="-1" role="dialog">
+<%# <div class="modal fade" id="myConnections" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col" style='flex: 0 0 auto; width: 35%;'>
-            <div class="modal-header"><h2 class=connections_title>Connection <span class="requests">Requests</span></h2></div>
-            <div class="modal-body"><%= render partial: "connections/requests", connections_requested: @connections_requested %></div>
-
-            <div class="modal-header"><h2 class=connections_title><span class="pending">Pending</span> Connections</h2></div>
-            <div class="modal-body"><%= render partial: "connections/pending", connections_received: @connections_received %></div>
-          </div>
-          <div class="col-lg-4">
-            <div class="modal-header"><h2 class=connections_title><span class="my">My</span> Connections</h2></div>
-            <div class="modal-body"><%= render partial: "connections/my", my_connections: @my_connections %></div>
-          </div>
-        </div>
+      <div class="modal-header">
+        <h2 class=connections_title>Connection <span class="requests">Requests</span></h2>
       </div>
+      <div class="modal-body">
+        <%= render partial: "connections/requests", connections_requested: @connections_requested %>
+      <%# </div>
+      <div class="modal-header">
+        <h2 class=connections_title><span class="pending">Pending</span> Connections</h2>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "connections/pending", connections_received: @connections_received %>
+      <%# </div>
+      <div class="modal-header">
+        <h2 class=connections_title><span class="my">My</span> Connections</h2>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "connections/my", my_connections: @my_connections %>
+      <%# </div>
     </div>
   </div>
-</div>
+</div> %>

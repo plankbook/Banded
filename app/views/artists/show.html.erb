@@ -1,26 +1,36 @@
 <img class="theme" src="http://res.cloudinary.com/dpqolyzbh/image/upload/c_fill,h_300,w_300/v1/development/4ty516md6xyruam4cmiuobqhblcb" alt="Profil's theme">
 <div class='container'>
   <% if @artist.photo.key? %>
-    <img class="profil" <%= cl_image_tag @artist.photo.key, height: 300, width: 300, crop: :fill %>
+    <img class="profil" <%= cl_image_tag @artist.photo.key, height: 300, width: 300, crop: :fill %>>
   <% end %>
-  <h1><%= @artist.name %></h1>
-  <p><%= @artist.age %></p>
-  <p><%= @artist.location %></p>
+
+  <div class='profile-page-top'>
+    <div class=''>
+      <h1><%= @artist.name %></h1>
+      <p><%= @artist.location %></p>
+    </div>
+    <%= button_to "Connect", user_connections_path(@artist), class:"btn btn-flat"%>
+  </div>
+
   <h4>Artist bio:</h4>
   <p><%= @artist.bio %></p>
-  <h4>Plays:</h4>
-  <% @artist.instruments.each do |instrument| %>
-    <ul><%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency} in #{instrument.name}" %></ul>
-  <% end %>
 
-  <h4>Interested in:</h4>
-    <% @artist.genres.each do |genre| %>
-        <ul><%= genre.name %>  </ul>
+  <div class='instruments'>
+    <h4>Plays:</h4>
+    <% @artist.instruments.each do |instrument| %>
+      <ul><%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency} in #{instrument.name}" %></ul>
     <% end %>
-  </p>
+  </div>
+
+  <div class='genres'>
+    <h4>Interested in:</h4>
+      <% @artist.genres.each do |genre| %>
+        <ul><%= genre.name %>  </ul>
+      <% end %>
+    </p>
+  </div>
 </div>
 
-<%= button_to "Connect", user_connections_path(@artist) %>
 <%= link_to "My connections", connections_path %>
 
 <%# To pick up for AJAX buttons %>
