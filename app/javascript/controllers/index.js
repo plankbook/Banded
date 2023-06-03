@@ -10,5 +10,8 @@ application.register("connection-subscription", ConnectionSubscriptionController
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ProjectSubscriptionController from "./project_subscription_controller"
+application.register("project-subscription", ProjectSubscriptionController)
+
 import SubmitConnectionRequestController from "./submit_connection_request_controller"
 application.register("submit-connection-request", SubmitConnectionRequestController)

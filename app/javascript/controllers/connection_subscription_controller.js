@@ -42,4 +42,9 @@ export default class extends Controller {
   #userStyleClass(currentUserIsSender) {
     return currentUserIsSender ? "sender-style" : "receiver-style"
   }
+
+  disconnect() {
+    console.log("Unsubscribed from the Connection")
+    this.channel.unsubscribe()
+  }
 }

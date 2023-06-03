@@ -1,7 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%#= image_tag  "Logo.png", :class => "img_preview" %>
       <%= image_tag "banded.svg" %>
     <% end %>
 
@@ -16,11 +15,9 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%#= link_to "My Connections", connections_path, class: "nav-link" %>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myConnections">My Connections</a>
+            <%= link_to "My Connections", connections_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-          <%# raise %>
             <%= link_to current_user.name, artist_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">

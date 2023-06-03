@@ -1,0 +1,30 @@
+<div class="post-row d-flex justify-content-center">
+  <div class="post">
+    <div id="post-<%= post.id %>">
+      <small>
+        <strong><%= post.sender.name %></strong>
+        <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+      </small>
+      <p><%= post.content %></p>
+    </div>
+    <div class="comments">
+      <div class="d-flex justify-content-center">
+        <%= simple_form_for [post, Comment.new],
+        html: {class: "post-form"} do |f|
+        %>
+          <%= f.input :content,
+            label: false,
+            placeholder: "Comment ##{post.id}",
+            wrapper_html: {class: "flex-grow-1"}
+          %>
+          <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+      <% post.comments.each do |comment| %>
+        <div class="comment">
+          <%= render "comments/comment", comment: comment %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
