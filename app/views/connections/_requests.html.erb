@@ -1,9 +1,75 @@
 <div class="connection-cards">
   <% connections_requested.each do |connection| %>
-    <% if current_user.id == connection.receiver_id %>
-      <%= render partial: "shared/connection_card", locals: {user: connection.requester} %>
-    <% else %>
-      <%= render partial: "shared/connection_card", locals: {user: connection.receiver} %>
-    <% end %>
+    <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
+
+     <div class="connection-card">
+    <%# if user.photo.key? %>
+      <%#= cl_image_tag user.photo.key, class: "connection-banner" %>
+    <%# else %>
+      <%# <img class="connection-banner" src="user_seed_banner.png" /> %>
+    <%# end %>
+
+    <div class="connection-top">
+
+      <% if user.photo.key? %>
+        <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
+      <% else %>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
+      <% end %>
+      <div>
+        <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
+        <p class="connection-location"><%= user.location %></p>
+      </div>
+    </div>
+    <div class="connection-bio">
+      <p>
+      <% if user.bio? %>
+        <%= user.bio.truncate(200) %>
+      <% end %>
+      </p>
+    </div>
+    <div class="connection-bottom">
+      <div class="connection-instruments">
+        <%# <p>Instruments</p> %>
+        <div class="instrument-icons">
+        <% user.instruments.each do |instrument| %>
+          <% if instrument.name == 'Piano' %>
+            <p class="instrument-icon">🎹</p>
+          <% elsif instrument.name == 'Guitar' %>
+            <p class="instrument-icon">🎸</p>
+          <% elsif instrument.name == 'Violin' %>
+            <p class="instrument-icon">🎻</p>
+          <% elsif instrument.name == 'Drums' %>
+            <p class="instrument-icon">🥁</p>
+          <% elsif instrument.name == 'Saxophone' %>
+            <p class="instrument-icon">🎷</p>
+          <% elsif instrument.name == 'Flute' %>
+            <p class="instrument-icon">🪈</p>
+          <% elsif instrument.name == 'Trumpet' %>
+            <p class="instrument-icon">🎺</p>
+          <% elsif instrument.name == 'Banjo' %>
+            <p class="instrument-icon">🪕</p>
+          <% elsif instrument.name == 'Accordion' %>
+            <p class="instrument-icon">🪗</p>
+          <% elsif instrument.name == 'Maracas' %>
+            <p class="instrument-icon">🪇</p>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+        <%# raise %>
+      <div class="connection-genres">
+        <% if user.genres.exists? %>
+          <%# <p>Genres</p> %>
+          <div class="genre-pill">
+            <p><%= user.genres.first.name %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="connection-buttons">
+      <%= button_to "Cancel", connection_reject_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
+    </div>
   <% end %>
+      </div>
 </div>

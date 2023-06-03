@@ -125,7 +125,9 @@ puts "Create new users..."
 
   all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
-      proficiency: ['beginner', 'intermediate', 'expert', 'God level'].sample,
+
+      proficiency: ['Beginner', 'Intermediate', 'Expert', 'God'].sample,
+
       user: artist,
       instrument:
     )
