@@ -5,13 +5,15 @@
   <% end %>
 
   <div class='profile-page-top'>
-    <h1><%= @artist.name %></h1>
-    <p><%= @artist.location %></p>
-    <%= button_to "Connect", user_connections_path(@artist)%>
-    <a class="btn btn-flat" href="#">Connect</a>
-    <h4>Artist bio:</h4>
-    <p><%= @artist.bio %></p>
+    <div class=''>
+      <h1><%= @artist.name %></h1>
+      <p><%= @artist.location %></p>
+    </div>
+    <%= button_to "Connect", user_connections_path(@artist), class:"btn btn-flat"%>
   </div>
+
+  <h4>Artist bio:</h4>
+  <p><%= @artist.bio %></p>
 
   <div class='instruments'>
     <h4>Plays:</h4>

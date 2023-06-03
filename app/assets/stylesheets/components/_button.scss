@@ -12,16 +12,16 @@
   opacity: 1;
 }
 
-.btn-flat {
+.btn-black {
   color: white;
   padding: 8px 24px;
-  border-radius: 0px;
+  border-radius: 0px 2px 2px 0px;
   background: #000000;
   transition: background 0.3s ease;
   height: 56px;
 }
 
-.btn-flat:hover {
+.btn-black:hover {
   background: #454545;
   color: white;
 }
