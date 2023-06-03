@@ -32,12 +32,6 @@
       <% end %>
     </div>
   </div>
-  <div class='instruments'>
-    <h4>Plays:</h4>
-    <% @artist.instruments.each do |instrument| %>
-      <ul><%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency} in #{instrument.name}" %></ul>
-    <% end %>
-  </div>
 
   <div class='genres'>
     <h4>Interested in:</h4>
