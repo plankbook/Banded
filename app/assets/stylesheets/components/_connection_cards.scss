@@ -5,7 +5,7 @@
   }
 
 .my-connection-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 33px;
+  display: flex;
+  grid-gap: 10px;
+  flex-direction: column;
 }
