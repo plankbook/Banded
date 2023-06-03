@@ -6,6 +6,11 @@ class PostsController < ApplicationController
     @post.sender = current_user
     if @post.save
       redirect_to project_path(@project)
+      ProjectChannel.broadcast_to(
+        @project,
+        render_to_string(partial: "post", locals: {post: @post})
+      )
+      head :ok
     else
       render :new, status: :unprocessable_entity
     end

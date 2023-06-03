@@ -1,51 +1,29 @@
-<h1><%= @project.name %></h1>
-
-<div class="posts">
-  <% @project.posts.each do |post| %>
-    <div class="post-row d-flex justify-content-center">
-      <div class="post">
+<div
+  data-controller="project-subscription"
+  data-project-subscription-project-id-value="<%= @project.id %>"
+>
+  <h1><%= @project.name %></h1>
+  <%= link_to "Edit project", edit_user_project_path(current_user, @project) %>
+  <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <div class="posts">
+    <div data-project-subscription-target="posts">
+      <% @project.posts.each do |post| %>
         <%= render "posts/post", post: post %>
-        <div class="comments">
-          <div class="d-flex justify-content-center">
-            <%= simple_form_for [post, @comment],
-            html: {class: "post-form"} do |f|
-            %>
-              <%= f.input :content,
-                label: false,
-                placeholder: "Comment ##{@post.id}",
-                wrapper_html: {class: "flex-grow-1"}
-              %>
-              <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
-            <% end %>
-          </div>
-          <% post.comments.each do |comment| %>
-            <div class="comment">
-              <%= render "comments/comment", comment: comment %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="d-flex justify-content-center">
-    <%= simple_form_for [@project, @post],
-    html: {class: "post-form"} do |f|
-    %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Message ##{@project.name}",
-        wrapper_html: {class: "flex-grow-1"}
+    <div class="d-flex justify-content-center">
+      <%= simple_form_for [@project, @post],
+      html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
+      class: "post-form"} do |f|
       %>
-      <%= f.submit "Post", class: "btn btn-primary mb-3" %>
-    <% end %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@project.name}",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Post", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-
-<%= link_to "Edit project", edit_user_project_path(current_user, @project) %>
-
-<%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-
-<%= link_to "home", root_path %>
