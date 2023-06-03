@@ -1,7 +1,16 @@
+.image-theme {
+  max-width: 100%;
+  height: 25rem;
+  background-image: url(music-band.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
 img.theme {
   width: 100vw;
-  height: 20rem;
+  height: auto;
   box-shadow: 2px 2px 4px #000000;
+
 }
 
 img.profil {
@@ -12,7 +21,8 @@ img.profil {
   border-style: solid;
   border-color: white;
   border-width: 4px;
-  bottom: 40px;
+  bottom: 50px;
+  left: -75px;
   box-shadow: 2px 2px 4px #000000;
 }
 
@@ -20,7 +30,7 @@ img.connected {
   position: absolute;
   z-index: 1;
   top: 68px;
-  left: 127px;
+  left: 44px;
   width: 20px;
   height: 20px;
 }
@@ -128,4 +138,9 @@ img.connected {
 .profile-page-top {
   display: flex;
   justify-content: space-between;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: bold;
 }
