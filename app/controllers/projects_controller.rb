@@ -16,9 +16,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    # @booking = Booking.new
-    # @booking.user = current_user
-    # @booking.toy = @toy
+    @post = Post.new
   end
 
   def edit

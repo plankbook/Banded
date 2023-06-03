@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :connections, only: :create
-    resources :projects, only: %i[index new]
+    resources :projects, only: %i[index new edit destroy]
   end
   resources :artists, only: %i[index show]
 
