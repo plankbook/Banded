@@ -1,5 +1,6 @@
-<img class="theme" src="http://res.cloudinary.com/dpqolyzbh/image/upload/c_fill,h_300,w_300/v1/development/4ty516md6xyruam4cmiuobqhblcb" alt="Profil's theme">
-<div class='container'>
+<div class="image-theme">
+</div>
+<div class='container-profile'>
   <% if @artist.photo.key? %>
     <div class="profil-picture">
       <img class="profil" <%= cl_image_tag @artist.photo.key, height: 300, width: 300, crop: :fill %>
