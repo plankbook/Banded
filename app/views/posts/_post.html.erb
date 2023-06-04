@@ -1,4 +1,4 @@
-<div class="post-row d-flex justify-content-center">
+<div class="post-row d-flex justify-content-center" data-controller="reveal-comments">
   <div class="post">
     <div id="post-<%= post.id %>">
       <small>
@@ -6,8 +6,11 @@
         <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
       </small>
       <p><%= post.content %></p>
+      <button class="btn btn-primary mb-3" data-action="click->reveal-comments#displayComments">
+        Comment
+      </button>
     </div>
-    <div class="comments">
+    <div class="comments d-none" data-reveal-comments-target="comments">
       <div class="d-flex justify-content-center">
         <%= simple_form_for [post, Comment.new],
         html: {class: "post-form"} do |f|

@@ -13,5 +13,8 @@ application.register("hello", HelloController)
 import ProjectSubscriptionController from "./project_subscription_controller"
 application.register("project-subscription", ProjectSubscriptionController)
 
+import RevealCommentsController from "./reveal_comments_controller"
+application.register("reveal-comments", RevealCommentsController)
+
 import SubmitConnectionRequestController from "./submit_connection_request_controller"
 application.register("submit-connection-request", SubmitConnectionRequestController)
