@@ -1,0 +1,64 @@
+.project-page-top {
+  border: 1px solid red;
+  height: 600px;
+  width: 80%;
+  margin: auto;
+
+  .project-page-banner {
+    height: 80%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    align-items: flex-end;
+
+    .project-page-basic-info {
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      margin-left: 30px;
+
+      .project-page-name {
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 0px;
+      }
+
+      .project-page-location {
+        font-size: 30px;
+        font-weight: bold;
+        color: #FFBE5B;
+      }
+    }
+  }
+  .project-page-content {
+    display: flex;
+
+    .project-page-users {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin: 20px 30px;
+      // margin-right: 20px;
+      // margin-left: 5px;
+
+      .project-page-user {
+        flex: none;
+        margin: 0px -15px;
+      }
+    }
+
+    .project-page-bio {
+      font-size: 15px;
+      margin: 20px 30px;
+      width: 100%;
+      // max-width: 400px;
+      border-radius: 5px;
+      padding: 8px;
+      min-height: 80px;
+      word-break: break-word;
+      background-color: #e1e1e1;
+    }
+  }
+}

@@ -6,12 +6,16 @@
         <strong><%= post.sender.name %></strong>
         <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
       </small>
-      <p><%= post.content %></p>
+      <div class="post-content">
+        <p><%= post.content %></p>
+      </div>
       <!-- Button to trigger Comments Modal -->
       <%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=<%="#commentModal#{post.id}"%>
         <%# Comment %>
       <%# </button> %>
-      <%= link_to "Show #{post.comments.count} Comments", "#", {"data-bs-toggle": "modal", "data-bs-target": "#commentModal#{post.id}"} %>
+      <div class="comments-link">
+        <%= link_to "Show #{post.comments.count} Comments", "#", {"data-bs-toggle": "modal", "data-bs-target": "#commentModal#{post.id}"} %>
+      </div>
     </div>
     <div class="comments d-none" data-reveal-comments-target="comments">
       <div class="d-flex justify-content-center">

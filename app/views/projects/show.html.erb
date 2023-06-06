@@ -2,7 +2,27 @@
   data-controller="project-subscription"
   data-project-subscription-project-id-value="<%= @project.id %>"
 >
-  <h1><%= @project.name %></h1>
+  <div class="project-page-top">
+    <div class="project-page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://image.cnbcfm.com/api/v1/image/106276188-1575391129046gettyimages-592255768.jpeg?v=1575577835&w=740&h=416&ffmt=webp&vtcrop=y)">
+      <div class="project-page-basic-info">
+        <p class="project-page-name"><%= @project.name %></p>
+        <p class="project-page-location">Montreal, Canada</p>
+      </div>
+    </div>
+    <div class="project-page-content">
+      <div class="project-page-users">
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
+      </div>
+      <div class="project-page-bio">
+        English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr.
+        They are regarded as the most influential band of all time
+        and were integral to the development of 1960s counterculture and popular music's recognition as an art form.
+      </div>
+    </div>
+  </div>
   <%= link_to "Edit project", edit_user_project_path(current_user, @project) %>
   <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <div class="posts">
@@ -30,7 +50,7 @@
                       %>
                       <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
                     <% end %>
-                  </div>
+                  </div class="comments">
                     <% post.comments.each do |comment| %>
                       <div class="comment">
                         <%= render "comments/comment", comment: comment %>
@@ -40,7 +60,6 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
