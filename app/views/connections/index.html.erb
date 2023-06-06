@@ -18,16 +18,14 @@
           </div>
         </div>
         <div class="connection-buttons">
-          <%= button_to "Cancel", connection_reject_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
+          <%= button_to "Cancel", connection_reject_path(connection), class: "btn btn-success btn-sm m-2", method: :patch %>
+        </div>
         </div>
       <% end %>
-    </div>
     </div>
   </div>
 
   <div class="container-fluid connection-type">
-
-
     <div><h2 class=connections_title><span class="pending">Pending</span> Connections</h2></div>
     <div class="my-connection-cards">
       <% connections_received.each do |connection| %>
