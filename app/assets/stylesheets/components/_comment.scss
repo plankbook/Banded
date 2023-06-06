@@ -1,8 +1,26 @@
-.comments {
-  border: 1px solid red;
-  margin-left: 20px;
-  // To style the message itself
-  .comment {
-    border: 1px solid red;
+// .comments {
+//   border: 1px solid red;
+//   margin-left: 20px;
+//   // To style the message itself
+//   .comment {
+//     border: 1px solid red;
+//   }
+// }
+.comment {
+  margin-top: 10px;
+  width: 100%;
+  // max-width: 400px;
+  border-radius: 5px;
+  padding: 8px;
+  min-height: 80px;
+  word-break: break-word;
+  background-color: #e1e1e1;
+
+  .comment-content {
+    margin-top: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 8px;
+    min-height: 80px;
   }
 }
