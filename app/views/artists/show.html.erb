@@ -15,22 +15,16 @@
     </div>
     <%= button_to "Connect", user_connections_path(@artist), class:"btn btn-flat"%>
   </div>
-  <p class='bio'><%= @artist.bio %></p>     
-  <div class="genre">
-    <h4>Genres</h4>
-      <% @artist.genres.each do |genre| %>
-        <%# <ul> <%= genre.name %>
-      <%# <% end %>
-    <%# </p>
-  </div> %>
+  <p class='bio'><%= @artist.bio %></p>
+
 
   <div class="profile-genres">
-    <% if @artist.genres.exists? %>
-      <h4>Genres</h4>
-      <div class="genre-pill">
-        <p><%= @artist.genres.first.name %></p>
-      </div>
-    <% end %>
+    <h4>Genres</h4>
+      <% if @artist.genres.exists? %>
+        <div class="genre-pill">
+          <p><%= @artist.genres.first.name %></p>
+        </div>
+      <% end %>
   </div>
 
   <div class="profile-instruments">
