@@ -15,11 +15,8 @@
     </div>
     <%= button_to "Connect", user_connections_path(@artist), class:"btn btn-flat"%>
   </div>
-
-  <%# <h4>Artist bio:</h4> %>
-  <p class='bio'><%= @artist.bio %></p>
-
-  <%# <div class='genres'>
+  <p class='bio'><%= @artist.bio %></p>     
+  <div class="genre">
     <h4>Genres</h4>
       <% @artist.genres.each do |genre| %>
         <%# <ul> <%= genre.name %>
