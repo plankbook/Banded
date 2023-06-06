@@ -1,13 +1,23 @@
-<div class="post-row d-flex justify-content-center">
+<div class="post-row d-flex justify-content-center" data-controller="reveal-comments">
   <div class="post">
     <div id="post-<%= post.id %>">
+      <%= cl_image_tag post.sender.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "profile-user avatar-bordered-profile" %>
       <small>
         <strong><%= post.sender.name %></strong>
         <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
       </small>
-      <p><%= post.content %></p>
+      <div class="post-content">
+        <p><%= post.content %></p>
+      </div>
+      <!-- Button to trigger Comments Modal -->
+      <%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=<%="#commentModal#{post.id}"%>
+        <%# Comment %>
+      <%# </button> %>
+      <div class="comments-link">
+        <%= link_to "Show #{post.comments.count} Comments", "#", {"data-bs-toggle": "modal", "data-bs-target": "#commentModal#{post.id}"} %>
+      </div>
     </div>
-    <div class="comments">
+    <div class="comments d-none" data-reveal-comments-target="comments">
       <div class="d-flex justify-content-center">
         <%= simple_form_for [post, Comment.new],
         html: {class: "post-form"} do |f|
@@ -20,11 +30,6 @@
           <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
         <% end %>
       </div>
-      <% post.comments.each do |comment| %>
-        <div class="comment">
-          <%= render "comments/comment", comment: comment %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
