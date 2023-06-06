@@ -8,6 +8,7 @@
 require 'faker'
 
 puts "Database clean-up"
+UserProject.delete_all
 Project.delete_all
 UserGenre.delete_all
 Genre.delete_all
@@ -95,7 +96,7 @@ puts "Create new users..."
   artist = User.create!(
     name: Faker::Name.unique.name,
     email: "#{Faker::Music.unique.chord}@gmail.com",
-    password: 'asdfasdf',
+    password: '123456',
     age: Faker::Number.between(from: 18, to: 65),
     location: ['Montreal', 'Quebec City', 'Châteauguay', 'Laval', 'Gatineau', 'Longueuil', 'Trois-Rivières'].sample,
     bio: user_bios.shuffle!.pop,
@@ -167,7 +168,6 @@ receiver.photo.attach(
   io: URI.open('https://avatars.githubusercontent.com/u/121645038')
 )
 
-
 puts "Receiver User is created!"
 
 connection = Connection.create!(
@@ -195,6 +195,8 @@ projects = []
 end
 
 puts "Projects created!"
+
+
 
 10.times do
   post = Post.create(
