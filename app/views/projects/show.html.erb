@@ -11,10 +11,16 @@
     </div>
     <div class="project-page-content">
       <div class="project-page-users">
+        <div>
+          <% @project.users.each do |project_user| %>
+            <%#= image_tag project_user.photo %>
+            <%= cl_image_tag project_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "project-page-user avatar-bordered-project-page" %>
+          <% end %>
+        </div>
+        <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" /> %>
       </div>
       <div class="project-page-bio">
         English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr.
