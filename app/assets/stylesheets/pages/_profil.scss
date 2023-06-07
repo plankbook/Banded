@@ -51,9 +51,9 @@ img.connected {
   margin-top: 30px;
 }
 
-.profile-instruments {
+.mowgli {
   width: 50vw;
-  margin-top: 30px;
+  //margin-top: 30px;
 }
 
 .instrument .proficiency{
@@ -182,26 +182,27 @@ h4 {
 }
 
 .profile-genres {
-//   display: flex;
-  align-items: center;
-//   flex-direction: column;
-//   justify-content: space-between;
+  // display: flex;
+  // align-items: center;
+  // flex-direction: column;
+  // justify-content: space-between;
   .genre-pill {
-    width: 48px;
-    height: 14px;
+    text-align: center;
+    width: 184px;
+    height: 55px;
+    left: 396px;
+    top: 1669px;
     background-color: #B1A9FF;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    align-content: center;
-    flex-wrap: wrap;
-    // margin: auto;
-    // font-size: 10px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // align-self: center;
+    margin: 4px 2px;
+    font-size: 24px;
+    padding: 10px 20px;
   }
 }
-
 .container-profile {
   margin-inline: 12vw;
 }

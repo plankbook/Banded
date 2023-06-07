@@ -11,10 +11,16 @@
     </div>
     <div class="project-page-content">
       <div class="project-page-users">
+        <div>
+          <% @project.users.each do |project_user| %>
+            <%#= image_tag project_user.photo %>
+            <%= cl_image_tag project_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "project-page-user avatar-bordered-project-page" %>
+          <% end %>
+        </div>
+        <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" /> %>
       </div>
       <div class="project-page-bio">
         English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr.
@@ -23,6 +29,7 @@
       </div>
     </div>
   </div>
+
   <%= link_to "Edit project", edit_user_project_path(current_user, @project), class: "btn btn-success btn-sm m-2" %>
   <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-success btn-sm m-2" %>
 
@@ -67,6 +74,10 @@
       </div>
     </div>
   </div>
+
+
+  <%#= button_to "Edit project", edit_user_project_path(current_user, @project), class:"btn btn-flat"%>
+  <%#= button_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-flat" %> 
 
   <div class="posts">
     <div data-project-subscription-target="posts">
