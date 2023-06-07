@@ -29,8 +29,56 @@
       </div>
     </div>
   </div>
-  <%= button_to "Edit project", edit_user_project_path(current_user, @project), class:"btn btn-flat"%>
-  <%= button_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-flat" %>
+
+  <%= link_to "Edit project", edit_user_project_path(current_user, @project), class: "btn btn-success btn-sm m-2" %>
+  <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-success btn-sm m-2" %>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#connectionsModal">
+    Add Artist
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="connectionsModal" tabindex="-1" aria-labelledby="connectionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="connectionsModalLabel">Artists</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="my-connection-cards">
+            <% Connection.where("(requester_id = ? OR receiver_id = ?) AND status = ?", current_user.id, current_user.id, "accepted").each do |connection| %>
+              <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
+              <div class="my-connection-card">
+                <div class="connection-top">
+                  <% if user.photo.key? %>
+                    <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
+                  <% else %>
+                    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
+                  <% end %>
+                  <div>
+                    <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
+                    <p class="connection-location"><%= user.location %></p>
+                  </div>
+                </div>
+                <div class="connection-buttons">
+                  <%= button_to "Add", add_user_project_path(@project, user_id: user.id), class: "btn btn-success btn-sm m-2" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%#= button_to "Edit project", edit_user_project_path(current_user, @project), class:"btn btn-flat"%>
+  <%#= button_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-flat" %> 
+
   <div class="posts">
     <div data-project-subscription-target="posts">
       <% @project.posts.each do |post| %>
