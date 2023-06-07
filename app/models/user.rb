@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :connexions_as_user1, class_name: "User", foreign_key: :user1_id
-  has_many :connexions_as_user2, class_name: "User", foreign_key: :user2_id
+  has_many :connections_as_requester, class_name: "User", foreign_key: :requester_id
+  has_many :connections_as_receiver, class_name: "User", foreign_key: :receiver_id
   has_many :user_instruments
   has_many :instruments, through: :user_instruments
   has_many :user_projects
