@@ -29,10 +29,21 @@ all_instruments = Instrument.all
 puts "#{Instrument.count} instruments created"
 
 puts 'Create genres'
-genre_list = ['Jazz', 'Rock', 'Folk', 'Pop', 'RnB', 'Rap', 'Blues', 'Electro']
-8.times do
+genre_list = [
+  { name: 'Jazz', colour: '#FAD2AD' },
+  { name: 'Rock', colour: '#E0D8DD' },
+  { name: 'Folk', colour: '#B1A9FF' },
+  { name: 'Pop', colour: '#FFD46A' },
+  { name: 'RnB', colour: '#D8EEBA' },
+  { name: 'Rap', colour: '#7BB146' },
+  { name: 'Blues', colour: '#AFD1EF' },
+  { name: 'Electro', colour: '#FA8E8E' }
+]
+
+genre_list.each do |genre|
+  puts "Creating #{genre.name}"
   Genre.create!(
-    name: genre_list.shuffle!.pop
+    name: genre.name, colour: genre.colour
   )
 end
 
