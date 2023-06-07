@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: :show do
     resources :posts, only: :create
+    post 'add_user', on: :member
   end
 
   resources :posts, only: :show do

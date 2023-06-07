@@ -23,8 +23,8 @@
       </div>
     </div>
   </div>
-  <%= link_to "Edit project", edit_user_project_path(current_user, @project) %>
-  <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <%= link_to "Edit project", edit_user_project_path(current_user, @project), class: "btn btn-success btn-sm m-2" %>
+  <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-success btn-sm m-2" %>
 
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#connectionsModal">
@@ -41,7 +41,7 @@
         </div>
         <div class="modal-body">
           <div class="my-connection-cards">
-            <% current_user.connections.each do |connection| %>
+            <% Connection.where("(requester_id = ? OR receiver_id = ?) AND status = ?", current_user.id, current_user.id, "accepted").each do |connection| %>
               <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
               <div class="my-connection-card">
                 <div class="connection-top">
@@ -56,15 +56,13 @@
                   </div>
                 </div>
                 <div class="connection-buttons">
-                  <%= button_to "Cancel", connection_reject_path(connection), class: "btn btn-success btn-sm m-2", method: :patch %>
+                  <%= button_to "Add", add_user_project_path(@project, user_id: user.id), class: "btn btn-success btn-sm m-2" %>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

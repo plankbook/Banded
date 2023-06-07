@@ -44,6 +44,13 @@ class ProjectsController < ApplicationController
     redirect_to user_projects_path(current_user), status: :see_other
   end
 
+  def add_user
+    @project = Project.find(params[:id])
+    @user = User.find(params[:user_id])
+    @project.users << @user
+    @project.save
+  end
+
   private
 
   def project_params
