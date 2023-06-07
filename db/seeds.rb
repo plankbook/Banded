@@ -8,6 +8,8 @@
 require 'faker'
 
 puts "Database clean-up"
+Comment.delete_all
+Post.delete_all
 UserProject.delete_all
 Project.delete_all
 UserGenre.delete_all
@@ -91,7 +93,15 @@ unsplash_images.each do |unsplash_image|
   unsplash_urls << url
 end
 
-puts "Create new users..."
+all_projects = []
+10.times do
+  project = Project.create(name: Faker::Music.band)
+  all_projects << project
+end
+
+puts "Projects created!"
+
+puts "Creating new users..."
 20.times do
   artist = User.create!(
     name: Faker::Name.unique.name,
@@ -133,10 +143,19 @@ puts "Create new users..."
       instrument:
     )
   end
+
   all_genres.sample((rand(1..5))).each do |genre|
     UserGenre.create!(
       user: artist,
       genre:
+    )
+  end
+
+  all_projects.sample((rand(1..5))).each do |project|
+    UserProject.create!(
+      user: artist,
+      project:,
+      admin: [true, false].sample
     )
   end
 end
@@ -188,28 +207,20 @@ end
 
 puts "Sample Messages created!"
 
-projects = []
-10.times do
-  project = Project.create(name: Faker::Music.band)
-  projects << project
-end
-
-puts "Projects created!"
-
-
-
-10.times do
-  post = Post.create(
-    content: Faker::Quote.famous_last_words,
-    project: projects[0],
-    sender: [requester, receiver].sample
-  )
+all_projects.each do |project|
   10.times do
-    Comment.create(
+    post = Post.create(
       content: Faker::Quote.famous_last_words,
-      post:,
+      project:,
       sender: [requester, receiver].sample
     )
+    10.times do
+      Comment.create(
+        content: Faker::Quote.famous_last_words,
+        post:,
+        sender: [requester, receiver].sample
+      )
+    end
   end
 end
 
