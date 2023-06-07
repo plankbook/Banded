@@ -35,6 +35,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @my_projects = current_user.user_projects
   end
 
   def destroy
