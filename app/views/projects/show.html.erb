@@ -63,7 +63,8 @@
                   </div>
                 </div>
                 <div class="connection-buttons">
-                  <%= button_to "Add", add_user_project_path(@project, user_id: user.id), class: "btn btn-success btn-sm m-2" %>
+                  <%= button_to "Add", add_user_project_path(@project, user_id: user.id),
+                  { class: "btn btn-success btn-sm m-2", "data-controller": "button", "data-button-target": "addProjectUserButton", "data-action": "click->button#disable" }%>
                 </div>
               </div>
             <% end %>
@@ -91,11 +92,11 @@
                 <h5 class="modal-title" id="exampleModalLabel"><%= "Comment as #{current_user.name}" %></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body" data-controller="comments-subscription" data-comments-subscription-post-id-value="<%= post.id %>">
                 <div class="comments">
                   <div class="d-flex justify-content-center">
                     <%= simple_form_for [post, Comment.new],
-                    html: {class: "post-form"} do |f|
+                    html: {data: { action: "turbo:submit-end->comments-subscription#resetForm" }, class: "post-form"} do |f|
                     %>
                       <%= f.input :content,
                         label: false,
@@ -104,12 +105,14 @@
                       %>
                       <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
                     <% end %>
-                  </div class="comments">
+                  </div>
+                  <div class="comments" data-comments-subscription-target="comments">
                     <% post.comments.each do |comment| %>
                       <div class="comment">
                         <%= render "comments/comment", comment: comment %>
                       </div>
                     <% end %>
+                  </div>
                 </div>
               </div>
               <div class="modal-footer">

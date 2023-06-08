@@ -4,6 +4,15 @@
 
 import { application } from "./application"
 
+import ButtonController from "./button_controller"
+application.register("button", ButtonController)
+
+import CommentsCountSubscriptionController from "./comments_count_subscription_controller"
+application.register("comments-count-subscription", CommentsCountSubscriptionController)
+
+import CommentsSubscriptionController from "./comments_subscription_controller"
+application.register("comments-subscription", CommentsSubscriptionController)
+
 import ConnectionSubscriptionController from "./connection_subscription_controller"
 application.register("connection-subscription", ConnectionSubscriptionController)
 
