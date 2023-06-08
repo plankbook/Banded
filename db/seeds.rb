@@ -95,14 +95,14 @@ user_bios = [
   "Greetings, fellow souls who are moved by the power of music! I'm a musician who pours my heart and soul into every melody I create. Through my compositions, I strive to paint a vivid sonic landscape that resonates with the joys, sorrows, and triumphs of life. Join me on this melodic pilgrimage as we embark on a voyage of self-discovery, connection, and the boundless potential of harmonious sounds."
 ]
 
-puts 'Getting musician images from Unsplash...'
-unsplash_images = Unsplash::Photo.search('musicians', 1, 20)
+# puts 'Getting musician images from Unsplash...'
+# unsplash_images = Unsplash::Photo.search('musicians', 1, 20)
 
-unsplash_urls = []
-unsplash_images.each do |unsplash_image|
-  url = unsplash_image.urls.regular
-  unsplash_urls << url
-end
+# unsplash_urls = []
+# unsplash_images.each do |unsplash_image|
+#   url = unsplash_image.urls.regular
+#   unsplash_urls << url
+# end
 
 all_projects = []
 10.times do
@@ -111,6 +111,9 @@ all_projects = []
 end
 
 puts "Projects created!"
+
+user_avatars = Dir.glob(Rails.root.join('app', 'assets', 'images', 'user-avatars', '*.jpeg'))
+# user_photo = Rails.root('app/assets/images/user-avatars/photo-1471565661762-b9dfae862dbe.jpeg')
 
 puts "Creating new users..."
 20.times do
@@ -122,14 +125,19 @@ puts "Creating new users..."
     location: ['Montreal', 'Quebec City', 'Châteauguay', 'Laval', 'Gatineau', 'Longueuil', 'Trois-Rivières'].sample,
     bio: user_bios.shuffle!.pop,
     phone: Faker::PhoneNumber.cell_phone,
-    gender: ['male', 'female', 'other'].sample
+    gender: ['male', 'female', 'other'].sample,
+    # photo: File.open(user_avatars.sample)
     #instrument_ids: all_instruments.sample(3).map(&:id)
     )
 
-  artist.photo.attach(
-    filename: 'avatar.jpg',
-    io: URI.open(unsplash_urls.shuffle!.pop)
-  )
+    # artist.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/photo-1471565661762-b9dfae862dbe.jpeg"), filename: "patates.jpg")
+
+    artist.photo.attach(io: File.open(user_avatars.sample), filename: "avatar.jpg")
+
+  # artist.photo.attach(
+  #   filename: 'avatar.jpg',
+  #   io: URI.open(unsplash_urls.shuffle!.pop)
+  # )
 
   # artist.photo.attach(
   #   filename: 'avatar.jpg',
