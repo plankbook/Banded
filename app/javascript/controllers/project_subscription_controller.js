@@ -27,4 +27,9 @@ export default class extends Controller {
     console.log("Unsubscribed from the Project")
     this.channel.unsubscribe()
   }
+
+  disconnect() {
+    console.log("Unsubscribed from the chatroom")
+    this.channel.unsubscribe()
+  }
 }

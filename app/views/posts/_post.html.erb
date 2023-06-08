@@ -13,7 +13,9 @@
       <%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=<%="#commentModal#{post.id}"%>
         <%# Comment %>
       <%# </button> %>
-      <div class="comments-link">
+      <div class="comments-link" data-controller="comments-count-subscription"
+        data-comments-count-subscription-target="count" data-comments-count-subscription-post-id-value="<%= post.id %>"
+      >
         <%= link_to "Show #{post.comments.count} Comments", "#", {"data-bs-toggle": "modal", "data-bs-target": "#commentModal#{post.id}"} %>
       </div>
     </div>
