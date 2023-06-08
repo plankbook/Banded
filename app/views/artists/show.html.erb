@@ -17,10 +17,10 @@
   </div>
   <p class='bio'><%= @artist.bio %></p>
 
-  <div class="profile-genres">
+  <div class="profile-genres-show">
     <h4>Genres</h4>
       <% if @artist.genres.exists? %>
-        <div class="genre-pill">
+        <div class="genre-pill-show">
           <p><%= @artist.genres.first.name %></p>
         </div>
       <% end %>
@@ -47,7 +47,7 @@
   </div>
 </div>
 
-<%= link_to "My connections", connections_path %>
+<%#= link_to "My connections", connections_path %>
 
 <%# To pick up for AJAX buttons %>
 <%# <div data-controller="submit-connection-request" data-submit-connection-request-requester-id-value=<%= current_user.id %>
