@@ -1,8 +1,12 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = User.all
+    # @artists = User.all
     if params[:query].present?
-      @artists = @artists.where(location: params[:query])
+      # @artists = @artists.where(location: params[:query])
+      @artists = User.search_by_location_and_user_instrument(params[:query])
+      # raise
+    else
+      @artists = User.all
     end
   end
 
