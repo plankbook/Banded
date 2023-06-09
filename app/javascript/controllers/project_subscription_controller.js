@@ -15,7 +15,8 @@ export default class extends Controller {
   }
 
   #insertPostAndScrollDown(data) {
-    this.postsTarget.insertAdjacentHTML("beforeend", data)
+    // this.postsTarget.insertAdjacentHTML("beforeend", data)
+    this.postsTarget.insertAdjacentHTML("afterbegin", data)
     this.postsTarget.scrollTo(0, this.postsTarget.scrollHeight)
   }
 
