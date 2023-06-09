@@ -132,7 +132,7 @@ puts "Creating new users..."
 
     # artist.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/photo-1471565661762-b9dfae862dbe.jpeg"), filename: "patates.jpg")
 
-    artist.photo.attach(io: File.open(user_avatars.sample), filename: "avatar.jpg")
+    artist.photo.attach(io: File.open(user_avatars.shuffle!.pop), filename: "avatar.jpg")
 
   # artist.photo.attach(
   #   filename: 'avatar.jpg',
@@ -179,6 +179,51 @@ puts "Creating new users..."
   end
 end
 puts "#{User.count} artists created"
+
+arnaud = User.create!(
+  name: 'Arnaud Lecorvaisier',
+  email: 'arnaud@banded.com',
+  password: '123456',
+  location: "Montreal",
+  age: 33,
+  bio: "I'm working in logistics and I discovered progamming through vba with Microsoft office which was really interesting. To change my career has always been in a side of my head since that moment and I decided to move on this year by doing this bootcamp. I'm sure that I will learn a lot of new skills and meet a lot of interesting people !!"
+)
+
+arnaud.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/mowgli.png"), filename: "avatar.jpg")
+
+robert = User.create!(
+  name: 'Robert Li',
+  email: 'robert@banded.com',
+  password: '123456',
+  location: "Montreal",
+  age: 27,
+  bio: 'My name is Robert Li! I currently work as a Revenue Operations Manager at Zendesk. Even though my academic background is in Finance and Mathematics, I was always fascinated by the technology and the computer science field, so I decided to join Le Wagon to build my coding skillset and dive deeper into that industry.'
+)
+
+robert.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/robert.jpg"), filename: "avatar.jpg")
+
+chris = User.create!(
+  name: 'Chris Kyras',
+  email: 'chris@banded.com',
+  password: '123456',
+  location: "Montreal",
+  age: 35,
+  bio: "Passionate entrepreneur Y Combinator alum with a focus on building things to positively disrupt people's lives for good, with a particular focus on fintech and retail."
+)
+
+chris.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/chris.jpg"), filename: "avatar.jpg")
+
+emre = User.create!(
+  name: 'Emre Özen',
+  email: 'emre@banded.com',
+  password: '123456',
+  location: "Montreal",
+  age: 900,
+  bio: 'Translator and project manager'
+)
+
+emre.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/aimerais.jpg"), filename: "avatar.jpg")
+
 
 requester = User.create!(
   name: "Requester",
