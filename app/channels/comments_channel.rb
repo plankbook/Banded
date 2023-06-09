@@ -1,8 +1,8 @@
 class CommentsChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    project = Project.find(params[:id])
-    stream_for project
+    post = Post.find(params[:id])
+    stream_for post
   end
 
   def unsubscribed

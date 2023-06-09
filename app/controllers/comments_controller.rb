@@ -7,14 +7,15 @@ class CommentsController < ApplicationController
     @comment.sender = current_user
     if @comment.save
       CommentsChannel.broadcast_to(
-        @project,
+        @post,
         render_to_string(partial: "comment", locals: { comment: @comment })
       )
       head :ok
       CommentsCountChannel.broadcast_to(
-        @project,
+        @post,
         @post.comments.count
       )
+      head :ok
     else
       render :new, status: :unprocessable_entity
     end
