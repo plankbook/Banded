@@ -21,7 +21,7 @@
     <h4>Genres</h4>
       <% if @artist.genres.exists? %>
         <div class="genre-pill-show">
-          <p><%= @artist.genres.first.name %></p>
+          <p class="genre"><%= @artist.genres.first.name %></p>
         </div>
       <% end %>
   </div>
