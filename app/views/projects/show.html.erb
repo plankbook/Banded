@@ -16,33 +16,33 @@
       </div>
     </div>
     <div class="project-page-content">
-      <div class="project-page-users">
-        <div>
-          <% @project.users.each do |project_user| %>
-            <%#= image_tag project_user.photo %>
-            <%= cl_image_tag project_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "project-page-user avatar-bordered-project-page" %>
-          <% end %>
+      <div class="project-left-content">
+        <div class="project-page-users">
+          <div>
+            <% @project.users.first(4).each do |project_user| %>
+              <%#= image_tag project_user.photo %>
+              <%= cl_image_tag project_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "project-page-user avatar-bordered-project-page" %>
+            <% end %>
+          </div>
         </div>
+        <div class="project-buttons">
+          <%= button_to "Edit project", edit_user_project_path(current_user, @project), method: :get, class: "btn btn-success btn-sm m-1" %>
+          <%= button_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-success btn-sm m-1" %>
+          <button type="button" class="btn btn-success btn-sm m-1" data-bs-toggle="modal" data-bs-target="#connectionsModal">
+            Add Artist
+          </button>
+        </div>
+      </div>
         <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" />
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-page-user avatar-bordered-project-page" /> %>
-      </div>
       <div class="project-page-bio">
-        English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr.
-        They are regarded as the most influential band of all time
-        and were integral to the development of 1960s counterculture and popular music's recognition as an art form.
+        <%= @project.bio %>
       </div>
     </div>
   </div>
-
-  <%= link_to "Edit project", edit_user_project_path(current_user, @project), class: "btn btn-success btn-sm m-2" %>
-  <%= link_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-success btn-sm m-2" %>
-
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#connectionsModal">
-    Add Artist
-  </button>
 
   <!-- Modal -->
   <div class="modal fade" id="connectionsModal" tabindex="-1" aria-labelledby="connectionsModalLabel" aria-hidden="true">
@@ -82,11 +82,24 @@
     </div>
   </div>
 
-<!-- Lines that i've commented out - Arnaud -->
+  <!-- Lines that i've commented out - Arnaud -->
   <%#= button_to "Edit project", edit_user_project_path(current_user, @project), class:"btn btn-flat"%>
   <%#= button_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-flat" %>
 
   <div class="posts">
+    <div class="d-flex justify-content-center">
+      <%= simple_form_for [@project, @post],
+      html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
+      class: "post-form"} do |f|
+      %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@project.name}",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Post", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
     <div data-project-subscription-target="posts">
       <% @project.posts.each do |post| %>
         <%= render "posts/post", post: post %>
@@ -127,19 +140,6 @@
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
-    <div class="d-flex justify-content-center">
-      <%= simple_form_for [@project, @post],
-      html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
-      class: "post-form"} do |f|
-      %>
-        <%= f.input :content,
-          label: false,
-          placeholder: "Message ##{@project.name}",
-          wrapper_html: {class: "flex-grow-1"}
-        %>
-        <%= f.submit "Post", class: "btn btn-primary mb-3" %>
       <% end %>
     </div>
   </div>

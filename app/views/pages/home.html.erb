@@ -29,8 +29,8 @@
       <h2 class="cards-title">New <span class="projects-title">Projects</span></h2>
 
       <div class="project-cards">
-        <% 16.times do %>
-          <%= render "shared/project_card" %>
+        <% 15.times do %>
+          <%= render partial: "shared/project_card", locals: {project: @new_projects.sample} %>
         <% end %>
       </div>
     </div>

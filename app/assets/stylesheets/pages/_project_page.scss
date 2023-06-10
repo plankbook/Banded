@@ -1,8 +1,9 @@
 .project-page-top {
-  border: 1px solid red;
-  height: 600px;
+  // border: 1px solid red;
+  height: 900px;
   width: 80%;
   margin: auto;
+
 
   .project-page-banner {
     height: 80%;
@@ -10,7 +11,7 @@
     background-size: cover;
     background-position: center;
     display: flex;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     align-items: flex-end;
 
@@ -34,31 +35,57 @@
   }
   .project-page-content {
     display: flex;
+    justify-content: space-between;
+    // flex-wrap: wrap;
+    height: 180px;
+    // border: 1px solid rgb(6, 154, 16);
 
-    .project-page-users {
+    .project-left-content {
       display: flex;
-      align-items: center;
-      position: relative;
-      margin: 20px 30px;
-      // margin-right: 20px;
-      // margin-left: 5px;
+      flex-direction: column;
+      border-radius: 5px;
+      background-color: #e1e1e1;
+      margin: 20px 0px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      // padding: 0px 15px 15px 15px;
 
-      .project-page-user {
-        flex: none;
-        margin: 0px -15px;
+      .project-page-users {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+        margin: auto;
+        // margin: 20px 50px;
+        // margin-right: 20px;
+        // margin-left: 5px;
+        // border: 1px solid rgb(6, 154, 16);
+
+        .project-page-user {
+          flex: none;
+          margin: 0px -20px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+      }
+
+      .project-buttons {
+        display: flex;
       }
     }
 
     .project-page-bio {
       font-size: 15px;
-      margin: 20px 30px;
-      width: 100%;
+      margin: 20px 0px;
+      width: 75%;
+      // height: 180px;
       // max-width: 400px;
       border-radius: 5px;
-      padding: 8px;
-      min-height: 80px;
+      padding: 15px;
+      min-height: 100px;
       word-break: break-word;
       background-color: #e1e1e1;
+      // overflow: auto;
+      // border: 1px solid rgb(6, 154, 16);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
   }
 }

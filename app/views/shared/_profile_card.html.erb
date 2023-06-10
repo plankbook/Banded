@@ -1,4 +1,5 @@
 <div class="profile-card">
+  <%= link_to artist_path(user) do %>
     <% if user.photo.key? %>
       <%= cl_image_tag user.photo.key, class: "profile-banner" %>
     <% else %>
@@ -12,7 +13,7 @@
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
       <% end %>
       <div>
-        <h2 class="profile-title"><%= link_to user.name, artist_path(user) %></h2>
+        <h2 class="profile-title"><%= user.name %></h2>
         <p class="profile-location"><%= user.location %></p>
       </div>
     </div>
@@ -56,10 +57,12 @@
       <div class="profile-genres">
         <% if user.genres.exists? %>
           <p>Genres</p>
-          <div class="genre-pill">
+          <div class="genre-pill" style="background-color: <%= user.genres.first.colour.gsub('"', '') %>;">
+          <%# raise %>
             <p><%= user.genres.first.name %></p>
           </div>
         <% end %>
       </div>
     </div>
+<% end %>
   </div>

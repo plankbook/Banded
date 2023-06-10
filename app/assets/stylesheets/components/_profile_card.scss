@@ -76,7 +76,7 @@
       .genre-pill {
         width: 48px;
         height: 14px;
-        background-color: #B1A9FF;
+        // background-color: "#{@artists.first.genres.first.colour}";
         border-radius: 10px;
         display: flex;
         align-items: center;

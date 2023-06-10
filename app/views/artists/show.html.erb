@@ -26,9 +26,11 @@
   <div class="profile-genres-show">
     <h4>Genres</h4>
       <% if @artist.genres.exists? %>
-        <div class="genre-pill-show">
-          <p><%= @artist.genres.first.name %></p>
-        </div>
+        <% @artist.genres.each do |genre| %>
+          <div class="genre-pill-show" style="background-color: <%= genre.colour.gsub('"', '') %>;">
+            <p><%= genre.name %></p>
+          </div>
+        <% end %>
       <% end %>
   </div>
 
