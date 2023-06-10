@@ -40,10 +40,15 @@
       </div>
       <div class="project-genres">
         <p>Genres</p>
-        <div class="genre-pill" style="background-color: <%= project.users.first.genres.first.colour.gsub('"', '') %>;">
-          <p><%= project.users.first.genres.first.name %></p>
-          <%# raise %>
-        </div>
+        <% if project.users.exists? %>
+          <div class="genre-pill" style="background-color: <%= project.users.first.genres.first.colour.gsub('"', '') %>;">
+            <p><%= project.users.first.genres.first.name %></p>
+          </div>
+        <% else %>
+          <div class="genre-pill" style="background-color: #aaad34;">
+            <p>Jazz</p>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
