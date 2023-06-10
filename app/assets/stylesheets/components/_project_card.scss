@@ -18,7 +18,7 @@
   }
 
   p {
-    font-size: 11px;
+    font-size: 13px;
     // opacity: .7;
     margin: 0;
   }
@@ -96,14 +96,16 @@
       .genre-pill {
         width: 48px;
         height: 14px;
-        background-color: #B1A9FF;
+        background-color: #EA906C;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         align-self: center;
         margin: auto;
-        font-size: 10px;
+        font-size: 13px;
+        color: white;
+        font-weight: bold;
       }
     }
   }

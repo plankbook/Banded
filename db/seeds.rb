@@ -26,13 +26,13 @@ puts 'Creating instruments'
 
 puts 'Create genres'
   genre_list = [
-    { name: 'Jazz', colour: '#F6FA70' },
+    { name: 'Jazz', colour: '#aaad34' },
     { name: 'Rock', colour: '#EA906C' },
-    { name: 'Folk', colour: '#B1A9FF' },
+    { name: 'Folk', colour: '#7276b8' },
     { name: 'Pop', colour: '#FF78C4' },
-    { name: 'RnB', colour: '#D8EEBA' },
+    { name: 'RnB', colour: '#8c9e72' },
     { name: 'Rap', colour: '#7BB146' },
-    { name: 'Blues', colour: '#AFD1EF' },
+    { name: 'Blues', colour: '#86a4bf' },
     { name: 'Electro', colour: '#FA8E8E' }
   ]
 
@@ -133,7 +133,7 @@ puts "🥖 Arnaud is being born!"
   all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
 
-      proficiency: ['Beginner', 'Intermediate', 'Expert', 'God'].sample,
+      proficiency: ['Beginner', 'Intermediate', 'Professional', 'Expert', 'God'].sample,
 
       user: arnaud,
       instrument:
@@ -236,17 +236,6 @@ puts "🍁 Hi, Chris!"
   every_user << chris
   puts "🍁 Shania and Céline in da haus"
 
-my_projects = []
-  10.times do
-  project = Project.create(name: Faker::Music.band)
-  project.user = requester
-  my_projects << project
-end
-
-requester.photo.attach(
-  filename: 'avatar.jpg',
-  io: URI.open('https://avatars.githubusercontent.com/u/117036801')
-)
 puts "🏳️‍🌈 It's pronounced 'Aimerais'"
   emre = User.create!(
     name: 'Emre Özen',
