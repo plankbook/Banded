@@ -87,20 +87,31 @@
   <%#= button_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-flat" %>
 
   <div class="posts">
-    <div class="d-flex justify-content-center">
-      <%= simple_form_for [@project, @post],
-      html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
-      class: "post-form"} do |f|
-      %>
-        <%= f.input :content,
-          label: false,
-          placeholder: "Post ##{@project.name}",
-          wrapper_html: {class: "flex-grow-1"}
+    <div class="create-post-outer">
+      <div class="create-post-user">
+        <%= cl_image_tag current_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "profile-user avatar-bordered-profile" %>
+        <small>
+          <strong><%= current_user.name %></strong>
+        </small>
+      </div>
+      <div class="create-post-card">
+        <%= simple_form_for [@project, @post],
+        html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
+        class: "post-form"} do |f|
         %>
-        <%= f.submit "Post", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
-      <% end %>
+          <%= f.input :content,
+            label: false,
+            placeholder: "Post ##{@project.name}",
+            wrapper_html: {class: "flex-grow-1"}
+          %>
+          <%= f.submit "Post", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
+        <% end %>
+      </div>
     </div>
     <div data-project-subscription-target="posts">
+      <div class="recent-activity-label">
+        RECENT ACTIVITY
+      </div>
       <% @project.posts.each do |post| %>
         <%= render "posts/post", post: post %>
       <% end %>
