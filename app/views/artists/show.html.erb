@@ -23,24 +23,46 @@
   </div>
   <p class='bio'><%= @artist.bio %></p>
 
-  <div class="profile-genres-show">
-    <h4>Genres</h4>
-      <% if @artist.genres.exists? %>
+  <% if @artist.genres.exists? %>
+    <div class="profile-genres-show">
+      <h4 class="section-header">Genres</h4>
+      <div class="pill-container">
         <% @artist.genres.each do |genre| %>
           <div class="genre-pill-show" style="background-color: <%= genre.colour.gsub('"', '') %>;">
-            <p><%= genre.name %></p>
+            <%= genre.name %>
           </div>
         <% end %>
-      <% end %>
-  </div>
+      </div>
+    </div>
+  <% end %>
 
   <div class="mowgli">
-    <h4>Instruments</h4>
+    <h4 class="section-header">Instruments</h4>
     <div class="instruments">
       <div class="instrument">
         <% @artist.instruments.each do |instrument| %>
           <div class="instrument-name">
-            <p><%= "#{instrument.name}" %></p>
+              <% if instrument.name == 'Piano' %>
+                <p class="instrument-icon">🎹</p>
+              <% elsif instrument.name == 'Guitar' %>
+                <p class="instrument-icon">🎸</p>
+              <% elsif instrument.name == 'Violin' %>
+                <p class="instrument-icon">🎻</p>
+              <% elsif instrument.name == 'Drums' %>
+                <p class="instrument-icon">🥁</p>
+              <% elsif instrument.name == 'Saxophone' %>
+                <p class="instrument-icon">🎷</p>
+              <% elsif instrument.name == 'Flute' %>
+                <p class="instrument-icon">🪈</p>
+              <% elsif instrument.name == 'Trumpet' %>
+                <p class="instrument-icon">🎺</p>
+              <% elsif instrument.name == 'Banjo' %>
+                <p class="instrument-icon">🪕</p>
+              <% elsif instrument.name == 'Accordion' %>
+                <p class="instrument-icon">🪗</p>
+              <% elsif instrument.name == 'Maracas' %>
+                <p class="instrument-icon">🪇</p>
+              <% end %>
           </div>
         <% end %>
       </div>
