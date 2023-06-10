@@ -179,6 +179,13 @@ requester = User.create!(
   location: "Laval"
 )
 
+my_projects = []
+  10.times do
+  project = Project.create(name: Faker::Music.band)
+  prosject.user = requester
+  my_projects << project
+end
+
 requester.photo.attach(
   filename: 'avatar.jpg',
   io: URI.open('https://avatars.githubusercontent.com/u/117036801')
