@@ -20,8 +20,8 @@
       <h2 class="cards-title">Suggested <span class="musicians-title">Musicians</span></h2>
 
       <div class="profile-cards">
-        <% 5.times do %>
-          <%= render partial: "shared/profile_card", locals: {user: @suggested_users.sample} %>
+        <% @suggested_users.first(5).each do |user| %>
+          <%= render partial: "shared/profile_card", locals: {user: user} %>
         <% end %>
       </div>
     </div>
@@ -29,8 +29,8 @@
       <h2 class="cards-title">New <span class="projects-title">Projects</span></h2>
 
       <div class="project-cards">
-        <% 15.times do %>
-          <%= render partial: "shared/project_card", locals: {project: @new_projects.sample} %>
+        <% @new_projects.first(15).each do |project| %>
+          <%= render partial: "shared/project_card", locals: {project: project} %>
         <% end %>
       </div>
     </div>

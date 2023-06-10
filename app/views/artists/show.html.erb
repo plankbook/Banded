@@ -64,11 +64,3 @@
     <%# Connect %>
   <%# </button> %>
 <%# </div> %>
-
-<% @artist.media.each do |medium| %>
-  <% if medium.content_type.include?('image') %>
-    <%= cl_image_tag(medium.key) %>
-  <% else %>
-    <%= video_tag url_for(medium), controls: true %>
-  <% end %>
-<% end %>
