@@ -29,7 +29,7 @@
             placeholder: "Comment ##{post.id}",
             wrapper_html: {class: "flex-grow-1"}
           %>
-          <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
+          <%= f.submit "Comment", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
         <% end %>
       </div>
     </div>
@@ -54,7 +54,7 @@
                 placeholder: "Comment ##{post.id}",
                 wrapper_html: {class: "flex-grow-1"}
               %>
-              <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
+              <%= f.submit "Comment", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
             <% end %>
           </div>
           <div class="comments" data-comments-subscription-target="comments">
@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -88,10 +88,10 @@
       %>
         <%= f.input :content,
           label: false,
-          placeholder: "Message ##{@project.name}",
+          placeholder: "Post ##{@project.name}",
           wrapper_html: {class: "flex-grow-1"}
         %>
-        <%= f.submit "Post", class: "btn btn-primary mb-3" %>
+        <%= f.submit "Post", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
       <% end %>
     </div>
     <div data-project-subscription-target="posts">
