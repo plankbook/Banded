@@ -236,17 +236,7 @@ puts "🍁 Hi, Chris!"
   every_user << chris
   puts "🍁 Shania and Céline in da haus"
 
-my_projects = []
-  10.times do
-  project = Project.create(name: Faker::Music.band)
-  prosject.user = requester
-  my_projects << project
-end
 
-requester.photo.attach(
-  filename: 'avatar.jpg',
-  io: URI.open('https://avatars.githubusercontent.com/u/117036801')
-)
 puts "🏳️‍🌈 It's pronounced 'Aimerais'"
   emre = User.create!(
     name: 'Emre Özen',
