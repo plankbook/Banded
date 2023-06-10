@@ -46,7 +46,7 @@ puts 'Create genres'
   all_genres = Genre.all
   puts "#{Genre.count} genres created"
 
-puts "Creating fake-ass user bios"
+puts "Creating user bios"
   user_bios = [
   "Hi there! I'm a passionate musician dedicated to creating captivating melodies and heartfelt lyrics. My music is a reflection of my soul, blending elements of various genres to craft a unique and authentic sound. Join me on this musical journey as I share my stories and emotions through every note I play and every word I sing.",
 
@@ -104,7 +104,9 @@ project_banners = Dir.glob(Rails.root.join('app', 'assets', 'images', 'project-b
 puts "Creating projects"
   all_projects = []
   20.times do
-    project = Project.create(name: Faker::Music.band)
+    project = Project.create(
+      name: Faker::Music.band,
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     project.photo.attach(io: File.open(project_banners.shuffle!.pop), filename: "project_banner.jpg")
     all_projects << project
   end
@@ -369,7 +371,7 @@ puts "Receiver is getting created!"
 
   puts "Receiver User is created!"
 
-puts "Connection between requester and receiver is getting created"  
+puts "Connection between requester and receiver is getting created"
   connection = Connection.create!(
     requester:,
     receiver:,
@@ -408,8 +410,8 @@ puts "Posts and comments are getting attached to projects"
 
   puts "Sample posts and comments are created!"
 
-puts "Connections for Robert are getting created"  
-  15.times do 
+puts "Connections for Robert are getting created"
+  15.times do
     Connection.create!(
       requester: robert,
       receiver: x = every_user.sample,
@@ -419,7 +421,7 @@ puts "Connections for Robert are getting created"
     puts "Connection #{connection.id} is created!"
   end
 
-  3.times do 
+  3.times do
     Connection.create!(
       requester: robert,
       receiver: x = every_user.sample,
@@ -429,7 +431,7 @@ puts "Connections for Robert are getting created"
     puts "Connection #{connection.id} is created!"
   end
 
-  1.times do 
+  1.times do
     Connection.create!(
       requester: x = every_user.sample,
       receiver: robert,
@@ -438,4 +440,4 @@ puts "Connections for Robert are getting created"
     every_user.delete(x)
     puts "Connection #{connection.id} is created!"
   end
-  puts "Connections for Robert are created"  
+  puts "Connections for Robert are created"
