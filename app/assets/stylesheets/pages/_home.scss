@@ -1,5 +1,9 @@
 // Specific CSS for your home-page
 
+.anthem {
+  color: white;
+}
+
 .homepage-container {
   margin: 50px 0px;
   .homepage-subcontainer {
@@ -9,6 +13,7 @@
 
 .logo {
   height: 30vh;
+  color: white;
 }
 
 .banner {
@@ -118,7 +123,7 @@ a {
   justify-content: space-between;
   height: 100px;
   padding: 0px 50px;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   position: relative;
   bottom: 0;
   width: 100%;

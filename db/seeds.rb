@@ -133,7 +133,7 @@ puts "🥖 Arnaud is being born!"
   all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
 
-      proficiency: ['Beginner', 'Intermediate', 'Expert', 'God'].sample,
+      proficiency: ['Beginner', 'Intermediate', 'Professional', 'Expert', 'God'].sample,
 
       user: arnaud,
       instrument:
