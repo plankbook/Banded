@@ -29,8 +29,45 @@
             placeholder: "Comment ##{post.id}",
             wrapper_html: {class: "flex-grow-1"}
           %>
-          <%= f.submit "Comment", class: "btn btn-primary mb-3" %>
+          <%= f.submit "Comment", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Comments Modal -->
+<div class="modal fade" id=<%="commentModal#{post.id}"%> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= "Comment as #{current_user.name}" %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" data-controller="comments-subscription" data-comments-subscription-post-id-value="<%= post.id %>">
+        <div class="comments">
+          <div class="d-flex justify-content-center">
+            <%= simple_form_for [post, Comment.new],
+            html: {data: { action: "turbo:submit-end->comments-subscription#resetForm" }, class: "post-form"} do |f|
+            %>
+              <%= f.input :content,
+                label: false,
+                placeholder: "Comment ##{post.id}",
+                wrapper_html: {class: "flex-grow-1"}
+              %>
+              <%= f.submit "Comment", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
+            <% end %>
+          </div>
+          <div class="comments" data-comments-subscription-target="comments">
+            <% post.comments.each do |comment| %>
+              <div class="comment">
+                <%= render "comments/comment", comment: comment %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
