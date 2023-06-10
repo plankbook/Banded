@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @suggested_users = User.all
+    @new_projects = Project.all
   end
 end

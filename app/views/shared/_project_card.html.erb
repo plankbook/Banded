@@ -1,23 +1,25 @@
 <div class="project-card">
-    <%# <img class="project-banner" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
-    <%= image_tag "projects_seed.jpg", class: "project-banner" %>
+    <% if project.photo.key? %>
+      <%= image_tag project.photo, class: "project-banner" %>
+    <% else %>
+      <img class="project-banner" src="user_seed_banner.png" />
+    <% end %>
+
     <div class="project-top">
       <div class="project-users">
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-user avatar-bordered-project" />
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-user avatar-bordered-project" />
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-user avatar-bordered-project" />
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="project-user avatar-bordered-project" />
+      <%# raise %>
+      <% project.users.each do |user|  %>
+        <%= cl_image_tag user.photo.key, class: "project-user avatar-bordered-project" %>
+      <% end %>
       </div>
       <div>
-        <h2 class="project-title">Fluctuating Manpower</h2>
+        <h2 class="project-title"><%= link_to project.name, project_path(project) %></h2>
         <p class="project-location">Montreal, Canada</p>
       </div>
     </div>
     <div class="project-bio">
       <p>
-        English singer, songwriter and composer.
-        He is internationally known as a singer and bassist of the Beatles.
-        With singer and guitarist John Lennon,...
+        <%= project.posts.first.content.truncate(200) %>
       </p>
     </div>
     <div class="project-bottom">
