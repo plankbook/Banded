@@ -6,6 +6,30 @@
     padding: 8px;
   }
 
+  .create-post-outer {
+    // border: 1px solid red;
+    background-color: #e1e1e1;
+    padding: 8px;
+    border-radius: 5px;
+    width: 584px;
+    margin: auto;
+    // display: flex;
+    justify-content: center;
+
+    .create-post-card {
+      height: 130px;
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+
+  .recent-activity-label {
+    padding: 8px;
+    color: #727272;
+    font-weight: bold;
+    margin: 65px 0px 10px;
+  }
+
   // To style the message itself
   .post {
     width: 100%;
@@ -29,10 +53,27 @@
     }
   }
   .post-form {
-    border: 1px solid red;
-    width: 100%;
+    // border: 1px solid red;
+    // width: 584px;
     display: flex;
+    border-radius: 5px;
+    padding: 8px;
+    min-height: 80px;
     align-items: start;
     justify-content: center;
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+
+    .form-control {
+      background-color: #ffffff;
+    }
+    textarea {
+      resize: none;
+      border: none;
+      line-height: 3;
+      outline: none;
+      padding: 0px;
+    }
   }
 }
