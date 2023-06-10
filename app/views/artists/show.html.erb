@@ -69,7 +69,17 @@
       <div class="proficiency">
         <% @artist.instruments.each do |instrument| %>
           <div class="instrument-proficiency">
-            <p><%= "#{@my_instruments.where(instrument_id: instrument.id).first.proficiency}" %></p>
+            <% if @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Beginner' %>
+              <p class="instrument-icon">⭐</p>
+            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Intermediate' %>
+              <p class="instrument-icon">⭐⭐</p>
+            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Professional' %>
+              <p class="instrument-icon">⭐⭐⭐</p>
+            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Expert' %>
+              <p class="instrument-icon">⭐⭐⭐⭐</p>
+            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'God' %>
+              <p class="instrument-icon">⭐⭐⭐⭐⭐</p>
+            <% end %>
           </div>
         <% end %>
       </div>
