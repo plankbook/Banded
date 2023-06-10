@@ -1,8 +1,13 @@
-<h1> All my projects </h1>
-
-<ul>
-  <% @my_projects.each do |project| %>
-  <%# raise %>
-    <li><%= link_to project.project.name, project_path(project.project.id) %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="homepage-container">
+    <div class="homepage-subcontainer">
+      <h2 class="cards-title">My <span class="projects-title">Projects</span></h2>
+      <div class="project-cards">
+        <% @my_projects.each do |project| %>
+        <%# raise %>
+          <%= render partial: "shared/project_card", locals: {project: project.project} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
