@@ -239,7 +239,7 @@ puts "🍁 Hi, Chris!"
 my_projects = []
   10.times do
   project = Project.create(name: Faker::Music.band)
-  prosject.user = requester
+  project.user = requester
   my_projects << project
 end
 
