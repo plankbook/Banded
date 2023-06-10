@@ -151,7 +151,7 @@ h4 {
 
     width: 120px;
     height: 48px;
-    border-radius: 10px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,4 +181,13 @@ p.genre {
   // display: flex;
   position: relative;
   margin-bottom: 0px;
+}
+
+.instrument-name {
+  font-size: 25px;
+}
+
+.instrument-proficiency {
+  font-size: 20px;
+  padding-top: 7px;
 }
