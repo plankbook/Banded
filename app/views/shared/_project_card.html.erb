@@ -9,7 +9,7 @@
     <div class="project-top">
       <div class="project-users">
       <%# raise %>
-      <% project.users.each do |user|  %>
+      <% project.users.first(5).each do |user|  %>
         <%= cl_image_tag user.photo.key, class: "project-user avatar-bordered-project" %>
       <% end %>
       </div>
@@ -31,15 +31,36 @@
     </div>
     <div class="project-bottom">
       <div class="project-instruments">
-        <p>Instruments</p>
+        <p>In the band</p>
         <div class="instrument-icons">
-          <p class="instrument-icon">🎸</p>
-          <p class="instrument-icon">🥁</p>
-          <p class="instrument-icon">🎻</p>
+            <%# raise %>
+            <% project.users.first.instruments.each do |instrument| %>
+              <% if instrument.name == 'Piano' %>
+                <p class="instrument-icon">🎹</p>
+              <% elsif instrument.name == 'Guitar' %>
+                <p class="instrument-icon">🎸</p>
+              <% elsif instrument.name == 'Violin' %>
+                <p class="instrument-icon">🎻</p>
+              <% elsif instrument.name == 'Drums' %>
+                <p class="instrument-icon">🥁</p>
+              <% elsif instrument.name == 'Saxophone' %>
+                <p class="instrument-icon">🎷</p>
+              <% elsif instrument.name == 'Flute' %>
+                <p class="instrument-icon">🪈</p>
+              <% elsif instrument.name == 'Trumpet' %>
+                <p class="instrument-icon">🎺</p>
+              <% elsif instrument.name == 'Banjo' %>
+                <p class="instrument-icon">🪕</p>
+              <% elsif instrument.name == 'Accordion' %>
+                <p class="instrument-icon">🪗</p>
+              <% elsif instrument.name == 'Maracas' %>
+                <p class="instrument-icon">🪇</p>
+              <% end %>
+            <% end %>
         </div>
       </div>
       <div class="project-genres">
-        <p>Genres</p>
+        <p>Genre</p>
         <% if project.users.exists? %>
           <div class="genre-pill" style="background-color: <%= project.users.first.genres.first.colour.gsub('"', '') %>;">
             <p><%= project.users.first.genres.first.name %></p>
