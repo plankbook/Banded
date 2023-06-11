@@ -23,65 +23,91 @@
   </div>
   <p class='bio'><%= @artist.bio %></p>
 
-  <% if @artist.genres.exists? %>
-    <div class="profile-genres-show">
-      <h4 class="section-header">Genres</h4>
-      <div class="pill-container">
-        <% @artist.genres.each do |genre| %>
-          <div class="genre-pill-show" style="background-color: <%= genre.colour.gsub('"', '') %>;">
-            <%= genre.name %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="mowgli">
-    <h4 class="section-header">Instruments</h4>
-    <div class="instruments">
-      <div class="instrument">
-        <% @artist.instruments.each do |instrument| %>
-          <div class="instrument-name">
-              <% if instrument.name == 'Piano' %>
-                <p class="instrument-icon">🎹</p>
-              <% elsif instrument.name == 'Guitar' %>
-                <p class="instrument-icon">🎸</p>
-              <% elsif instrument.name == 'Violin' %>
-                <p class="instrument-icon">🎻</p>
-              <% elsif instrument.name == 'Drums' %>
-                <p class="instrument-icon">🥁</p>
-              <% elsif instrument.name == 'Saxophone' %>
-                <p class="instrument-icon">🎷</p>
-              <% elsif instrument.name == 'Flute' %>
-                <p class="instrument-icon">🪈</p>
-              <% elsif instrument.name == 'Trumpet' %>
-                <p class="instrument-icon">🎺</p>
-              <% elsif instrument.name == 'Banjo' %>
-                <p class="instrument-icon">🪕</p>
-              <% elsif instrument.name == 'Accordion' %>
-                <p class="instrument-icon">🪗</p>
-              <% elsif instrument.name == 'Maracas' %>
-                <p class="instrument-icon">🪇</p>
-              <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="proficiency">
-        <% @artist.instruments.each do |instrument| %>
-          <div class="instrument-proficiency">
-            <% if @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Beginner' %>
-              <p class="instrument-icon">⭐</p>
-            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Intermediate' %>
-              <p class="instrument-icon">⭐⭐</p>
-            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Professional' %>
-              <p class="instrument-icon">⭐⭐⭐</p>
-            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Expert' %>
-              <p class="instrument-icon">⭐⭐⭐⭐</p>
-            <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'God' %>
-              <p class="instrument-icon">⭐⭐⭐⭐⭐</p>
+  <div id='profile-page-bottom'>
+    <div class='genres-and-instruments'>
+      <% if @artist.genres.exists? %>
+        <div class="profile-genres-show profile-section">
+          <h4 class="section-header">Genres</h4>
+          <div class="pill-container">
+            <% @artist.genres.each do |genre| %>
+              <div class="genre-pill-show" style="background-color: <%= genre.colour.gsub('"', '') %>;">
+                <%= genre.name %>
+              </div>
             <% end %>
           </div>
-        <% end %>
+        </div>
+      <% end %>
+
+      <div class="mowgli profile-section">
+        <h4 class="section-header">Instruments</h4>
+        <div class="instruments">
+          <div class="instrument">
+            <% @artist.instruments.each do |instrument| %>
+              <div class="instrument-name">
+                  <% if instrument.name == 'Piano' %>
+                    <p class="instrument-icon">🎹</p>
+                  <% elsif instrument.name == 'Guitar' %>
+                    <p class="instrument-icon">🎸</p>
+                  <% elsif instrument.name == 'Violin' %>
+                    <p class="instrument-icon">🎻</p>
+                  <% elsif instrument.name == 'Drums' %>
+                    <p class="instrument-icon">🥁</p>
+                  <% elsif instrument.name == 'Saxophone' %>
+                    <p class="instrument-icon">🎷</p>
+                  <% elsif instrument.name == 'Flute' %>
+                    <p class="instrument-icon">🪈</p>
+                  <% elsif instrument.name == 'Trumpet' %>
+                    <p class="instrument-icon">🎺</p>
+                  <% elsif instrument.name == 'Banjo' %>
+                    <p class="instrument-icon">🪕</p>
+                  <% elsif instrument.name == 'Accordion' %>
+                    <p class="instrument-icon">🪗</p>
+                  <% elsif instrument.name == 'Maracas' %>
+                    <p class="instrument-icon">🪇</p>
+                  <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="proficiency">
+            <% @artist.instruments.each do |instrument| %>
+              <div class="instrument-proficiency">
+                <% if @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Beginner' %>
+                  <p class="instrument-icon">⭐</p>
+                <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Intermediate' %>
+                  <p class="instrument-icon">⭐⭐</p>
+                <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Professional' %>
+                  <p class="instrument-icon">⭐⭐⭐</p>
+                <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Expert' %>
+                  <p class="instrument-icon">⭐⭐⭐⭐</p>
+                <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'God' %>
+                  <p class="instrument-icon">⭐⭐⭐⭐⭐</p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='my-media profile-section'>
+      <h4 class="section-header">My Media</h4>
+      <div class='media'>
+        <div class='audio-video'>
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/the-frights" title="The Frights" target="_blank" style="color: #cccccc; text-decoration: none;">The Frights</a> · <a href="https://soundcloud.com/the-frights/the-drummers-in-trouble" title="The Drummer’s in Trouble!" target="_blank" style="color: #cccccc; text-decoration: none;">The Drummer’s in Trouble!</a></div><iframe width="400" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1473042775&color=%23d6b89a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/patrick-drummer" title="Patrick Drummer" target="_blank" style="color: #cccccc; text-decoration: none;">Patrick Drummer</a> · <a href="https://soundcloud.com/patrick-drummer/system-of-a-down-chop-suey" title="System of a down - Chop Suey" target="_blank" style="color: #cccccc; text-decoration: none;">System of a down - Chop Suey</a></div>
+          <iframe width="400" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/136841533&color=%23d6b89a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/FqJdzYY_Fas?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/h6b8cRrIz6o?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </div>
