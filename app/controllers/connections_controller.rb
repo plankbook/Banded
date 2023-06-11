@@ -19,15 +19,23 @@ class ConnectionsController < ApplicationController
   def accept
     @connection = Connection.find(params[:id])
     @connection.update(status: "accepted")
+    notify_requester
   end
 
   def reject
     @connection = Connection.find(params[:id])
     @connection.update(status: "rejected")
+    notify_requester
   end
 
   def show
     @connection = Connection.find(params[:id])
     @message = Message.new
+  end
+
+  private
+
+  def notify_requester
+    ConnectionNotification.with(connection: @connection).deliver_later(@connection.requester)
   end
 end
