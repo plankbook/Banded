@@ -17,11 +17,12 @@ class ConnectionNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-  # def message
-  #   t(".message")
-  # end
-  #
-  # def url
-  #   post_path(params[:post])
-  # end
+  def message
+    @receiver = User.find(params[:connection][:receiver_id])
+    "#{@receiver.name} accepted your connection request"
+  end
+
+  def url
+    artist_path(params[:connection][:receiver_id])
+  end
 end
