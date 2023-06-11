@@ -26,4 +26,8 @@ export default class extends Controller {
   updateUnreadCount(count) {
     this.notificationsCountTarget.innerText = count >= 9 ? "9+" : count;
   }
+
+  updateCount() {
+    this.notificationsCountTarget.innerText = 0;
+  }
 }
