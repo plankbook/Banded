@@ -56,7 +56,7 @@
         <%# raise %>
       <div class="profile-genres">
         <% if user.genres.exists? %>
-          <p>Genres</p>
+          <p>Genre</p>
           <div class="genre-pill" style="background-color: <%= user.genres.first.colour.gsub('"', '') %>;">
           <%# raise %>
             <p><%= user.genres.first.name %></p>
