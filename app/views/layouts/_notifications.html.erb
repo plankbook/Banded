@@ -1,8 +1,11 @@
-<li class="nav-item dropdown" data-controller="update-notifications">
+<li class="nav-item dropdown" data-controller="update-notifications" data-update-notifications-user-id-value="<%=current_user.id%>">
   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-  role="button" data-bs-toggle="dropdown" aria-expanded="false" data-action="click->update-notifications#updateCount">
-    <span class="badge rounded-pill bg-danger" data-update-notifications-target="notificationsCount">
-      <%= @unread.count >= 9 ? "9+" : @unread.count %> <i class="bi bi-suit-heart-fill"></i>
+  role="button" data-bs-toggle="dropdown" aria-expanded="false"
+  >
+  <%# data-action="click->update-notifications#updateCount"> %>
+    <span class="badge rounded-pill bg-danger">
+      <span data-update-notifications-target="notificationsCount"><%= @unread.count >= 9 ? "9+" : @unread.count %></span>
+      <i class="bi bi-suit-heart-fill"></i>
     </span>
   </a>
   <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown" data-update-notifications-target="notifications">

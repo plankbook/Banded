@@ -23,6 +23,7 @@ class ConnectionsController < ApplicationController
     @connection = Connection.find(params[:id])
     @connection.update(status: "accepted")
     notify_requester
+    broadcast_notifications
   end
 
   def reject
@@ -40,5 +41,19 @@ class ConnectionsController < ApplicationController
 
   def notify_requester
     ConnectionNotification.with(connection: @connection).deliver_later(@connection.requester)
+  end
+
+  def broadcast_notifications
+    NotificationsChannel.broadcast_to(
+      @connection.requester,
+      notification: render_notifications,
+      unread_count: Notification.unread.count,
+      receiver_id: @connection.receiver.id
+    )
+    head :ok
+  end
+
+  def render_notifications
+    render_to_string(partial: 'layouts/notification', locals: { notification: Notification.last } )
   end
 end
