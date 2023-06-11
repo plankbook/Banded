@@ -3,6 +3,9 @@ class ConnectionsController < ApplicationController
     @connections_requested = Connection.where(requester: current_user, status: "pending")
     @connections_received = Connection.where(receiver: current_user, status: "pending")
     @my_connections = Connection.where('(requester_id = ? or receiver_id = ?) and status = ?', current_user, current_user, 'accepted')
+    Notification.all.each do |notification|
+      notification.update(read_at: Time.now)
+    end
   end
 
   def create

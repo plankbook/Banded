@@ -23,6 +23,6 @@ class ConnectionNotification < Noticed::Base
   end
 
   def url
-    artist_path(params[:connection][:receiver_id])
+    connections_path
   end
 end
