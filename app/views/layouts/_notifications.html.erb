@@ -1,10 +1,11 @@
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="badge rounded-pill bg-danger">
+<li class="nav-item dropdown" data-controller="update-notifications">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+    role="button" data-bs-toggle="dropdown" aria-expanded="false" data-action="click->update-notifications#updateCount">
+      <span class="badge rounded-pill bg-danger" data-update-notifications-target="notificationsCount">
         <%= @unread.count >= 9 ? "9+" : @unread.count %> <i class="bi bi-suit-heart-fill"></i>
       </span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown" data-update-notifications-target="notifications">
       <% @unread.each do |notification| %>
         <%= render 'layouts/notification', notification: notification %>
       <% end %>
