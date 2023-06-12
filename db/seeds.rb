@@ -22,6 +22,7 @@ puts 'Creating instruments'
   end
 
   all_instruments = Instrument.all
+  all_proficiencies = ['Beginner', 'Intermediate', 'Professional', 'Expert', 'God']
   puts "#{Instrument.count} instruments created"
 
 puts 'Create genres'
@@ -117,7 +118,7 @@ puts "Creating projects"
 user_avatars = Dir.glob(Rails.root.join('app', 'assets', 'images', 'user-avatars', '*.jpeg'))
   # user_photo = Rails.root('app/assets/images/user-avatars/photo-1471565661762-b9dfae862dbe.jpeg')
 
-every_user = []
+every_user = [] #this array will have every user in the database except Chris, Robert, Arnaud, Emre
 puts "🥖 Arnaud is being born!"
   arnaud = User.create!(
     name: 'Arnaud Lecorvaisier',
@@ -133,7 +134,7 @@ puts "🥖 Arnaud is being born!"
   all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
 
-      proficiency: ['Beginner', 'Intermediate', 'Professional', 'Expert', 'God'].sample,
+      proficiency: all_proficiencies.sample,
 
       user: arnaud,
       instrument:
@@ -155,7 +156,6 @@ puts "🥖 Arnaud is being born!"
     )
   end
 
-  every_user << arnaud
   puts "🥖 It's a boy!"
 
 puts "🪆 It's Robert's turn."
@@ -172,7 +172,7 @@ puts "🪆 It's Robert's turn."
   all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
 
-      proficiency: ['Beginner', 'Intermediate', 'Expert', 'God'].sample,
+      proficiency: all_proficiencies.sample,
 
       user: robert,
       instrument:
@@ -193,7 +193,7 @@ puts "🪆 It's Robert's turn."
       admin: [true, false].sample
     )
   end
-  every_user << robert
+
   puts "🪆 Кто не рискует, тот не пьет шампанского"
 
 puts "🍁 Hi, Chris!"
@@ -208,22 +208,13 @@ puts "🍁 Hi, Chris!"
 
   chris.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/chris.jpg"), filename: "avatar.jpg")
 
-  all_instruments.sample((rand(1..6))).each do |instrument|
-    UserInstrument.create!(
-
-      proficiency: ['Beginner', 'Intermediate', 'Expert', 'God'].sample,
-
-      user: chris,
-      instrument:
-    )
-  end
-
-  all_genres.sample((rand(1..5))).each do |genre|
-    UserGenre.create!(
-      user: chris,
-      genre:
-    )
-  end
+  # all_instruments.sample((rand(1..6))).each do |instrument|
+  #   UserInstrument.create!(
+  #     proficiency: all_proficiencies.sample,
+  #     user: chris,
+  #     instrument:
+  #   )
+  # end
 
   all_projects.sample((rand(1..5))).each do |project|
     UserProject.create!(
@@ -233,7 +224,6 @@ puts "🍁 Hi, Chris!"
     )
   end
 
-  every_user << chris
   puts "🍁 Shania and Céline in da haus"
 
 puts "🏳️‍🌈 It's pronounced 'Aimerais'"
@@ -247,13 +237,13 @@ puts "🏳️‍🌈 It's pronounced 'Aimerais'"
   )
 
   emre.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/aimerais.jpg"), filename: "avatar.jpg")
-  every_user << emre
+
   puts "🏳️‍🌈 Shame!🔔 Shame!🔔 Shame!🔔"
 
   all_instruments.sample((rand(1..6))).each do |instrument|
     UserInstrument.create!(
 
-      proficiency: ['Beginner', 'Intermediate', 'Expert', 'God'].sample,
+      proficiency: all_proficiencies.sample,
 
       user: emre,
       instrument:
@@ -315,7 +305,7 @@ puts "Creating new users..."
       all_instruments.sample((rand(1..6))).each do |instrument|
         UserInstrument.create!(
 
-          proficiency: ['Beginner', 'Intermediate', 'Professional', 'Expert', 'God'].sample,
+          proficiency: all_proficiencies.sample,
 
           user: artist,
           instrument:
@@ -410,10 +400,89 @@ puts "Posts and comments are getting attached to projects"
 
   puts "Sample posts and comments are created!"
 
-puts "Connections for Robert are getting created"
+
+puts 'Genres for Chris are getting created'
+  UserGenre.create!(
+    user: chris,
+    genre: Genre.find_by(name: 'Blues')
+  )
+
+  UserGenre.create!(
+    user: chris,
+    genre: Genre.find_by(name: 'Jazz')
+  )
+
+  UserGenre.create!(
+    user: chris,
+    genre: Genre.find_by(name: 'Rock')
+  )
+
+  UserGenre.create!(
+    user: chris,
+    genre: Genre.find_by(name: 'Folk')
+  )
+
+  UserGenre.create!(
+    user: chris,
+    genre: Genre.find_by(name: 'Pop')
+  )
+
+  UserGenre.create!(
+    user: chris,
+    genre: Genre.find_by(name: 'Electro')
+  )
+
+  puts 'Chris can now pop at least 6 pills... OF GENRES'
+puts 'Instruments for Chris are getting created'
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Piano')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Guitar')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Violin')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Banjo')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Maracas')
+  )
+
+  puts 'Chris now plays at least 4 instruments.'
+puts "Connections for Chris are getting created"
+  Connection.create!(
+    requester: chris,
+    receiver: emre,
+    status: "accepted"
+  )
+  puts "Chris is now connected to Emre."
+
+  Connection.create!(
+    requester: chris,
+    receiver: arnaud,
+    status: "accepted"
+  )
+  puts "Chris is now connected to Arnaud."
+
   15.times do
-    Connection.create!(
-      requester: robert,
+    connection = Connection.create!(
+      requester: chris,
       receiver: x = every_user.sample,
       status: "accepted"
     )
@@ -422,8 +491,8 @@ puts "Connections for Robert are getting created"
   end
 
   3.times do
-    Connection.create!(
-      requester: robert,
+    connection = Connection.create!(
+      requester: chris,
       receiver: x = every_user.sample,
       status: "pending"
     )
@@ -432,12 +501,12 @@ puts "Connections for Robert are getting created"
   end
 
   1.times do
-    Connection.create!(
+    connection = Connection.create!(
       requester: x = every_user.sample,
-      receiver: robert,
+      receiver: chris,
       status: "pending"
     )
     every_user.delete(x)
     puts "Connection #{connection.id} is created!"
   end
-  puts "Connections for Robert are created"
+  puts "Random connections for Chris are created. He's also connected to Arnaud and Emre. But not Robert. Robert doesn't deserve this connection... yet!"
