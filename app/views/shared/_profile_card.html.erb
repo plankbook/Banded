@@ -13,7 +13,7 @@
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="profile-user avatar-bordered-profile" />
       <% end %>
       <div>
-        <h2 class="profile-title"><%= user.name %></h2>
+        <h2 class="profile-title"><%= user.name.truncate(18) %></h2>
         <p class="profile-location"><%= user.location %></p>
       </div>
     </div>

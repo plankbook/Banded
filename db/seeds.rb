@@ -125,7 +125,7 @@ puts "🥖 Arnaud is being born!"
     name: 'Arnaud Lecorvaisier',
     email: 'arnaud@banded.com',
     password: '123456',
-    location: "Montreal",
+    location: "Montreal, Canada",
     age: 33,
     bio: "I'm working in logistics and I discovered progamming through vba with Microsoft office which was really interesting. To change my career has always been in a side of my head since that moment and I decided to move on this year by doing this bootcamp. I'm sure that I will learn a lot of new skills and meet a lot of interesting people !!"
   )
@@ -164,7 +164,7 @@ puts "🪆 It's Robert's turn."
     name: 'Robert Li',
     email: 'robert@banded.com',
     password: '123456',
-    location: "Montreal",
+    location: "Montreal, Canada",
     age: 27,
     bio: 'My name is Robert Li! I currently work as a Revenue Operations Manager at Zendesk. Even though my academic background is in Finance and Mathematics, I was always fascinated by the technology and the computer science field, so I decided to join Le Wagon to build my coding skillset and dive deeper into that industry.'
   )
@@ -202,7 +202,7 @@ puts "🍁 Hi, Chris!"
     name: 'Chris Kyras',
     email: 'chris@banded.com',
     password: '123456',
-    location: "Montreal",
+    location: "Montreal, Canada",
     age: 35,
     bio: "Passionate entrepreneur Y Combinator alum with a focus on building things to positively disrupt people's lives for good, with a particular focus on fintech and retail."
   )
@@ -232,7 +232,7 @@ puts "🏳️‍🌈 It's pronounced 'Aimerais'"
     name: 'Emre Özen',
     email: 'emre@banded.com',
     password: '123456',
-    location: "Montreal",
+    location: "Montreal, Canada",
     age: 900,
     bio: 'Translator and project manager'
   )
@@ -272,7 +272,7 @@ puts "Creating new users..."
       email: "#{Faker::Music.unique.chord}@gmail.com",
       password: '123456',
       age: Faker::Number.between(from: 18, to: 65),
-      location: ['Montreal', 'Quebec City', 'Châteauguay', 'Laval', 'Gatineau', 'Longueuil', 'Trois-Rivières'].sample,
+      location: ['Montreal, Canada', 'Quebec City, Canada', 'Toronto, Canada', 'Laval, Canada', 'Vancouver, Canada', 'Longueuil, Canada', 'Calgary, Canada'].sample,
       bio: user_bios.shuffle!.pop,
       phone: Faker::PhoneNumber.cell_phone,
       gender: ['male', 'female', 'other'].sample,
@@ -337,7 +337,7 @@ puts "Requester is getting created!"
     name: "Requester",
     email: "requester@banded.com",
     password: "123456",
-    location: "Laval"
+    location: "Laval, Canada"
   )
 
   requester.photo.attach(
@@ -352,7 +352,7 @@ puts "Receiver is getting created!"
     name: "Receiver",
     email: "receiver@banded.com",
     password: "123456",
-    location: "Montreal"
+    location: "Montreal, Canada"
   )
 
   receiver.photo.attach(

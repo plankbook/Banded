@@ -14,7 +14,7 @@
       <% end %>
       </div>
       <div>
-        <h2 class="project-title"><%= project.name %></h2>
+        <h2 class="project-title"><%= project.name.truncate(18) %></h2>
         <p class="project-location">
           <% if project.users.exists? %>
             <%= project.users.first.location %>

@@ -9,7 +9,7 @@
 <div class='container-profile'>
   <% if @artist.photo.key? %>
     <div class="profil-picture">
-      <img class="profil" <%= cl_image_tag @artist.photo.key, height: 300, width: 300, crop: :fill %>
+      <%= cl_image_tag @artist.photo.key, height: 300, width: 300, crop: :fill, class: "profil" %>
       <%= image_tag "connection-status/circle-48.png", class:"connected" %>
     </div>
   <% end %>

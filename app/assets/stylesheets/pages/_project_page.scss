@@ -89,3 +89,38 @@
     }
   }
 }
+
+.project-page-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* border: 2px solid black; */
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  // padding: 30px;
+  column-gap: 30px;
+  width: 1318px;
+  margin: auto;
+
+  .project-section {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    border-radius: 10px;
+    width: 460px;
+  }
+}
+
+.container-project {
+  max-width: 1728px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.project-section-header {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.project-suggested-musicians {
+  height: 200px;
+  border: 2px solid black;
+}

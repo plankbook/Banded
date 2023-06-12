@@ -1,12 +1,13 @@
 <head>
   <title>
-  Here is the project page
-</title>
+    Here is the project page
+  </title>
 </head>
 
 <div
   data-controller="project-subscription"
   data-project-subscription-project-id-value="<%= @project.id %>"
+  class='container-project'
 >
   <div class="project-page-top">
     <div class="project-page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://image.cnbcfm.com/api/v1/image/106276188-1575391129046gettyimages-592255768.jpeg?v=1575577835&w=740&h=416&ffmt=webp&vtcrop=y)">
@@ -85,36 +86,62 @@
   <!-- Lines that i've commented out - Arnaud -->
   <%#= button_to "Edit project", edit_user_project_path(current_user, @project), class:"btn btn-flat"%>
   <%#= button_to "Delete project", user_project_path(current_user, @project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-flat" %>
+  <div class="project-page-bottom">
 
-  <div class="posts">
-    <div class="create-post-outer">
-      <div class="create-post-user">
-        <%= cl_image_tag current_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "profile-user avatar-bordered-profile" %>
-        <small>
-          <strong><%= current_user.name %></strong>
-        </small>
+    <div class='my-media project-section'>
+      <h4 class="project-section-header">Project Files</h4>
+      <div class='media'>
+        <div class='audio-video'>
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/the-frights" title="The Frights" target="_blank" style="color: #cccccc; text-decoration: none;">The Frights</a> · <a href="https://soundcloud.com/the-frights/the-drummers-in-trouble" title="The Drummer’s in Trouble!" target="_blank" style="color: #cccccc; text-decoration: none;">The Drummer’s in Trouble!</a></div><iframe width="400" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1473042775&color=%23d6b89a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/patrick-drummer" title="Patrick Drummer" target="_blank" style="color: #cccccc; text-decoration: none;">Patrick Drummer</a> · <a href="https://soundcloud.com/patrick-drummer/system-of-a-down-chop-suey" title="System of a down - Chop Suey" target="_blank" style="color: #cccccc; text-decoration: none;">System of a down - Chop Suey</a></div>
+          <iframe width="400" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/136841533&color=%23d6b89a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/FqJdzYY_Fas?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/h6b8cRrIz6o?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
       </div>
-      <div class="create-post-card">
-        <%= simple_form_for [@project, @post],
-        html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
-        class: "post-form"} do |f|
-        %>
-          <%= f.input :content,
-            label: false,
-            placeholder: "Post ##{@project.name}",
-            wrapper_html: {class: "flex-grow-1"}
+    </div>
+
+    <div class="posts">
+      <div class="create-post-outer">
+        <div class="create-post-user">
+          <%= cl_image_tag current_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "profile-user avatar-bordered-profile" %>
+          <small>
+            <strong><%= current_user.name %></strong>
+          </small>
+        </div>
+        <div class="create-post-card">
+          <%= simple_form_for [@project, @post],
+          html: { data: { action: "turbo:submit-end->project-subscription#resetForm" },
+          class: "post-form"} do |f|
           %>
-          <%= f.submit "Post", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
+            <%= f.input :content,
+              label: false,
+              placeholder: "Post ##{@project.name}",
+              wrapper_html: {class: "flex-grow-1"}
+            %>
+            <%= f.submit "Post", class: "btn btn-sm btn-success mb-3 rounded-pill" %>
+          <% end %>
+        </div>
+      </div>
+      <div data-project-subscription-target="posts">
+        <div class="recent-activity-label">
+          RECENT ACTIVITY
+        </div>
+        <% @project.posts.each do |post| %>
+          <%= render "posts/post", post: post %>
         <% end %>
       </div>
     </div>
-    <div data-project-subscription-target="posts">
-      <div class="recent-activity-label">
-        RECENT ACTIVITY
-      </div>
-      <% @project.posts.each do |post| %>
-        <%= render "posts/post", post: post %>
-      <% end %>
+    <div class="project-suggested-musicians">
     </div>
   </div>
 </div>
