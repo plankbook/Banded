@@ -169,22 +169,22 @@ puts "🪆 It's Robert's turn."
   )
 
   robert.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/robert.jpg"), filename: "avatar.jpg")
-  all_instruments.sample((rand(1..6))).each do |instrument|
-    UserInstrument.create!(
+  # all_instruments.sample((rand(1..6))).each do |instrument|
+  #   UserInstrument.create!(
 
-      proficiency: all_proficiencies.sample,
+  #     proficiency: all_proficiencies.sample,
 
-      user: robert,
-      instrument:
-    )
-  end
+  #     user: robert,
+  #     instrument:
+  #   )
+  # end
 
-  all_genres.sample((rand(1..5))).each do |genre|
-    UserGenre.create!(
-      user: robert,
-      genre:
-    )
-  end
+  # all_genres.sample((rand(1..5))).each do |genre|
+  #   UserGenre.create!(
+  #     user: robert,
+  #     genre:
+  #   )
+  # end
 
   all_projects.sample((rand(1..5))).each do |project|
     UserProject.create!(
@@ -381,7 +381,7 @@ puts "10 messages are getting created"
   puts "Sample Messages created!"
 
 puts "Posts and comments are getting attached to projects"
-    all_projects.each do |project|
+  all_projects.each do |project|
     10.times do
       post = Post.create(
         content: Faker::Quote.famous_last_words,
@@ -397,9 +397,72 @@ puts "Posts and comments are getting attached to projects"
       end
     end
   end
-
   puts "Sample posts and comments are created!"
 
+puts 'Genres for Robert are getting created'
+  UserGenre.create!(
+    user: robert,
+    genre: Genre.find_by(name: 'Blues')
+  )
+
+  UserGenre.create!(
+    user: robert,
+    genre: Genre.find_by(name: 'Jazz')
+  )
+
+  UserGenre.create!(
+    user: robert,
+    genre: Genre.find_by(name: 'Rock')
+  )
+
+  UserGenre.create!(
+    user: robert,
+    genre: Genre.find_by(name: 'Folk')
+  )
+
+  UserGenre.create!(
+    user: robert,
+    genre: Genre.find_by(name: 'Pop')
+  )
+
+  UserGenre.create!(
+    user: robert,
+    genre: Genre.find_by(name: 'Electro')
+  )
+
+  puts 'Robert now has 6 genre pills'
+puts 'Instruments for Robert are getting created'
+  UserInstrument.create!(
+    proficiency: 'God',
+    user: robert,
+    instrument: Instrument.find_by(name: 'Drums')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: robert,
+    instrument: Instrument.find_by(name: 'Guitar')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: robert,
+    instrument: Instrument.find_by(name: 'Violin')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: robert,
+    instrument: Instrument.find_by(name: 'Banjo')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: robert,
+    instrument: Instrument.find_by(name: 'Maracas')
+  )
+
+  puts 'Robert now plays at least 5 instruments, one of which is drums.'
 
 puts 'Genres for Chris are getting created'
   UserGenre.create!(
@@ -435,9 +498,9 @@ puts 'Genres for Chris are getting created'
   puts 'Chris can now pop at least 6 pills... OF GENRES'
 puts 'Instruments for Chris are getting created'
   UserInstrument.create!(
-    proficiency: all_proficiencies.sample,
+    proficiency: 'God',
     user: chris,
-    instrument: Instrument.find_by(name: 'Piano')
+    instrument: Instrument.find_by(name: 'Accordion')
   )
 
   UserInstrument.create!(
@@ -464,7 +527,8 @@ puts 'Instruments for Chris are getting created'
     instrument: Instrument.find_by(name: 'Maracas')
   )
 
-  puts 'Chris now plays at least 4 instruments.'
+  puts 'Chris now plays 5 instruments, none of which is drums.'
+
 puts "Connections for Chris are getting created"
   Connection.create!(
     requester: chris,
