@@ -28,14 +28,14 @@ puts 'Creating instruments'
 
 puts 'Create genres'
   genre_list = [
-    { name: 'Jazz', colour: '#aaad34' },
-    { name: 'Rock', colour: '#EA906C' },
-    { name: 'Folk', colour: '#7276b8' },
-    { name: 'Pop', colour: '#FF78C4' },
-    { name: 'RnB', colour: '#8c9e72' },
-    { name: 'Rap', colour: '#7BB146' },
-    { name: 'Blues', colour: '#86a4bf' },
-    { name: 'Electro', colour: '#FA8E8E' }
+    { name: 'Jazz', colour: '#FAD2AD' },
+    { name: 'Rock', colour: '#E0D8DD' },
+    { name: 'Folk', colour: '#FFD46A' },
+    { name: 'Pop', colour: '#FA8E8E' },
+    { name: 'RnB', colour: '#AFD1EF' },
+    { name: 'Rap', colour: '#B1A9FF' },
+    { name: 'Blues', colour: '#6d9eeb' },
+    { name: 'Electro', colour: '#c27ba0' }
   ]
 
   genre_list.each do |genre|
