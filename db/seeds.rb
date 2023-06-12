@@ -1,6 +1,7 @@
 require 'faker'
 
 puts "Database clean-up"
+  Notification.delete_all
   Comment.delete_all
   Post.delete_all
   UserProject.delete_all
