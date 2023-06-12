@@ -54,7 +54,7 @@
   <div class="container-fluid connection-type">
     <div><h2 class=connections_title><span class="my">My</span> Connections</h2></div>
     <div class="my-connection-cards">
-      <% my_connections.each do |connection| %>
+      <% my_connections.order(updated_at: :desc).each do |connection| %>
         <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
       <div class="my-connection-card">
         <div class="connection-top">

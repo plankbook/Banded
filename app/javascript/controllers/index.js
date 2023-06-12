@@ -27,3 +27,6 @@ application.register("reveal-comments", RevealCommentsController)
 
 import SubmitConnectionRequestController from "./submit_connection_request_controller"
 application.register("submit-connection-request", SubmitConnectionRequestController)
+
+import UpdateNotificationsController from "./update_notifications_controller"
+application.register("update-notifications", UpdateNotificationsController)

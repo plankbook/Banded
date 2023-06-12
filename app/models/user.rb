@@ -26,4 +26,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :user_instruments, reject_if: :all_blank, allow_destroy: true
   has_one_attached :photo
   has_many_attached :media
+
+  has_many :notifications, as: :recipient, dependent: :destroy
 end
