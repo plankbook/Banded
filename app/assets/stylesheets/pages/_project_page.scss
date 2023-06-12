@@ -89,3 +89,56 @@
     }
   }
 }
+
+.project-page-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* border: 2px solid black; */
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  // padding: 30px;
+  column-gap: 30px;
+  width: 1318px;
+  margin: 50px auto;
+
+  .project-section {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    border-radius: 10px;
+    width: 345px;
+    height: 800px;
+  }
+}
+
+.container-project {
+  max-width: 1728px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.project-section-header {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.project-calendar {
+  // height: 210px;
+  // // border: 2px solid black;
+  // background-color: #e1e1e1;
+  // border-radius: 5px;
+}
+
+.project-media {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#calendarTitle {
+  font-family: Arial,sans-serif;
+  font-weight: bold;
+  padding-left: 4px;
+  margin-bottom: 10px;
+}

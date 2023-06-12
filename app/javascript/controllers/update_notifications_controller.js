@@ -25,9 +25,11 @@ export default class extends Controller {
 
   updateUnreadCount(count) {
     this.notificationsCountTarget.innerText = count >= 9 ? "9+" : count;
+    this.notificationsCountTarget.classList.add("badge", "rounded-pill", "bg-danger");
   }
 
   updateCount() {
     this.notificationsCountTarget.innerText = 0;
+    this.notificationsCountTarget.classList.remove("badge", "rounded-pill", "bg-danger");
   }
 }

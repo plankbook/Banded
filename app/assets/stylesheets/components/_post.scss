@@ -1,5 +1,5 @@
 .posts {
-  margin: 20px auto;
+  // margin: 20px auto;
   width: 600px;
   .post-row {
     margin-bottom: 10px;
@@ -46,6 +46,7 @@
       border-radius: 5px;
       padding: 8px;
       min-height: 80px;
+      height: 150px;
     }
 
     .comments-link {

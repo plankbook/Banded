@@ -76,7 +76,7 @@
       justify-content: space-between;
       .genre-pill {
         width: 48px;
-        height: 14px;
+        height: 19px;
         // background-color: "#{@artists.first.genres.first.colour}";
         border-radius: 10px;
         display: flex;
@@ -86,7 +86,7 @@
         margin: auto;
         font-size: 13px;
         color: white;
-        font-weight: bold;
+        font-weight: 500;
       }
     }
   }
