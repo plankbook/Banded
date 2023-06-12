@@ -12,6 +12,7 @@ puts "Database clean-up"
   Connection.delete_all
   Instrument.delete_all
   User.delete_all
+  Notification.delete_all
 
 puts 'Creating instruments'
   instrument_list = ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Trumpet', 'Banjo', 'Accordion', 'Maracas']
