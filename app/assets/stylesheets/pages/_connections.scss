@@ -1,6 +1,10 @@
 .connections-container {
-  max-width: 524px;
-  margin: 0 auto;
+  max-width: 940px;
+  margin: 15px auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
 }
 
 .connections_title {
@@ -8,20 +12,31 @@
   font-weight: 700;
 
   .my {
-      color: #90C8AC;
+    color: #90C8AC;
   }
 
   .requests {
-      color: #FFBE5B;
-      // color: #FB651E;
+    color: #FFBE5B;
+    // color: #FB651E;
   }
 
   .pending {
-      color: #7BB146;
+    color: #7BB146;
   }
 }
 
 .connection-type {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  padding-left: 30px;
+  border-radius: 5px;
+  padding-right: 30px;
+  padding-top: 15px;
+  background-color: #F0F0F0;
+}
+
+.not-mine {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
 }
