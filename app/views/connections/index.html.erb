@@ -1,79 +1,81 @@
 <div class='connections-container'>
-
-  <div class="container-fluid connection-type">
-    <div><h2 class=connections_title>Connection <span class="requests">Requests</span></h2></div>
-    <div class="my-connection-cards">
-      <% connections_requested.each do |connection| %>
-        <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
-      <div class="my-connection-card">
-        <div class="connection-top">
-          <% if user.photo.key? %>
-            <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
-          <% else %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
-          <% end %>
-          <div>
-            <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
-            <p class="connection-location"><%= user.location %></p>
+  <div class='not-mine'>
+    <div class="container-fluid connection-type">
+      <div><h2 class=connections_title>Connection <span class="requests">Requests</span></h2></div>
+      <div class="my-connection-cards">
+        <% connections_requested.each do |connection| %>
+          <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
+        <div class="my-connection-card">
+          <div class="connection-top">
+            <% if user.photo.key? %>
+              <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
+            <% end %>
+            <div>
+              <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
+              <p class="connection-location"><%= user.location %></p>
+            </div>
           </div>
-        </div>
-        <div class="connection-buttons">
-          <%= button_to "Cancel", connection_reject_path(connection), class: "btn btn-success btn-sm m-2", method: :patch %>
-        </div>
+          <div class="connection-buttons">
+            <%= button_to "Cancel", connection_reject_path(connection), class: "btn btn-success btn-sm m-2", method: :patch %>
+          </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="container-fluid connection-type">
+      <div><h2 class=connections_title><span class="pending">Pending</span> Connections</h2></div>
+      <div class="my-connection-cards">
+        <% connections_received.each do |connection| %>
+          <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
+        <div class="my-connection-card">
+          <div class="connection-top">
+            <% if user.photo.key? %>
+              <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
+            <% end %>
+            <div>
+              <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
+              <p class="connection-location"><%= user.location %></p>
+            </div>
+          </div>
+      <div class="connection-buttons">
+        <%= button_to "Accept", connection_accept_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
+        <%= button_to "Decline", connection_reject_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
+      </div>
         </div>
       <% end %>
+      </div>
     </div>
   </div>
 
-  <div class="container-fluid connection-type">
-    <div><h2 class=connections_title><span class="pending">Pending</span> Connections</h2></div>
-    <div class="my-connection-cards">
-      <% connections_received.each do |connection| %>
-        <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
-      <div class="my-connection-card">
-        <div class="connection-top">
-          <% if user.photo.key? %>
-            <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
-          <% else %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
-          <% end %>
-          <div>
-            <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
-            <p class="connection-location"><%= user.location %></p>
+  <div class='mine'>
+    <div class="container-fluid connection-type">
+      <div><h2 class=connections_title><span class="my">My</span> Connections</h2></div>
+      <div class="my-connection-cards">
+        <% my_connections.order(updated_at: :desc).each do |connection| %>
+          <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
+        <div class="my-connection-card">
+          <div class="connection-top">
+            <% if user.photo.key? %>
+              <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
+            <% else %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
+            <% end %>
+            <div>
+              <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
+              <p class="connection-location"><%= user.location %></p>
+            </div>
+          </div>
+          <div class="connection-buttons" style='padding-right: 20px'>
+            <%= link_to icon("fa-regular", "envelope-open"), connection_path(connection) %>
           </div>
         </div>
-    <div class="connection-buttons">
-      <%= button_to "Accept", connection_accept_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
-      <%= button_to "Decline", connection_reject_path(connection), class: "btn btn-success btn-sm m-2" , method: :patch %>
-    </div>
+      <% end %>
       </div>
-    <% end %>
     </div>
   </div>
-
-  <div class="container-fluid connection-type">
-    <div><h2 class=connections_title><span class="my">My</span> Connections</h2></div>
-    <div class="my-connection-cards">
-      <% my_connections.order(updated_at: :desc).each do |connection| %>
-        <% user = current_user.id == connection.receiver_id ? connection.requester : connection.receiver %>
-      <div class="my-connection-card">
-        <div class="connection-top">
-          <% if user.photo.key? %>
-            <%= cl_image_tag user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "connection-user avatar-bordered-profile" %>
-          <% else %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="connection-user avatar-bordered-profile" />
-          <% end %>
-          <div>
-            <h2 class="connection-title"><%= link_to user.name, artist_path(user) %></h2>
-            <p class="connection-location"><%= user.location %></p>
-          </div>
-        </div>
-        <div class="connection-buttons" style='padding-right: 20px'>
-          <%= link_to icon("fa-regular", "envelope-open"), connection_path(connection) %>
-        </div>
-      </div>
-    <% end %>
-    </div>
-  </div>
-
 </div>
