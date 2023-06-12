@@ -432,14 +432,39 @@ puts 'Genres for Chris are getting created'
     genre: Genre.find_by(name: 'Electro')
   )
 
+  puts 'Chris can now pop at least 6 pills... OF GENRES'
 puts 'Instruments for Chris are getting created'
-UserInstrument.create!(
-  proficiency: all_proficiencies.sample,
-  user: chris,
-  instrument: Instrument.find_by(name: )
-)
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Piano')
+  )
 
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Guitar')
+  )
 
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Violin')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Banjo')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: chris,
+    instrument: Instrument.find_by(name: 'Maracas')
+  )
+
+  puts 'Chris now plays at least 4 instruments.'
 puts "Connections for Chris are getting created"
   Connection.create!(
     requester: chris,
@@ -484,4 +509,4 @@ puts "Connections for Chris are getting created"
     every_user.delete(x)
     puts "Connection #{connection.id} is created!"
   end
-  puts "Connections for Chris are created."
+  puts "Random connections for Chris are created. He's also connected to Arnaud and Emre. But not Robert. Robert doesn't deserve this connection... yet!"
