@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :age, :location, :bio, :phone, :gender, :genres, :photo, media: [], user_instruments_attributes: %i[id instrument_id proficiency _destroy]])
   end
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
   private
 
   def set_notifications
