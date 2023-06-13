@@ -30,3 +30,7 @@ img.img_preview{
 .dropdown-toggle::after {
   display: none;
 }
+
+.navbar {
+  --bs-navbar-padding-y: 0.2rem;
+}
