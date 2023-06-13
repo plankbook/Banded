@@ -17,9 +17,9 @@
         <h2 class="project-title"><%= project.name.truncate(18) %></h2>
         <p class="project-location">
           <% if project.users.exists? %>
-            <%= project.users.first.location %>
+            <%= project.users.first.location %>, Canada
           <% else %>
-            Montreal
+            Montreal, Canada
           <% end %>
         </p>
       </div>
