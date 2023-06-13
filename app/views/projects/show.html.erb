@@ -24,6 +24,7 @@
           <div>
             <% @project.users.first(4).each do |project_user| %>
               <%#= image_tag project_user.photo %>
+              <%# raise %>
               <%= cl_image_tag project_user.photo.key, :gravity=>"face", :radius=>"max", :crop=>"fill", class: "project-page-user avatar-bordered-project-page" %>
             <% end %>
           </div>
