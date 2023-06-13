@@ -218,7 +218,7 @@ puts "🍁 Hi, Chris!"
   #   )
   # end
 
-  all_projects.sample((rand(1..5))).each do |project|
+  all_projects.sample(6).each do |project|
     UserProject.create!(
       user: chris,
       project:,
@@ -575,4 +575,51 @@ puts "Connections for Chris are getting created"
     every_user.delete(x)
     puts "Connection #{connection.id} is created!"
   end
-  puts "Random connections for Chris are created. He's also connected to Arnaud and Emre. But not Robert. Robert doesn't deserve this connection... yet!"
+  puts "Random connections for Chris are created. He's also connected to Arnaud and Emre. But not Robert :/"
+
+puts "Projects for Chris are getting created"
+  project_banners_chris = Dir.glob(Rails.root.join('app', 'assets', 'images', 'project-banners-chris', '*.jpg'))
+
+  puts "1. Fluctuating Manpower"
+
+  project = Project.create(
+    name: 'Fluctuating Manpower',
+    bio: "We're three artists and we've been putting together a song. The melody is solid but the lyrics need major rework, but we still have time before we focus on that. We currently need a fast and steady drummer who will have to provide a confident beat for the song to work, so don't hesitate to connect if you're interested! Saxophone already provides a great solo - there's a major possibility sax + drums might overshadow the piano, but we will deal with this during mix."
+    )
+    
+    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+  
+    UserProject.create(
+      project: ,
+      user: chris
+    )
+
+    UserProject.create(
+      project: ,
+      user: arnaud
+    )
+    
+    UserProject.create(
+      project: ,
+      user: emre
+    )
+
+  puts "Fluctuating Manpower created with Arnaud and Emre. Rob will be added to this project in the demo."
+
+  puts "Posts and comments are getting created for Fluctuating Manpower"
+    10.times do
+      post = Post.create(
+        content: Faker::Quote.famous_last_words,
+        project:,
+        sender: [chris, arnaud, emre].sample
+      )
+      10.times do
+        Comment.create(
+          content: Faker::Quote.famous_last_words,
+          post:,
+          sender: [chris, arnaud, emre].sample
+        )
+      end
+    end
+  
+  puts "Posts and comments are created for Fluctuating Manpower"
