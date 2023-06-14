@@ -10,8 +10,12 @@ class ConnectionsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @connection = Connection.create(requester: current_user, receiver: @user)
-
+    @connection = Connection.new(requester: current_user, receiver: @user)
+    respond_to do |format|
+      if @connection.save
+        format.html
+        format.json { render json: { success: true } }
+      end
     # to pick up for AJAX submit connect requests
     # respond_to do |format|
     #   format.html
