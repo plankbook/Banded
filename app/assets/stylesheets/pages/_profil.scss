@@ -60,10 +60,19 @@ img.connected {
   flex-direction: column;
 }
 
-.instrument .proficiency{
-  display: block;
-  margin: 20px;
-  padding-inline: 50px;
+.instrument {
+  // display: block;
+  // margin: 20px;
+  // padding-inline: 50px;
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.proficiency {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .btn-ghost {
@@ -194,7 +203,7 @@ p.genre {
 
 .instrument-proficiency {
   font-size: 20px;
-  padding-top: 7px;
+  // padding-top: 7px;
 }
 
 #profile-page-bottom {
@@ -224,4 +233,19 @@ p.genre {
   // border-bottom: 2px solid gray;
   margin-right: -24px;
   margin-left: -24px;
+}
+
+.proficiency-text {
+  p {
+    font-size: 10px;
+    margin-bottom: 0;
+  }
+}
+
+.instrument-stars {
+  font-size: 20px;
+}
+
+.instrument-icon {
+  margin-bottom: 0px;
 }

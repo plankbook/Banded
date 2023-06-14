@@ -44,50 +44,57 @@
           <div class="instrument">
             <% @artist.instruments.each do |instrument| %>
               <div class="instrument-name">
-                  <% if instrument.name == 'Piano' %>
-                    <p class="instrument-icon">🎹</p>
-                  <% elsif instrument.name == 'Guitar' %>
-                    <p class="instrument-icon">🎸</p>
-                  <% elsif instrument.name == 'Violin' %>
-                    <p class="instrument-icon">🎻</p>
-                  <% elsif instrument.name == 'Drums' %>
-                    <p class="instrument-icon">🥁</p>
-                  <% elsif instrument.name == 'Saxophone' %>
-                    <p class="instrument-icon">🎷</p>
-                  <% elsif instrument.name == 'Flute' %>
-                    <p class="instrument-icon">🪈</p>
-                  <% elsif instrument.name == 'Trumpet' %>
-                    <p class="instrument-icon">🎺</p>
-                  <% elsif instrument.name == 'Banjo' %>
-                    <p class="instrument-icon">🪕</p>
-                  <% elsif instrument.name == 'Accordion' %>
-                    <p class="instrument-icon">🪗</p>
-                  <% elsif instrument.name == 'Maracas' %>
-                    <p class="instrument-icon">🪇</p>
-                  <% end %>
+                <% if instrument.name == 'Piano' %>
+                  <p class="instrument-icon">🎹</p>
+                <% elsif instrument.name == 'Guitar' %>
+                  <p class="instrument-icon">🎸</p>
+                <% elsif instrument.name == 'Violin' %>
+                  <p class="instrument-icon">🎻</p>
+                <% elsif instrument.name == 'Drums' %>
+                  <p class="instrument-icon">🥁</p>
+                <% elsif instrument.name == 'Saxophone' %>
+                  <p class="instrument-icon">🎷</p>
+                <% elsif instrument.name == 'Flute' %>
+                  <p class="instrument-icon">🪈</p>
+                <% elsif instrument.name == 'Trumpet' %>
+                  <p class="instrument-icon">🎺</p>
+                <% elsif instrument.name == 'Banjo' %>
+                  <p class="instrument-icon">🪕</p>
+                <% elsif instrument.name == 'Accordion' %>
+                  <p class="instrument-icon">🪗</p>
+                <% elsif instrument.name == 'Maracas' %>
+                  <p class="instrument-icon">🪇</p>
+                <% end %>
               </div>
             <% end %>
           </div>
           <div class="proficiency">
             <% @artist.instruments.each do |instrument| %>
+              
               <div class="instrument-proficiency">
+                <div class='proficiency-text'>
+                  <p><%= @my_instruments.where(instrument_id: instrument.id).first.proficiency %></p>
+                  <%# raise %>
+                </div>
                 <% if @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Beginner' %>
-                  <p class="instrument-icon">★<span style='color: lightgrey'>☆☆☆☆</span></p>
+                  <p class="instrument-stars">★<span style='color: lightgrey'>☆☆☆☆</span></p>
                 <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Intermediate' %>
-                  <p class="instrument-icon">★★<span style='color: lightgrey'>☆☆☆</span></p>
+                  <p class="instrument-stars">★★<span style='color: lightgrey'>☆☆☆</span></p>
                 <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Professional' %>
-                  <p class="instrument-icon">★★★<span style='color: lightgrey'>☆☆</span></p>
+                  <p class="instrument-stars">★★★<span style='color: lightgrey'>☆☆</span></p>
                 <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'Expert' %>
-                  <p class="instrument-icon">★★★★<span style='color: lightgrey'>☆</span></p>
+                  <p class="instrument-stars">★★★★<span style='color: lightgrey'>☆</span></p>
                 <% elsif @my_instruments.where(instrument_id: instrument.id).first.proficiency == 'God' %>
-                  <p class="instrument-icon">★★★★★</p>
+                  <p class="instrument-stars">★★★★★</p>
                 <% end %>
               </div>
             <% end %>
           </div>
         </div>
+          
       </div>
     </div>
+
 
     <div class='my-media profile-section'>
       <h4 class="section-header">My Media</h4>
@@ -111,6 +118,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <%#= link_to "My connections", connections_path %>
