@@ -71,7 +71,7 @@
           </div>
           <div class="proficiency">
             <% @artist.instruments.each do |instrument| %>
-              
+
               <div class="instrument-proficiency">
                 <div class='proficiency-text'>
                   <p><%= @my_instruments.where(instrument_id: instrument.id).first.proficiency %></p>
@@ -92,7 +92,7 @@
             <% end %>
           </div>
         </div>
-          
+
       </div>
     </div>
 
