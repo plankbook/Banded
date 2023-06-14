@@ -126,7 +126,7 @@ puts "🥖 Arnaud is being born!"
     name: 'Arnaud Lecorvaisier',
     email: 'arnaud@banded.com',
     password: '123456',
-    location: "Montreal, Canada",
+    location: "Montreal",
     age: 33,
     bio: "I'm working in logistics and I discovered progamming through vba with Microsoft office which was really interesting. To change my career has always been in a side of my head since that moment and I decided to move on this year by doing this bootcamp. I'm sure that I will learn a lot of new skills and meet a lot of interesting people !!"
   )
@@ -165,7 +165,7 @@ puts "🪆 It's Robert's turn."
     name: 'Robert Li',
     email: 'robert@banded.com',
     password: '123456',
-    location: "Montreal, Canada",
+    location: "Montreal",
     age: 27,
     bio: 'My name is Robert Li! I currently work as a Revenue Operations Manager at Zendesk. Even though my academic background is in Finance and Mathematics, I was always fascinated by the technology and the computer science field, so I decided to join Le Wagon to build my coding skillset and dive deeper into that industry.'
   )
@@ -203,7 +203,7 @@ puts "🍁 Hi, Chris!"
     name: 'Chris Kyras',
     email: 'chris@banded.com',
     password: '123456',
-    location: "Montreal, Canada",
+    location: "Montreal",
     age: 35,
     bio: "Passionate entrepreneur Y Combinator alum with a focus on building things to positively disrupt people's lives for good, with a particular focus on fintech and retail."
   )
@@ -233,7 +233,7 @@ puts "🏳️‍🌈 It's pronounced 'Aimerais'"
     name: 'Emre Özen',
     email: 'emre@banded.com',
     password: '123456',
-    location: "Montreal, Canada",
+    location: "Montreal",
     age: 900,
     bio: 'Translator and project manager'
   )
@@ -273,7 +273,7 @@ puts "Creating new users..."
       email: "#{Faker::Music.unique.chord}@gmail.com",
       password: '123456',
       age: Faker::Number.between(from: 18, to: 65),
-      location: ['Montreal, Canada', 'Quebec City, Canada', 'Toronto, Canada', 'Laval, Canada', 'Vancouver, Canada', 'Longueuil, Canada', 'Calgary, Canada'].sample,
+      location: ['Montreal', 'Quebec City', 'Toronto', 'Laval', 'Vancouver', 'Longueuil', 'Calgary'].sample,
       bio: user_bios.shuffle!.pop,
       phone: Faker::PhoneNumber.cell_phone,
       gender: ['male', 'female', 'other'].sample,
@@ -333,73 +333,73 @@ puts "Creating new users..."
     end
   puts "#{User.count} artists created"
 
-puts "Requester is getting created!"
-  requester = User.create!(
-    name: "Requester",
-    email: "requester@banded.com",
-    password: "123456",
-    location: "Laval, Canada"
-  )
+# puts "Requester is getting created!"
+#   requester = User.create!(
+#     name: "Requester",
+#     email: "requester@banded.com",
+#     password: "123456",
+#     location: "Laval"
+#   )
 
-  requester.photo.attach(
-    filename: 'avatar.jpg',
-    io: URI.open('https://avatars.githubusercontent.com/u/117036801')
-  )
+#   requester.photo.attach(
+#     filename: 'avatar.jpg',
+#     io: URI.open('https://avatars.githubusercontent.com/u/117036801')
+#   )
 
-  puts "Requester User is created!"
+#   puts "Requester User is created!"
 
-puts "Receiver is getting created!"
-    receiver = User.create!(
-    name: "Receiver",
-    email: "receiver@banded.com",
-    password: "123456",
-    location: "Montreal, Canada"
-  )
+# puts "Receiver is getting created!"
+#     receiver = User.create!(
+#     name: "Receiver",
+#     email: "receiver@banded.com",
+#     password: "123456",
+#     location: "Montreal"
+#   )
 
-  receiver.photo.attach(
-    filename: 'avatar.jpg',
-    io: URI.open('https://avatars.githubusercontent.com/u/121645038')
-  )
+#   receiver.photo.attach(
+#     filename: 'avatar.jpg',
+#     io: URI.open('https://avatars.githubusercontent.com/u/121645038')
+#   )
 
-  puts "Receiver User is created!"
+#   puts "Receiver User is created!"
 
-puts "Connection between requester and receiver is getting created"
-  connection = Connection.create!(
-    requester:,
-    receiver:,
-    status: "accepted"
-  )
-  puts "Connection #{connection.id} is created!"
+# puts "Connection between requester and receiver is getting created"
+#   connection = Connection.create!(
+#     requester:,
+#     receiver:,
+#     status: "accepted"
+#   )
+#   puts "Connection #{connection.id} is created!"
 
-puts "10 messages are getting created"
-    10.times do
-    Message.create(
-      content: Faker::Quote.famous_last_words,
-      connection:,
-      sender: [requester, receiver].sample
-    )
-  end
+# puts "10 messages are getting created"
+#     10.times do
+#     Message.create(
+#       content: Faker::Quote.famous_last_words,
+#       connection:,
+#       sender: [requester, receiver].sample
+#     )
+#   end
 
-  puts "Sample Messages created!"
+#   puts "Sample Messages created!"
 
-puts "Posts and comments are getting attached to projects"
-  all_projects.each do |project|
-    10.times do
-      post = Post.create(
-        content: Faker::Quote.famous_last_words,
-        project:,
-        sender: [requester, receiver].sample
-      )
-      10.times do
-        Comment.create(
-          content: Faker::Quote.famous_last_words,
-          post:,
-          sender: [requester, receiver].sample
-        )
-      end
-    end
-  end
-  puts "Sample posts and comments are created!"
+# puts "Posts and comments are getting attached to projects"
+#   all_projects.each do |project|
+#     10.times do
+#       post = Post.create(
+#         content: Faker::Quote.famous_last_words,
+#         project:,
+#         sender: [requester, receiver].sample
+#       )
+#       10.times do
+#         Comment.create(
+#           content: Faker::Quote.famous_last_words,
+#           post:,
+#           sender: [requester, receiver].sample
+#         )
+#       end
+#     end
+#   end
+#   puts "Sample posts and comments are created!"
 
 puts 'Genres for Robert are getting created'
   UserGenre.create!(
