@@ -19,7 +19,8 @@
       <h1><%= @artist.name %></h1>
       <p class='location'><%= @artist.location %></p>
     </div>
-    <%= button_to "Connect", user_connections_path(@artist), class:"btn btn-flat"%>
+    <%= button_to "Connect", user_connections_path(@artist),
+    { style: "border-radius: 6px;", class: "btn btn-success btn-lg m-2", "data-controller": "button", "data-button-target": "button", "data-action": "click->button#disable" }%>
   </div>
   <p class='bio'><%= @artist.bio %></p>
 

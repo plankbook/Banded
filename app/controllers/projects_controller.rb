@@ -49,7 +49,12 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @user = User.find(params[:user_id])
     @project.users << @user
-    @project.save
+    respond_to do |format|
+      if @project.save
+        format.html
+        format.json { render json: { success: true } }
+      end
+    end
   end
 
   private

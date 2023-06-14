@@ -74,7 +74,7 @@
                 </div>
                 <div class="connection-buttons">
                   <%= button_to "Add", add_user_project_path(@project, user_id: user.id),
-                  { class: "btn btn-success btn-sm m-2", "data-controller": "button1", "data-button-target": "addProjectUserButton", "data-action": "click->button#disable" }%>
+                  { class: "btn btn-success btn-sm m-2", "data-controller": "button", "data-button-target": "button", "data-action": "click->button#disable" }%>
                 </div>
               </div>
             <% end %>
