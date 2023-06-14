@@ -10,6 +10,6 @@ export default class extends Controller {
   }
 
   disable() {
-    this.addProjectUserButtonTarget.disabled = true;
+    this.addProjectUserButtonTarget.classList.add("submitted");
   }
 }

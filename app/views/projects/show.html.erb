@@ -12,7 +12,7 @@
   <div class="project-page-top">
     <%# <div class="project-page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://image.cnbcfm.com/api/v1/image/106276188-1575391129046gettyimages-592255768.jpeg?v=1575577835&w=740&h=416&ffmt=webp&vtcrop=y)"> %>
     <div class="project-page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @project.photo.url %>)">
-    
+
       <div class="project-page-basic-info">
         <p class="project-page-name"><%= @project.name %></p>
         <p class="project-page-location">Montreal, Canada</p>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="connection-buttons">
                   <%= button_to "Add", add_user_project_path(@project, user_id: user.id),
-                  { class: "btn btn-success btn-sm m-2", "data-controller": "button", "data-button-target": "addProjectUserButton", "data-action": "click->button#disable" }%>
+                  { class: "btn btn-success btn-sm m-2", "data-controller": "button1", "data-button-target": "addProjectUserButton", "data-action": "click->button#disable" }%>
                 </div>
               </div>
             <% end %>
