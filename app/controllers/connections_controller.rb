@@ -16,6 +16,7 @@ class ConnectionsController < ApplicationController
         format.html
         format.json { render json: { success: true } }
       end
+    end
     # to pick up for AJAX submit connect requests
     # respond_to do |format|
     #   format.html
