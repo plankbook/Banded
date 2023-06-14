@@ -412,27 +412,7 @@ puts 'Genres for Robert are getting created'
     genre: Genre.find_by(name: 'Jazz')
   )
 
-  UserGenre.create!(
-    user: robert,
-    genre: Genre.find_by(name: 'Rock')
-  )
-
-  UserGenre.create!(
-    user: robert,
-    genre: Genre.find_by(name: 'Folk')
-  )
-
-  UserGenre.create!(
-    user: robert,
-    genre: Genre.find_by(name: 'Pop')
-  )
-
-  UserGenre.create!(
-    user: robert,
-    genre: Genre.find_by(name: 'Electro')
-  )
-
-  puts 'Robert now has 6 genre pills'
+  puts 'Robert now has 2 genre pills: jazz and blues'
 puts 'Instruments for Robert are getting created'
   UserInstrument.create!(
     proficiency: 'God',
@@ -441,28 +421,28 @@ puts 'Instruments for Robert are getting created'
   )
 
   UserInstrument.create!(
-    proficiency: all_proficiencies.sample,
+    proficiency: 'Professional',
     user: robert,
     instrument: Instrument.find_by(name: 'Guitar')
   )
 
-  UserInstrument.create!(
-    proficiency: all_proficiencies.sample,
-    user: robert,
-    instrument: Instrument.find_by(name: 'Violin')
-  )
+  # UserInstrument.create!(
+  #   proficiency: all_proficiencies.sample,
+  #   user: robert,
+  #   instrument: Instrument.find_by(name: 'Violin')
+  # )
 
-  UserInstrument.create!(
-    proficiency: all_proficiencies.sample,
-    user: robert,
-    instrument: Instrument.find_by(name: 'Banjo')
-  )
+  # UserInstrument.create!(
+  #   proficiency: all_proficiencies.sample,
+  #   user: robert,
+  #   instrument: Instrument.find_by(name: 'Banjo')
+  # )
 
-  UserInstrument.create!(
-    proficiency: all_proficiencies.sample,
-    user: robert,
-    instrument: Instrument.find_by(name: 'Maracas')
-  )
+  # UserInstrument.create!(
+  #   proficiency: all_proficiencies.sample,
+  #   user: robert,
+  #   instrument: Instrument.find_by(name: 'Maracas')
+  # )
 
   puts 'Robert now plays at least 5 instruments, one of which is drums.'
 
@@ -580,15 +560,15 @@ puts "Connections for Chris are getting created"
 puts "Projects for Chris are getting created"
   project_banners_chris = Dir.glob(Rails.root.join('app', 'assets', 'images', 'project-banners-chris', '*.jpg'))
 
-  puts "1. Fluctuating Manpower"
+  puts "Fluctuating Manpower"
 
   project = Project.create(
     name: 'Fluctuating Manpower',
     bio: "We're three artists and we've been putting together a song. The melody is solid but the lyrics need major rework, but we still have time before we focus on that. We currently need a fast and steady drummer who will have to provide a confident beat for the song to work, so don't hesitate to connect if you're interested! Saxophone already provides a great solo - there's a major possibility sax + drums might overshadow the piano, but we will deal with this during mix."
     )
-    
+
     project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
-  
+
     UserProject.create(
       project: ,
       user: chris
@@ -598,7 +578,7 @@ puts "Projects for Chris are getting created"
       project: ,
       user: arnaud
     )
-    
+
     UserProject.create(
       project: ,
       user: emre
@@ -621,5 +601,110 @@ puts "Projects for Chris are getting created"
         )
       end
     end
-  
-  puts "Posts and comments are created for Fluctuating Manpower"
+    puts "Posts and comments are created for Fluctuating Manpower"
+
+
+# create instruments for arnaud and emre - avoid drums
+
+
+puts 'Instruments for Arnaud are getting created'
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: arnaud,
+    instrument: Instrument.find_by(name: 'Violin')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: arnaud,
+    instrument: Instrument.find_by(name: 'Banjo')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: arnaud,
+    instrument: Instrument.find_by(name: 'Maracas')
+  )
+
+  puts 'Arnaud now plays 3 instruments, none of which is drums.'
+
+puts 'Instruments for Emre are getting created'
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: emre,
+    instrument: Instrument.find_by(name: 'Saxophone')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: emre,
+    instrument: Instrument.find_by(name: 'Flute')
+  )
+
+  UserInstrument.create!(
+    proficiency: all_proficiencies.sample,
+    user: emre,
+    instrument: Instrument.find_by(name: 'Trumpet')
+  )
+
+  puts 'Emre now plays 3 instruments, none of which is drums.'
+
+# create a profile to view during demo - a bad drummer
+
+puts 'Undesirable drummer incoming'
+  undesirabledrummer = User.create!(
+    name: 'Mathieu Bouchard-Tremblay',
+    email: 'mathieu@banded.com',
+    password: '123456',
+    location: "Montreal",
+    age: 32,
+    bio: "Concert violinist, fed up with strings, looking for a change. I've recently taken up drums and loving it! Don't miss my soulful rendition of Baby Shark."
+  )
+
+  undesirabledrummer.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/undesirabledrummer.jpg"), filename: "avatar.jpg")
+
+  UserInstrument.create!(
+    proficiency: 'Beginner',
+    user: undesirabledrummer,
+    instrument: Instrument.find_by(name: 'Drums')
+  )
+
+  UserInstrument.create!(
+    proficiency: 'God',
+    user: undesirabledrummer,
+    instrument: Instrument.find_by(name: 'Violin')
+  )
+
+  UserInstrument.create!(
+    proficiency: 'Expert',
+    user: undesirabledrummer,
+    instrument: Instrument.find_by(name: 'Guitar')
+  )
+
+  puts 'Genres for Robert are getting created'
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Pop')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Rock')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Folk')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Electro')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'RnB')
+  )
+
+  puts 'Mathieu the Undesirable Drummer now plays the drums very badly.'

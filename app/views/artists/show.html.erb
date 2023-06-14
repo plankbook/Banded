@@ -4,7 +4,16 @@
   </title>
 </head>
 
-<div class="image-theme">
+<div
+  class="image-theme"
+  <% if @artist.name == 'Robert Li' %>
+    style="background-image: url('https://res.cloudinary.com/duqmhxedj/image/upload/v1686779299/development/roberts-banner_ua4ili.jpg')"
+  <% elsif @artist.name == 'Mathieu Bouchard-Tremblay' %>
+    style="background-image: url('https://res.cloudinary.com/duqmhxedj/image/upload/c_crop,g_face,h_1513,w_4773/v1686780979/development/undesirabledrummer_qmzxyh.jpg')"
+  <% else %>
+    style="background-image: url('<%= asset_path('music-band.jpg') %>');"
+  <% end %>
+>
 </div>
 <div class='container-profile'>
   <% if @artist.photo.key? %>
@@ -17,6 +26,7 @@
   <div class='profile-page-top'>
     <div>
       <h1><%= @artist.name %></h1>
+      <%# raise %>
       <p class='location'><%= @artist.location %></p>
     </div>
     <%= button_to "Connect", user_connections_path(@artist),
