@@ -27,6 +27,8 @@ puts 'Creating instruments'
   all_proficiencies = ['Beginner', 'Intermediate', 'Professional', 'Expert', 'God']
   puts "#{Instrument.count} instruments created"
 
+  all_instruments_except_drums = all_instruments.reject { |instrument| instrument.name == 'Drums' }
+
 puts 'Create genres'
   genre_list = [
     { name: 'Jazz', colour: '#FAD2AD' },
@@ -118,9 +120,68 @@ puts "Creating projects"
   puts "Projects created!"
 
 user_avatars = Dir.glob(Rails.root.join('app', 'assets', 'images', 'user-avatars', '*.jpeg'))
+mtl_drummers_avatars = Dir.glob(Rails.root.join('app', 'assets', 'images', 'mtl-drummers-avatars', '*.jpg'))
   # user_photo = Rails.root('app/assets/images/user-avatars/photo-1471565661762-b9dfae862dbe.jpeg')
 
-every_user = [] #this array will have every user in the database except Chris, Robert, Arnaud, Emre
+every_user = [] #this array will have every user in the database except Chris, Robert, Arnaud, Emre, and the Undesirable Drummer
+puts 'Undesirable drummer incoming...'
+  undesirabledrummer = User.create!(
+    name: 'Mathieu Bouchard-Tremblay',
+    email: 'mathieu@banded.com',
+    password: '123456',
+    location: "Montreal",
+    age: 32,
+    bio: "Concert violinist, fed up with strings, looking for a change. I've recently taken up drums and loving it! Don't miss my soulful rendition of Baby Shark."
+  )
+
+  undesirabledrummer.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/undesirabledrummer.jpg"), filename: "avatar.jpg")
+
+  UserInstrument.create!(
+    proficiency: 'Beginner',
+    user: undesirabledrummer,
+    instrument: Instrument.find_by(name: 'Drums')
+  )
+
+  UserInstrument.create!(
+    proficiency: 'God',
+    user: undesirabledrummer,
+    instrument: Instrument.find_by(name: 'Violin')
+  )
+
+  UserInstrument.create!(
+    proficiency: 'Expert',
+    user: undesirabledrummer,
+    instrument: Instrument.find_by(name: 'Guitar')
+  )
+
+  puts 'Genres for Robert are getting created'
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Pop')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Rock')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Folk')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'Electro')
+  )
+
+  UserGenre.create!(
+    user: undesirabledrummer,
+    genre: Genre.find_by(name: 'RnB')
+  )
+
+  puts 'Mathieu the Undesirable Drummer now plays the drums very badly.'
+
 puts "🥖 Arnaud is being born!"
   arnaud = User.create!(
     name: 'Arnaud Lecorvaisier',
@@ -334,72 +395,72 @@ puts "Creating new users..."
   puts "#{User.count} artists created"
 
 # puts "Requester is getting created!"
-#   requester = User.create!(
-#     name: "Requester",
-#     email: "requester@banded.com",
-#     password: "123456",
-#     location: "Laval"
-#   )
+  #   requester = User.create!(
+  #     name: "Requester",
+  #     email: "requester@banded.com",
+  #     password: "123456",
+  #     location: "Laval"
+  #   )
 
-#   requester.photo.attach(
-#     filename: 'avatar.jpg',
-#     io: URI.open('https://avatars.githubusercontent.com/u/117036801')
-#   )
+  #   requester.photo.attach(
+  #     filename: 'avatar.jpg',
+  #     io: URI.open('https://avatars.githubusercontent.com/u/117036801')
+  #   )
 
-#   puts "Requester User is created!"
+  #   puts "Requester User is created!"
 
-# puts "Receiver is getting created!"
-#     receiver = User.create!(
-#     name: "Receiver",
-#     email: "receiver@banded.com",
-#     password: "123456",
-#     location: "Montreal"
-#   )
+  # puts "Receiver is getting created!"
+  #     receiver = User.create!(
+  #     name: "Receiver",
+  #     email: "receiver@banded.com",
+  #     password: "123456",
+  #     location: "Montreal"
+  #   )
 
-#   receiver.photo.attach(
-#     filename: 'avatar.jpg',
-#     io: URI.open('https://avatars.githubusercontent.com/u/121645038')
-#   )
+  #   receiver.photo.attach(
+  #     filename: 'avatar.jpg',
+  #     io: URI.open('https://avatars.githubusercontent.com/u/121645038')
+  #   )
 
-#   puts "Receiver User is created!"
+  #   puts "Receiver User is created!"
 
-# puts "Connection between requester and receiver is getting created"
-#   connection = Connection.create!(
-#     requester:,
-#     receiver:,
-#     status: "accepted"
-#   )
-#   puts "Connection #{connection.id} is created!"
+  # puts "Connection between requester and receiver is getting created"
+  #   connection = Connection.create!(
+  #     requester:,
+  #     receiver:,
+  #     status: "accepted"
+  #   )
+  #   puts "Connection #{connection.id} is created!"
 
-# puts "10 messages are getting created"
-#     10.times do
-#     Message.create(
-#       content: Faker::Quote.famous_last_words,
-#       connection:,
-#       sender: [requester, receiver].sample
-#     )
-#   end
+  # puts "10 messages are getting created"
+  #     10.times do
+  #     Message.create(
+  #       content: Faker::Quote.famous_last_words,
+  #       connection:,
+  #       sender: [requester, receiver].sample
+  #     )
+  #   end
 
-#   puts "Sample Messages created!"
+  #   puts "Sample Messages created!"
 
-# puts "Posts and comments are getting attached to projects"
-#   all_projects.each do |project|
-#     10.times do
-#       post = Post.create(
-#         content: Faker::Quote.famous_last_words,
-#         project:,
-#         sender: [requester, receiver].sample
-#       )
-#       10.times do
-#         Comment.create(
-#           content: Faker::Quote.famous_last_words,
-#           post:,
-#           sender: [requester, receiver].sample
-#         )
-#       end
-#     end
-#   end
-#   puts "Sample posts and comments are created!"
+  # puts "Posts and comments are getting attached to projects"
+  #   all_projects.each do |project|
+  #     10.times do
+  #       post = Post.create(
+  #         content: Faker::Quote.famous_last_words,
+  #         project:,
+  #         sender: [requester, receiver].sample
+  #       )
+  #       10.times do
+  #         Comment.create(
+  #           content: Faker::Quote.famous_last_words,
+  #           post:,
+  #           sender: [requester, receiver].sample
+  #         )
+  #       end
+  #     end
+  #   end
+  #   puts "Sample posts and comments are created!"
 
 puts 'Genres for Robert are getting created'
   UserGenre.create!(
@@ -604,9 +665,6 @@ puts "Projects for Chris are getting created"
     puts "Posts and comments are created for Fluctuating Manpower"
 
 
-# create instruments for arnaud and emre - avoid drums
-
-
 puts 'Instruments for Arnaud are getting created'
   UserInstrument.create!(
     proficiency: all_proficiencies.sample,
@@ -649,62 +707,100 @@ puts 'Instruments for Emre are getting created'
 
   puts 'Emre now plays 3 instruments, none of which is drums.'
 
-# create a profile to view during demo - a bad drummer
 
-puts 'Undesirable drummer incoming'
-  undesirabledrummer = User.create!(
-    name: 'Mathieu Bouchard-Tremblay',
-    email: 'mathieu@banded.com',
-    password: '123456',
-    location: "Montreal",
-    age: 32,
-    bio: "Concert violinist, fed up with strings, looking for a change. I've recently taken up drums and loving it! Don't miss my soulful rendition of Baby Shark."
-  )
 
-  undesirabledrummer.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/undesirabledrummer.jpg"), filename: "avatar.jpg")
+puts "Creating user bios for random Montreal drummers"
+  montreal_drummer_bios = [
+  "I'm a passionate drummer based in Montreal, bringing the rhythm to the vibrant music scene of this city. With years of experience, my beats are guaranteed to get your feet tapping and your body moving. Let's groove together!",
 
-  UserInstrument.create!(
-    proficiency: 'Beginner',
-    user: undesirabledrummer,
-    instrument: Instrument.find_by(name: 'Drums')
-  )
+  "Greetings, Montreal music lovers! I'm a skilled drummer residing in this beautiful city, ready to set the stage on fire with my impeccable rhythm. From jazz to rock and everything in between, I've mastered diverse genres, delivering unforgettable performances that will leave you wanting more.",
+  
+  "Attention, Montreal! Get ready to be mesmerized by the beats of a dynamic drummer in your midst. With my exceptional drumming skills, I effortlessly navigate various musical styles, creating an electrifying atmosphere wherever I play. Let's create unforgettable moments together!",
+  
+  "Calling all Montreal music enthusiasts! I'm a versatile drummer, well-versed in a multitude of genres, and I'm here to bring the groove to your events. Whether it's jazz, funk, or even experimental sounds, my drumming prowess will leave you spellbound. Get ready to embark on a rhythmic journey!",
+  
+  "Drumroll, please! I'm a Montreal-based drummer with a flair for creating captivating rhythms that transport audiences to another dimension. With my deep understanding of diverse musical genres, I bring a unique touch to every performance, infusing energy and soul into each beat.",
+  
+  "Hello, Montreal music scene! As a seasoned drummer, I'm thrilled to be a part of this thriving community. My rhythmic expertise spans across various genres, allowing me to adapt and excel in any musical setting. Brace yourself for an unforgettable percussion experience!",
+  
+  "Attention all music lovers in Montreal! I'm a skilled drummer who has dedicated countless hours perfecting my craft. Whether it's jazz, Latin, or even fusion, I bring a technical finesse and creative flair to every performance, ensuring a memorable and groove-filled experience for all.",
+  
+  "Drum enthusiasts of Montreal, unite! I'm an accomplished percussionist, honing my skills behind the kit for years. With an infectious passion for rhythm, I seamlessly blend different styles and create intricate beats that elevate any musical composition. Let's make some magic together!",
+  
+  "I'm a Montreal drummer extraordinaire, ready to captivate audiences with my rhythmic prowess. Whether it's in a small jazz club or a grand concert hall, my drumming finesse shines through, leaving listeners in awe of the intricate patterns and dynamic energy I bring to the stage.",
+  
+  "Hey, Montreal music aficionados! I'm a highly skilled drummer, and my beats are sure to make your heart skip a beat. With a diverse background in various genres, I possess the versatility to adapt to any musical project, delivering solid rhythms that will make you move and groove in no time. Let's create musical magic together!"
+  ]
 
-  UserInstrument.create!(
-    proficiency: 'God',
-    user: undesirabledrummer,
-    instrument: Instrument.find_by(name: 'Violin')
-  )
+puts "Creating new drummers in Montreal..."
+  10.times do
+    artist = User.create!(
+      name: Faker::Name.unique.name,
+      email: "#{Faker::Music.unique.chord}@gmail.com",
+      password: '123456',
+      age: Faker::Number.between(from: 18, to: 65),
+      location: 'Montreal',
+      bio: montreal_drummer_bios.shuffle!.pop,
+      phone: Faker::PhoneNumber.cell_phone,
+      gender: ['male', 'female', 'other'].sample,
+      # photo: File.open(user_avatars.sample)
+      #instrument_ids: all_instruments.sample(3).map(&:id)
+      )
 
-  UserInstrument.create!(
-    proficiency: 'Expert',
-    user: undesirabledrummer,
-    instrument: Instrument.find_by(name: 'Guitar')
-  )
+      # artist.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/photo-1471565661762-b9dfae862dbe.jpeg"), filename: "patates.jpg")
 
-  puts 'Genres for Robert are getting created'
-  UserGenre.create!(
-    user: undesirabledrummer,
-    genre: Genre.find_by(name: 'Pop')
-  )
+      artist.photo.attach(io: File.open(mtl_drummers_avatars.shuffle!.pop), filename: "avatar.jpg")
 
-  UserGenre.create!(
-    user: undesirabledrummer,
-    genre: Genre.find_by(name: 'Rock')
-  )
+      # artist.photo.attach(
+      #   filename: 'avatar.jpg',
+      #   io: URI.open(unsplash_urls.shuffle!.pop)
+      # )
 
-  UserGenre.create!(
-    user: undesirabledrummer,
-    genre: Genre.find_by(name: 'Folk')
-  )
+      # artist.photo.attach(
+      #   filename: 'avatar.jpg',
+      #   io: URI.open(
+      #     unsplash_images.each do |unsplash_image|
+      #       image = Properties::Image.create!(
+      #       property: property,
+      #       category: Properties::Image.categories.keys.sample,
+      #       taken_on: rand(5..200).days.ago,
+      #       title: unsplash_image.description,
+      #       file_remote_url: unsplash_image.urls.regular
+      #     )
+      #     Properties::Images::Publisher.(image)
+      # )
 
-  UserGenre.create!(
-    user: undesirabledrummer,
-    genre: Genre.find_by(name: 'Electro')
-  )
+      UserInstrument.create!(
+        proficiency: all_proficiencies.sample,
+        user: artist,
+        instrument: Instrument.find_by(name: 'Drums')
+        )
 
-  UserGenre.create!(
-    user: undesirabledrummer,
-    genre: Genre.find_by(name: 'RnB')
-  )
+      all_instruments_except_drums.sample((rand(1..3))).each do |instrument|
+        UserInstrument.create!(
 
-  puts 'Mathieu the Undesirable Drummer now plays the drums very badly.'
+          proficiency: all_proficiencies.sample,
+
+          user: artist,
+          instrument:
+        )
+      end
+
+      all_genres.sample((rand(1..5))).each do |genre|
+        UserGenre.create!(
+          user: artist,
+          genre:
+        )
+      end
+
+      all_projects.sample((rand(1..5))).each do |project|
+        UserProject.create!(
+          user: artist,
+          project:,
+          admin: [true, false].sample
+        )
+      end
+
+      every_user << artist
+    end
+  puts "#{User.count} artists created"

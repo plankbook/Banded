@@ -7,11 +7,11 @@
 <div
   class="image-theme"
   <% if @artist.name == 'Robert Li' %>
-    style="background-image: url('https://res.cloudinary.com/duqmhxedj/image/upload/v1686779299/development/roberts-banner_ua4ili.jpg')"
-  <% elsif @artist.name == 'Mathieu Bouchard-Tremblay' %>
-    style="background-image: url('https://res.cloudinary.com/duqmhxedj/image/upload/c_crop,g_face,h_1513,w_4773/v1686780979/development/undesirabledrummer_qmzxyh.jpg')"
-  <% else %>
-    style="background-image: url('<%= asset_path('music-band.jpg') %>');"
+      style="background-image: url('https://res.cloudinary.com/duqmhxedj/image/upload/v1686779299/development/roberts-banner_ua4ili.jpg')"
+    <% elsif @artist.name == 'Mathieu Bouchard-Tremblay' %>
+      style="background-image: url('https://res.cloudinary.com/duqmhxedj/image/upload/c_crop,g_face,h_1513,w_4773/v1686780979/development/undesirabledrummer_qmzxyh.jpg')"
+    <% else %>
+      style="background-image: url('<%= asset_path('music-band.jpg') %>');"
   <% end %>
 >
 </div>
@@ -106,7 +106,46 @@
       </div>
     </div>
 
+  <% if @artist.name == 'Robert Li' %>
+    <div class='my-media profile-section'>
+      <h4 class="section-header">My Media</h4>
+      <div class='media'>
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/3FPKiDZ4ApY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
 
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/3UgacIVhmEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class='audio-video'>  
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/the_jazz_drums" title="The Jazz Drums!" target="_blank" style="color: #cccccc; text-decoration: none;">The Jazz Drums!</a> · <a href="https://soundcloud.com/the_jazz_drums/slow-blues-jam-bonham-kit" title="Slow Blues Jam - Bonham Kit" target="_blank" style="color: #cccccc; text-decoration: none;">Slow Blues Jam - Bonham Kit</a></div><iframe width="400" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/217519304&color=%23aaa084&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/patrick-drummer" title="Patrick Drummer" target="_blank" style="color: #cccccc; text-decoration: none;">Patrick Drummer</a> · <a href="https://soundcloud.com/patrick-drummer/system-of-a-down-chop-suey" title="System of a down - Chop Suey" target="_blank" style="color: #cccccc; text-decoration: none;">System of a down - Chop Suey</a></div>
+          <iframe width="400" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/136841533&color=%23d6b89a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+      </div>
+    </div>
+  <% elsif @artist.name == 'Mathieu Bouchard-Tremblay' %>
+    <div class='my-media profile-section'>
+      <h4 class="section-header">My Media</h4>
+      <div class='media'>
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/h6b8cRrIz6o?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/the-frights" title="The Frights" target="_blank" style="color: #cccccc; text-decoration: none;">The Frights</a> · <a href="https://soundcloud.com/the-frights/the-drummers-in-trouble" title="The Drummer’s in Trouble!" target="_blank" style="color: #cccccc; text-decoration: none;">The Drummer’s in Trouble!</a></div><iframe width="400" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1473042775&color=%23d6b89a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+
+        <div class='audio-video'>
+          <iframe width="400" height="225" src="https://www.youtube.com/embed/FqJdzYY_Fas?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  <% else %>
     <div class='my-media profile-section'>
       <h4 class="section-header">My Media</h4>
       <div class='media'>
@@ -128,6 +167,10 @@
         </div>
       </div>
     </div>
+  <% end %>
+
+
+    
   </div>
 </div>
 </div>
