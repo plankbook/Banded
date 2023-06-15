@@ -123,7 +123,8 @@ user_avatars = Dir.glob(Rails.root.join('app', 'assets', 'images', 'user-avatars
 mtl_drummers_avatars = Dir.glob(Rails.root.join('app', 'assets', 'images', 'mtl-drummers-avatars', '*.jpg'))
   # user_photo = Rails.root('app/assets/images/user-avatars/photo-1471565661762-b9dfae862dbe.jpeg')
 
-every_user = [] #this array will have every user in the database except Chris, Robert, Arnaud, Emre, and the Undesirable Drummer
+every_user = [] # this array will have every user in the database except Chris, Robert, Arnaud, Emre, and the Undesirable Drummer
+users_for_chris_projects = [] # this array will have every user in the database except Chris, Robert, Arnaud, Emre, and the Undesirable Drummer, but for the use of creating projects for Chris.
 puts 'Undesirable drummer incoming...'
   undesirabledrummer = User.create!(
     name: 'Mathieu Bouchard-Tremblay',
@@ -154,7 +155,7 @@ puts 'Undesirable drummer incoming...'
     instrument: Instrument.find_by(name: 'Guitar')
   )
 
-  puts 'Genres for Robert are getting created'
+  puts 'Genres for Mathieu the Undesirable Drummer are getting created'
   UserGenre.create!(
     user: undesirabledrummer,
     genre: Genre.find_by(name: 'Pop')
@@ -194,15 +195,15 @@ puts "🥖 Arnaud is being born!"
 
   arnaud.photo.attach(io: File.open("#{Rails.root}/app/assets/images/user-avatars/leouagon/mowgli.png"), filename: "avatar.jpg")
 
-  all_instruments.sample((rand(1..6))).each do |instrument|
-    UserInstrument.create!(
+  # all_instruments.sample((rand(1..6))).each do |instrument|
+  #   UserInstrument.create!(
 
-      proficiency: all_proficiencies.sample,
+  #     proficiency: all_proficiencies.sample,
 
-      user: arnaud,
-      instrument:
-    )
-  end
+  #     user: arnaud,
+  #     instrument:
+  #   )
+  # end
 
   all_genres.sample((rand(1..5))).each do |genre|
     UserGenre.create!(
@@ -279,15 +280,28 @@ puts "🍁 Hi, Chris!"
   #   )
   # end
 
-  all_projects.sample(6).each do |project|
-    UserProject.create!(
-      user: chris,
-      project:,
-      admin: [true, false].sample
-    )
-  end
+  # all_projects.sample(6).each do |project|
+  #   UserProject.create!(
+  #     user: chris,
+  #     project:,
+  #     admin: [true, false].sample
+  #   )
+  # end
 
-  puts "🍁 Shania and Céline in da haus"
+  # project = Project.create(
+  #   name: Faker::Music.band,
+  #     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+  #   project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+    # UserProject.create!(
+    #   user: chris,
+    #   project:,
+    #   admin: [true, false].sample
+    # )
+
+
+  puts "🍁 Όταν λείπει η γάτα, χορεύουν τα ποντίκια"
 
 puts "🏳️‍🌈 It's pronounced 'Aimerais'"
   emre = User.create!(
@@ -303,15 +317,15 @@ puts "🏳️‍🌈 It's pronounced 'Aimerais'"
 
   puts "🏳️‍🌈 Shame!🔔 Shame!🔔 Shame!🔔"
 
-  all_instruments.sample((rand(1..6))).each do |instrument|
-    UserInstrument.create!(
+  # all_instruments.sample((rand(1..6))).each do |instrument|
+  #   UserInstrument.create!(
 
-      proficiency: all_proficiencies.sample,
+  #     proficiency: all_proficiencies.sample,
 
-      user: emre,
-      instrument:
-    )
-  end
+  #     user: emre,
+  #     instrument:
+  #   )
+  # end
 
   all_genres.sample((rand(1..5))).each do |genre|
     UserGenre.create!(
@@ -391,6 +405,7 @@ puts "Creating new users..."
       end
 
       every_user << artist
+      users_for_chris_projects << artist
     end
   puts "#{User.count} artists created"
 
@@ -623,46 +638,168 @@ puts "Projects for Chris are getting created"
 
   puts "Fluctuating Manpower"
 
+    project = Project.create(
+      name: 'Fluctuating Manpower',
+      bio: "We're three artists and we've been putting together a song. The melody is solid but the lyrics need major rework, but we still have time before we focus on that. We currently need a fast and steady drummer who will have to provide a confident beat for the song to work, so don't hesitate to connect if you're interested! Saxophone already provides a great solo - there's a major possibility sax + drums might overshadow the piano, but we will deal with this during mix."
+      )
+
+      project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+      UserProject.create(
+        project: ,
+        user: chris
+      )
+
+      UserProject.create(
+        project: ,
+        user: arnaud
+      )
+
+      UserProject.create(
+        project: ,
+        user: emre
+      )
+
+    puts "Fluctuating Manpower created with Arnaud and Emre. Rob will be added to this project in the demo."
+
+    puts "Posts and comments are getting created for Fluctuating Manpower"
+      10.times do
+        post = Post.create(
+          content: Faker::Quote.famous_last_words,
+          project:,
+          sender: [chris, arnaud, emre].sample
+        )
+        10.times do
+          Comment.create(
+            content: Faker::Quote.famous_last_words,
+            post:,
+            sender: [chris, arnaud, emre].sample
+          )
+        end
+      end
+      puts "Posts and comments are created for Fluctuating Manpower"
+
+  puts "Other projects for Chris"
+  # project_bios_chris = []
   project = Project.create(
-    name: 'Fluctuating Manpower',
-    bio: "We're three artists and we've been putting together a song. The melody is solid but the lyrics need major rework, but we still have time before we focus on that. We currently need a fast and steady drummer who will have to provide a confident beat for the song to work, so don't hesitate to connect if you're interested! Saxophone already provides a great solo - there's a major possibility sax + drums might overshadow the piano, but we will deal with this during mix."
+    name: 'Sonic Fusion',
+    bio: "Attention Montreal Musicians! Join Sonic Fusion, a cutting-edge collaborative project based in Montreal. We're seeking talented musicians to push the boundaries of sonic exploration. Together, we'll create a mesmerizing fusion of genres, blending diverse influences into a unique sonic tapestry. If you're a visionary instrumentalist, soulful vocalist, or innovative sound designer, this is your chance to be part of something extraordinary. Let's break free from conventions, ignite creativity, and make a mark on the Montreal music scene. Join Sonic Fusion today and embark on an exhilarating musical journey like no other."
     )
 
     project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
 
-    UserProject.create(
-      project: ,
-      user: chris
-    )
-
-    UserProject.create(
-      project: ,
-      user: arnaud
-    )
-
-    UserProject.create(
-      project: ,
-      user: emre
-    )
-
-  puts "Fluctuating Manpower created with Arnaud and Emre. Rob will be added to this project in the demo."
-
-  puts "Posts and comments are getting created for Fluctuating Manpower"
-    10.times do
-      post = Post.create(
-        content: Faker::Quote.famous_last_words,
-        project:,
-        sender: [chris, arnaud, emre].sample
+    users_for_chris_projects.sample((rand(1..3))).each do |user|
+      UserProject.create(
+        project: ,
+        user: 
       )
-      10.times do
-        Comment.create(
-          content: Faker::Quote.famous_last_words,
-          post:,
-          sender: [chris, arnaud, emre].sample
-        )
-      end
     end
-    puts "Posts and comments are created for Fluctuating Manpower"
+
+    UserProject.create(
+        project: ,
+        user: chris
+      )
+
+  project = Project.create(
+    name: 'Rhythmic Vortex',
+    bio: "Attention Montreal Musicians! Step into the Rhythmic Vortex, a captivating musical project calling for talented artists. Based in Montreal, we're on a quest to push rhythmic boundaries and unleash sonic magic. Whether you're a groove maestro, beat wizard, or rhythm virtuoso, join us to explore exhilarating polyrhythms and mind-bending time signatures. Together, we'll create a pulsating sonic landscape that mesmerizes audiences and challenges conventional norms. If you're ready to infuse your passion into a collaborative project that will redefine the rhythmic landscape, join Rhythmic Vortex today and let's make our mark on the Montreal music scene."
+    )
+
+    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+    users_for_chris_projects.sample((rand(1..3))).each do |user|
+      UserProject.create(
+        project: ,
+        user: 
+      )
+    end
+
+    UserProject.create(
+        project: ,
+        user: chris
+      )
+
+  project = Project.create(
+    name: 'Harmony Fusion',
+    bio: "Join Harmony Fusion, an innovative musical project that seeks to bridge diverse harmonies in Montreal's vibrant music community. We're looking for skilled musicians who yearn to blend genres, break musical barriers, and create enchanting compositions. Whether you're a master of melodies, a vocal prodigy, or a versatile instrumentalist, let's come together to craft a sonic journey that transcends conventions. Join Harmony Fusion today and let your musical voice harmonize with others, leaving a resounding impact on the Montreal music scene."
+    )
+
+    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+    users_for_chris_projects.sample((rand(1..3))).each do |user|
+      UserProject.create(
+        project: ,
+        user: 
+      )
+    end
+
+    UserProject.create(
+        project: ,
+        user: chris
+      )
+
+  project = Project.create(
+    name: 'Melodic Nexus',
+    bio: "Calling all Montreal Musicians! Unlock your melodic potential and embark on a transformative musical journey with Melodic Nexus. We're assembling a collective of visionary artists who want to weave captivating melodies and explore the realm of harmonious possibilities. If you're a master of strings, a maestro of keys, or a vocal luminary, join us to break free from conventional structures and create something extraordinary. Together, we'll create a sonic nexus that resonates with audiences, pushing boundaries and redefining the melodic landscape. Join Melodic Nexus today and let your melodies shape the Montreal music scene."
+    )
+
+    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+    users_for_chris_projects.sample((rand(1..3))).each do |user|
+      UserProject.create(
+        project: ,
+        user: 
+      )
+    end
+
+    UserProject.create(
+        project: ,
+        user: chris
+      )
+
+  project = Project.create(
+    name: 'Sonic Alchemy',
+    bio: "Dive into the world of Sonic Alchemy, an electrifying musical project seeking talented artists from diverse backgrounds. Based in Montreal, we're on a quest to transform sounds and create aural magic. Whether you're a sonic architect, rhythm explorer, or experimentalist, join us to push the boundaries of sonic manipulation and alchemize diverse elements into something extraordinary. Together, we'll sculpt immersive sonic landscapes that transport listeners to uncharted realms. Join Sonic Alchemy today and let's embark on a transformative sonic journey that leaves an indelible mark on the Montreal music scene."
+    )
+
+    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+    users_for_chris_projects.sample((rand(1..3))).each do |user|
+      UserProject.create(
+        project: ,
+        user: 
+      )
+    end
+
+    UserProject.create(
+        project: ,
+        user: chris
+      )
+
+
+  project = Project.create(
+    name: 'Groove Fusion Collective',
+    bio: "Montreal's grooviest musicians, unite! Join the Groove Fusion Collective, a musical project dedicated to harnessing the infectious power of rhythm. We're on the lookout for exceptional instrumentalists, groove masters, and rhythm aficionados to create a groove revolution. Together, we'll meld funky basslines, soulful chords, and irresistible beats, crafting a sonic force that will ignite dance floors and leave audiences in awe. If you're ready to make bodies move, break musical boundaries, and become part of Montreal's groove movement, join the Groove Fusion Collective today and let's create irresistible rhythms that shake the city."
+    )
+
+    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+    # UserProject.create(
+    #   user: users_for_chris_projects.sample((rand(1..3))),
+    #   project: 
+    # )
+    
+    users_for_chris_projects.sample((rand(1..3))).each do |user|
+      UserProject.create(
+        project: ,
+        user: 
+      )
+    end
+
+    UserProject.create(
+        project: ,
+        user: chris
+      )
 
 
 puts 'Instruments for Arnaud are getting created'
@@ -801,6 +938,6 @@ puts "Creating new drummers in Montreal..."
         )
       end
 
-      every_user << artist
+      # every_user << artist
     end
   puts "#{User.count} artists created"
