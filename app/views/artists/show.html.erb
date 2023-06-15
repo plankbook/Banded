@@ -56,25 +56,25 @@
             <% @artist.instruments.each do |instrument| %>
               <div class="instrument-name">
                 <% if instrument.name == 'Piano' %>
-                  <p class="instrument-icon">🎹</p>
+                  <p class="instrument-icon">🎹 <span style="font-size:20px">Piano</span></p>
                 <% elsif instrument.name == 'Guitar' %>
-                  <p class="instrument-icon">🎸</p>
+                  <p class="instrument-icon">🎸 <span style="font-size:20px">Guitar</span></p>
                 <% elsif instrument.name == 'Violin' %>
-                  <p class="instrument-icon">🎻</p>
+                  <p class="instrument-icon">🎻 <span style="font-size:20px">Violin</span></p>
                 <% elsif instrument.name == 'Drums' %>
-                  <p class="instrument-icon">🥁</p>
+                  <p class="instrument-icon">🥁 <span style="font-size:20px">Drums</span></p>
                 <% elsif instrument.name == 'Saxophone' %>
-                  <p class="instrument-icon">🎷</p>
+                  <p class="instrument-icon">🎷 <span style="font-size:20px">Saxophone</span></p>
                 <% elsif instrument.name == 'Flute' %>
-                  <p class="instrument-icon">🪈</p>
+                  <p class="instrument-icon">🪈 <span style="font-size:20px">Flute</span></p>
                 <% elsif instrument.name == 'Trumpet' %>
-                  <p class="instrument-icon">🎺</p>
+                  <p class="instrument-icon">🎺 <span style="font-size:20px">Trumpet</span></p>
                 <% elsif instrument.name == 'Banjo' %>
-                  <p class="instrument-icon">🪕</p>
+                  <p class="instrument-icon">🪕 <span style="font-size:20px">Banjo</span></p>
                 <% elsif instrument.name == 'Accordion' %>
-                  <p class="instrument-icon">🪗</p>
+                  <p class="instrument-icon">🪗 <span style="font-size:20px">Accordion</span></p>
                 <% elsif instrument.name == 'Maracas' %>
-                  <p class="instrument-icon">🪇</p>
+                  <p class="instrument-icon">🪇 <span style="font-size:20px">Maracas</span></p>
                 <% end %>
               </div>
             <% end %>
