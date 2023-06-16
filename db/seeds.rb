@@ -16,7 +16,7 @@ puts "Database clean-up"
   Notification.delete_all
 
 puts 'Creating instruments'
-  instrument_list = ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Flute', 'Trumpet', 'Banjo', 'Accordion', 'Maracas']
+  instrument_list = ['Piano', 'Guitar', 'Violin', 'Drums', 'Saxophone', 'Trumpet', 'Banjo', 'Accordion']
   10.times do
     Instrument.create!(
       name: instrument_list.shuffle!.pop
@@ -514,11 +514,6 @@ puts 'Instruments for Robert are getting created'
   #   instrument: Instrument.find_by(name: 'Banjo')
   # )
 
-  # UserInstrument.create!(
-  #   proficiency: all_proficiencies.sample,
-  #   user: robert,
-  #   instrument: Instrument.find_by(name: 'Maracas')
-  # )
 
   puts 'Robert now plays at least 5 instruments, one of which is drums.'
 
@@ -582,7 +577,7 @@ puts 'Instruments for Chris are getting created'
   UserInstrument.create!(
     proficiency: all_proficiencies.sample,
     user: chris,
-    instrument: Instrument.find_by(name: 'Maracas')
+    instrument: Instrument.find_by(name: 'Piano')
   )
 
   puts 'Chris now plays 5 instruments, none of which is drums.'
@@ -691,7 +686,7 @@ puts "Projects for Chris are getting created"
     users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
         project: ,
-        user: 
+        user:
       )
     end
 
@@ -710,7 +705,7 @@ puts "Projects for Chris are getting created"
     users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
         project: ,
-        user: 
+        user:
       )
     end
 
@@ -729,7 +724,7 @@ puts "Projects for Chris are getting created"
     users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
         project: ,
-        user: 
+        user:
       )
     end
 
@@ -748,7 +743,7 @@ puts "Projects for Chris are getting created"
     users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
         project: ,
-        user: 
+        user:
       )
     end
 
@@ -767,7 +762,7 @@ puts "Projects for Chris are getting created"
     users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
         project: ,
-        user: 
+        user:
       )
     end
 
@@ -786,13 +781,13 @@ puts "Projects for Chris are getting created"
 
     # UserProject.create(
     #   user: users_for_chris_projects.sample((rand(1..3))),
-    #   project: 
+    #   project:
     # )
-    
+
     users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
         project: ,
-        user: 
+        user:
       )
     end
 
@@ -818,7 +813,7 @@ puts 'Instruments for Arnaud are getting created'
   UserInstrument.create!(
     proficiency: all_proficiencies.sample,
     user: arnaud,
-    instrument: Instrument.find_by(name: 'Maracas')
+    instrument: Instrument.find_by(name: 'Piano')
   )
 
   puts 'Arnaud now plays 3 instruments, none of which is drums.'
@@ -833,7 +828,7 @@ puts 'Instruments for Emre are getting created'
   UserInstrument.create!(
     proficiency: all_proficiencies.sample,
     user: emre,
-    instrument: Instrument.find_by(name: 'Flute')
+    instrument: Instrument.find_by(name: 'Piano')
   )
 
   UserInstrument.create!(
@@ -851,21 +846,21 @@ puts "Creating user bios for random Montreal drummers"
   "I'm a passionate drummer based in Montreal, bringing the rhythm to the vibrant music scene of this city. With years of experience, my beats are guaranteed to get your feet tapping and your body moving. Let's groove together!",
 
   "Greetings, Montreal music lovers! I'm a skilled drummer residing in this beautiful city, ready to set the stage on fire with my impeccable rhythm. From jazz to rock and everything in between, I've mastered diverse genres, delivering unforgettable performances that will leave you wanting more.",
-  
+
   "Attention, Montreal! Get ready to be mesmerized by the beats of a dynamic drummer in your midst. With my exceptional drumming skills, I effortlessly navigate various musical styles, creating an electrifying atmosphere wherever I play. Let's create unforgettable moments together!",
-  
+
   "Calling all Montreal music enthusiasts! I'm a versatile drummer, well-versed in a multitude of genres, and I'm here to bring the groove to your events. Whether it's jazz, funk, or even experimental sounds, my drumming prowess will leave you spellbound. Get ready to embark on a rhythmic journey!",
-  
+
   "Drumroll, please! I'm a Montreal-based drummer with a flair for creating captivating rhythms that transport audiences to another dimension. With my deep understanding of diverse musical genres, I bring a unique touch to every performance, infusing energy and soul into each beat.",
-  
+
   "Hello, Montreal music scene! As a seasoned drummer, I'm thrilled to be a part of this thriving community. My rhythmic expertise spans across various genres, allowing me to adapt and excel in any musical setting. Brace yourself for an unforgettable percussion experience!",
-  
+
   "Attention all music lovers in Montreal! I'm a skilled drummer who has dedicated countless hours perfecting my craft. Whether it's jazz, Latin, or even fusion, I bring a technical finesse and creative flair to every performance, ensuring a memorable and groove-filled experience for all.",
-  
+
   "Drum enthusiasts of Montreal, unite! I'm an accomplished percussionist, honing my skills behind the kit for years. With an infectious passion for rhythm, I seamlessly blend different styles and create intricate beats that elevate any musical composition. Let's make some magic together!",
-  
+
   "I'm a Montreal drummer extraordinaire, ready to captivate audiences with my rhythmic prowess. Whether it's in a small jazz club or a grand concert hall, my drumming finesse shines through, leaving listeners in awe of the intricate patterns and dynamic energy I bring to the stage.",
-  
+
   "Hey, Montreal music aficionados! I'm a highly skilled drummer, and my beats are sure to make your heart skip a beat. With a diverse background in various genres, I possess the versatility to adapt to any musical project, delivering solid rhythms that will make you move and groove in no time. Let's create musical magic together!"
   ]
 
