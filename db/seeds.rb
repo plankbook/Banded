@@ -384,6 +384,208 @@ puts "🏳️‍🌈 It's pronounced 'Aimerais'"
       admin: [true, false].sample
     )
   end
+
+puts 'Techtrek musical project'
+
+  puts "Latoya!"
+    latoya = User.create!(
+      name: 'Latoya Alford',
+      email: 'latoya@banded.com',
+      password: '123456',
+      location: "Montreal",
+      age: 31,
+      bio: "Currently in cybersecurity, and learning to code because I love to build and create things. I'm currently working towards establishing my own tech startup!"
+    )
+
+    latoya.photo.attach(io: File.open("#{Rails.root}/app/assets/images/techtrek/latoya.png"), filename: "avatar.jpg")
+  
+    all_instruments.sample((rand(1..4))).each do |instrument|
+      UserInstrument.create!(
+        proficiency: all_proficiencies.sample,
+        user: latoya,
+        instrument:
+      )
+    end
+
+    UserInstrument.create!(
+      proficiency: all_proficiencies.sample,
+      user: latoya,
+      instrument: Instrument.find_by(name: 'Drums')
+    )
+
+    all_genres.sample((rand(1..5))).each do |genre|
+      UserGenre.create!(
+        user: latoya,
+        genre:
+      )
+    end
+
+  puts "Andrew!"
+    andrew = User.create!(
+      name: 'Andrew Phan',
+      email: 'andrew@banded.com',
+      password: '123456',
+      location: "Montreal",
+      age: 31,
+      bio: "Hi, I currently work as a Supply Specialist at Samsung Ads. I previously took a coding classes during university and I always had an interest in coding. Therefore, I am taking a bootcamp to further my skills and hopefully after the bootcamp, I can work as a developer."
+    )
+
+    andrew.photo.attach(io: File.open("#{Rails.root}/app/assets/images/techtrek/andrew.jpg"), filename: "avatar.jpg")
+  
+    all_instruments.sample((rand(1..4))).each do |instrument|
+      UserInstrument.create!(
+        proficiency: all_proficiencies.sample,
+        user: andrew,
+        instrument:
+      )
+    end
+
+    UserInstrument.create!(
+      proficiency: all_proficiencies.sample,
+      user: andrew,
+      instrument: Instrument.find_by(name: 'Drums')
+    )
+
+    all_genres.sample((rand(1..5))).each do |genre|
+      UserGenre.create!(
+        user: andrew,
+        genre:
+      )
+    end
+
+  puts "Bertrand!"
+    bertrand = User.create!(
+      name: 'Bertrand Phan',
+      email: 'bertrand@banded.com',
+      password: '123456',
+      location: "Montreal",
+      age: 34,
+      bio: "Hi, I currently work as a Supply Specialist at Samsung Ads. I previously took a coding classes during university and I always had an interest in coding. Therefore, I am taking a bootcamp to further my skills and hopefully after the bootcamp, I can work as a developer."
+    )
+
+    bertrand.photo.attach(io: File.open("#{Rails.root}/app/assets/images/techtrek/bertrand.png"), filename: "avatar.jpg")
+  
+    all_instruments.sample((rand(1..4))).each do |instrument|
+      UserInstrument.create!(
+        proficiency: all_proficiencies.sample,
+        user: bertrand,
+        instrument:
+      )
+    end
+
+    UserInstrument.create!(
+      proficiency: all_proficiencies.sample,
+      user: bertrand,
+      instrument: Instrument.find_by(name: 'Drums')
+    )
+
+    all_genres.sample((rand(1..5))).each do |genre|
+      UserGenre.create!(
+        user: bertrand,
+        genre:
+      )
+    end
+
+  puts "Kameron!"
+    kameron = User.create!(
+      name: 'Kameron Phan',
+      email: 'kameron@banded.com',
+      password: '123456',
+      location: "Montreal",
+      age: 25,
+      bio: "Previously in customer support in finance, but when I was laid off, I began to search for a different career path. I was looking into coding for a while and was recommended by some friends to look into le wagon. I plan on becoming a full stack dev after completing le wagon and hope to create my own applications one day!"
+    )
+
+    kameron.photo.attach(io: File.open("#{Rails.root}/app/assets/images/techtrek/kameron.jpg"), filename: "avatar.jpg")
+  
+    all_instruments.sample((rand(1..4))).each do |instrument|
+      UserInstrument.create!(
+        proficiency: all_proficiencies.sample,
+        user: kameron,
+        instrument:
+      )
+    end
+
+    UserInstrument.create!(
+      proficiency: all_proficiencies.sample,
+      user: kameron,
+      instrument: Instrument.find_by(name: 'Drums')
+    )
+
+    all_genres.sample((rand(1..5))).each do |genre|
+      UserGenre.create!(
+        user: kameron,
+        genre:
+      )
+    end
+
+  puts "Peter!"
+    peter = User.create!(
+      name: 'Peter McClintock',
+      email: 'peter@banded.com',
+      password: '123456',
+      location: "Montreal",
+      age: 34,
+      bio: "I like to see the world differently and I am not always content in our current reality. I believe design and innovation can create new realities that alter our state and our world."
+    )
+
+    peter.photo.attach(io: File.open("#{Rails.root}/app/assets/images/techtrek/peter.jpg"), filename: "avatar.jpg")
+  
+    all_instruments.sample((rand(1..4))).each do |instrument|
+      UserInstrument.create!(
+        proficiency: all_proficiencies.sample,
+        user: peter,
+        instrument:
+      )
+    end
+
+    UserInstrument.create!(
+      proficiency: all_proficiencies.sample,
+      user: peter,
+      instrument: Instrument.find_by(name: 'Drums')
+    )
+
+    all_genres.sample((rand(1..5))).each do |genre|
+      UserGenre.create!(
+        user: peter,
+        genre:
+      )
+    end
+
+  techtrek = Project.create(
+    name: 'TechTrek Glee Club',
+    bio: "We got together to create an app that will connect tech students with mentors, but we couldn't stop jamming all the time. Now we're putting together a song and we need a fierce glockenspieler to join us."
+  )
+  
+  techtrek_photo = Rails.root.join('app', 'assets', 'images', 'techtrek.jpg')
+  techtrek.photo.attach(io: File.open(techtrek_photo), filename: "project_banner.jpg")
+
+  UserProject.create(
+    project: techtrek,
+    user: andrew
+  )
+
+  UserProject.create(
+    project: techtrek,
+    user: bertrand
+  )
+
+  UserProject.create(
+    project: techtrek,
+    user: kameron
+  )
+
+  UserProject.create(
+    project: techtrek,
+    user: latoya
+  )
+
+  UserProject.create(
+    project: techtrek,
+    user: peter
+  )
+
+
 puts "Creating new users..."
   20.times do
     artist = User.create!(
@@ -718,104 +920,109 @@ puts "Projects for Chris are getting created"
       puts "Posts and comments are created for Fluctuating Manpower"
 
   puts "Other projects for Chris"
-  # project_bios_chris = []
-  project = Project.create(
-    name: 'Sonic Fusion',
-    bio: "Attention Montreal Musicians! Join Sonic Fusion, a cutting-edge collaborative project based in Montreal. We're seeking talented musicians to push the boundaries of sonic exploration. Together, we'll create a mesmerizing fusion of genres, blending diverse influences into a unique sonic tapestry. If you're a visionary instrumentalist, soulful vocalist, or innovative sound designer, this is your chance to be part of something extraordinary. Let's break free from conventions, ignite creativity, and make a mark on the Montreal music scene. Join Sonic Fusion today and embark on an exhilarating musical journey like no other."
+    # project_bios_chris = []
+    UserProject.create(
+      project: techtrek,
+      user: chris
     )
 
-    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+    project = Project.create(
+      name: 'Sonic Fusion',
+      bio: "Attention Montreal Musicians! Join Sonic Fusion, a cutting-edge collaborative project based in Montreal. We're seeking talented musicians to push the boundaries of sonic exploration. Together, we'll create a mesmerizing fusion of genres, blending diverse influences into a unique sonic tapestry. If you're a visionary instrumentalist, soulful vocalist, or innovative sound designer, this is your chance to be part of something extraordinary. Let's break free from conventions, ignite creativity, and make a mark on the Montreal music scene. Join Sonic Fusion today and embark on an exhilarating musical journey like no other."
+      )
 
-    users_for_chris_projects.sample((rand(1..3))).each do |user|
+      project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
+
+      users_for_chris_projects.sample((rand(1..3))).each do |user|
+        UserProject.create(
+          project: ,
+          user:
+        )
+      end
+
       UserProject.create(
-        project: ,
-        user:
+          project: ,
+          user: chris
+        )
+
+    project = Project.create(
+      name: 'Rhythmic Vortex',
+      bio: "Attention Montreal Musicians! Step into the Rhythmic Vortex, a captivating musical project calling for talented artists. Based in Montreal, we're on a quest to push rhythmic boundaries and unleash sonic magic. Whether you're a groove maestro, beat wizard, or rhythm virtuoso, join us to explore exhilarating polyrhythms and mind-bending time signatures. Together, we'll create a pulsating sonic landscape that mesmerizes audiences and challenges conventional norms. If you're ready to infuse your passion into a collaborative project that will redefine the rhythmic landscape, join Rhythmic Vortex today and let's make our mark on the Montreal music scene."
       )
-    end
 
-    UserProject.create(
-        project: ,
-        user: chris
-      )
+      project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
 
-  project = Project.create(
-    name: 'Rhythmic Vortex',
-    bio: "Attention Montreal Musicians! Step into the Rhythmic Vortex, a captivating musical project calling for talented artists. Based in Montreal, we're on a quest to push rhythmic boundaries and unleash sonic magic. Whether you're a groove maestro, beat wizard, or rhythm virtuoso, join us to explore exhilarating polyrhythms and mind-bending time signatures. Together, we'll create a pulsating sonic landscape that mesmerizes audiences and challenges conventional norms. If you're ready to infuse your passion into a collaborative project that will redefine the rhythmic landscape, join Rhythmic Vortex today and let's make our mark on the Montreal music scene."
-    )
+      users_for_chris_projects.sample((rand(1..3))).each do |user|
+        UserProject.create(
+          project: ,
+          user:
+        )
+      end
 
-    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
-
-    users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
-        project: ,
-        user:
+          project: ,
+          user: chris
+        )
+
+    project = Project.create(
+      name: 'Harmony Fusion',
+      bio: "Join Harmony Fusion, an innovative musical project that seeks to bridge diverse harmonies in Montreal's vibrant music community. We're looking for skilled musicians who yearn to blend genres, break musical barriers, and create enchanting compositions. Whether you're a master of melodies, a vocal prodigy, or a versatile instrumentalist, let's come together to craft a sonic journey that transcends conventions. Join Harmony Fusion today and let your musical voice harmonize with others, leaving a resounding impact on the Montreal music scene."
       )
-    end
 
-    UserProject.create(
-        project: ,
-        user: chris
-      )
+      project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
 
-  project = Project.create(
-    name: 'Harmony Fusion',
-    bio: "Join Harmony Fusion, an innovative musical project that seeks to bridge diverse harmonies in Montreal's vibrant music community. We're looking for skilled musicians who yearn to blend genres, break musical barriers, and create enchanting compositions. Whether you're a master of melodies, a vocal prodigy, or a versatile instrumentalist, let's come together to craft a sonic journey that transcends conventions. Join Harmony Fusion today and let your musical voice harmonize with others, leaving a resounding impact on the Montreal music scene."
-    )
+      users_for_chris_projects.sample((rand(1..3))).each do |user|
+        UserProject.create(
+          project: ,
+          user:
+        )
+      end
 
-    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
-
-    users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
-        project: ,
-        user:
+          project: ,
+          user: chris
+        )
+
+    project = Project.create(
+      name: 'Melodic Nexus',
+      bio: "Calling all Montreal Musicians! Unlock your melodic potential and embark on a transformative musical journey with Melodic Nexus. We're assembling a collective of visionary artists who want to weave captivating melodies and explore the realm of harmonious possibilities. If you're a master of strings, a maestro of keys, or a vocal luminary, join us to break free from conventional structures and create something extraordinary. Together, we'll create a sonic nexus that resonates with audiences, pushing boundaries and redefining the melodic landscape. Join Melodic Nexus today and let your melodies shape the Montreal music scene."
       )
-    end
 
-    UserProject.create(
-        project: ,
-        user: chris
-      )
+      project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
 
-  project = Project.create(
-    name: 'Melodic Nexus',
-    bio: "Calling all Montreal Musicians! Unlock your melodic potential and embark on a transformative musical journey with Melodic Nexus. We're assembling a collective of visionary artists who want to weave captivating melodies and explore the realm of harmonious possibilities. If you're a master of strings, a maestro of keys, or a vocal luminary, join us to break free from conventional structures and create something extraordinary. Together, we'll create a sonic nexus that resonates with audiences, pushing boundaries and redefining the melodic landscape. Join Melodic Nexus today and let your melodies shape the Montreal music scene."
-    )
+      users_for_chris_projects.sample((rand(1..3))).each do |user|
+        UserProject.create(
+          project: ,
+          user:
+        )
+      end
 
-    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
-
-    users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
-        project: ,
-        user:
+          project: ,
+          user: chris
+        )
+
+    project = Project.create(
+      name: 'Sonic Alchemy',
+      bio: "Dive into the world of Sonic Alchemy, an electrifying musical project seeking talented artists from diverse backgrounds. Based in Montreal, we're on a quest to transform sounds and create aural magic. Whether you're a sonic architect, rhythm explorer, or experimentalist, join us to push the boundaries of sonic manipulation and alchemize diverse elements into something extraordinary. Together, we'll sculpt immersive sonic landscapes that transport listeners to uncharted realms. Join Sonic Alchemy today and let's embark on a transformative sonic journey that leaves an indelible mark on the Montreal music scene."
       )
-    end
 
-    UserProject.create(
-        project: ,
-        user: chris
-      )
+      project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
 
-  project = Project.create(
-    name: 'Sonic Alchemy',
-    bio: "Dive into the world of Sonic Alchemy, an electrifying musical project seeking talented artists from diverse backgrounds. Based in Montreal, we're on a quest to transform sounds and create aural magic. Whether you're a sonic architect, rhythm explorer, or experimentalist, join us to push the boundaries of sonic manipulation and alchemize diverse elements into something extraordinary. Together, we'll sculpt immersive sonic landscapes that transport listeners to uncharted realms. Join Sonic Alchemy today and let's embark on a transformative sonic journey that leaves an indelible mark on the Montreal music scene."
-    )
+      users_for_chris_projects.sample((rand(1..3))).each do |user|
+        UserProject.create(
+          project: ,
+          user:
+        )
+      end
 
-    project.photo.attach(io: File.open(project_banners_chris.shuffle!.pop), filename: "project_banner.jpg")
-
-    users_for_chris_projects.sample((rand(1..3))).each do |user|
       UserProject.create(
-        project: ,
-        user:
-      )
-    end
-
-    UserProject.create(
-        project: ,
-        user: chris
-      )
+          project: ,
+          user: chris
+        )
 
 
-  project = Project.create(
+    project = Project.create(
     name: 'Groove Fusion Collective',
     bio: "Montreal's grooviest musicians, unite! Join the Groove Fusion Collective, a musical project dedicated to harnessing the infectious power of rhythm. We're on the lookout for exceptional instrumentalists, groove masters, and rhythm aficionados to create a groove revolution. Together, we'll meld funky basslines, soulful chords, and irresistible beats, crafting a sonic force that will ignite dance floors and leave audiences in awe. If you're ready to make bodies move, break musical boundaries, and become part of Montreal's groove movement, join the Groove Fusion Collective today and let's create irresistible rhythms that shake the city."
     )
@@ -979,3 +1186,4 @@ puts "Creating new drummers in Montreal..."
       # every_user << artist
     end
   puts "#{User.count} artists created"
+
