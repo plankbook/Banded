@@ -634,7 +634,8 @@ puts "Connections for Chris are getting created"
   puts "Chris is now connected to Emre."
 
 puts "Creating first Notification for Chris"
-ConnectionNotification.with(connection: Connection.last).deliver_later(Connection.last.requester)
+ConnectionNotification.with(connection: Connection.last, read_at: Time.now).deliver_later(Connection.last.requester)
+Notification.last.update(read_at: Time.now)
 
   Connection.create!(
     requester: chris,
