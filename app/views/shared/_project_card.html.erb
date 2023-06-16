@@ -35,7 +35,7 @@
         <div class="instrument-icons">
             <%# raise %>
             <% if project.users.exists? %>
-              <% project.users.first.instruments.each do |instrument| %>
+              <% project.users.last.instruments.each do |instrument| %>
                 <% if instrument.name == 'Piano' %>
                   <p title="Piano" class="instrument-icon">🎹</p>
                 <% elsif instrument.name == 'Guitar' %>
@@ -66,8 +66,8 @@
           <p><%= Genre.find_by(name: 'Jazz').name %></p>
           </div>
         <% elsif project.users.exists? %>
-          <div class="genre-pill" style="background-color: <%= project.users.first.genres.first.colour.gsub('"', '') %>;">
-            <p><%= project.users.first.genres.first.name %></p>
+          <div class="genre-pill" style="background-color: <%= project.users.last.genres.first.colour.gsub('"', '') %>;">
+            <p><%= project.users.last.genres.first.name %></p>
           </div>
           <%# raise %>
         <% else %>
