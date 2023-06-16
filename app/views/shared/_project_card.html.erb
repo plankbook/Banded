@@ -61,10 +61,15 @@
       </div>
       <div class="project-genres">
         <p>Genre</p>
-        <% if project.users.exists? %>
-          <div class="genre-pill" style="background-color: <%= project.users.first.genres.first.colour.gsub('"', '') %>;">
-            <p><%= project.users.first.genres.first.name %></p>
+        <% if project.name == 'Fluctuating Manpower' %>
+          <div class="genre-pill" style="background-color: <%= Genre.find_by(name: 'Jazz').colour.gsub('"', '') %>;">
+          <p><%= Genre.find_by(name: 'Jazz').name %></p>
           </div>
+        <% elsif project.users.exists? %>
+          <div class="genre-pill" style="background-color: <%= project.users.second.genres.first.colour.gsub('"', '') %>;">
+            <p><%= project.users.second.genres.first.name %></p>
+          </div>
+          <%# raise %>
         <% else %>
           <div class="genre-pill" style="background-color: #aaad34;">
             <p>Jazz</p>
