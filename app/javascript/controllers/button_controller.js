@@ -29,5 +29,23 @@ export default class extends Controller {
     })
 
     this.buttonTarget.disabled = true;
+    this.buttonTarget.innerText = 'Pending';
+  }
+
+  disable2() {
+    // console.dir(this.buttonTarget);
+    // const form = new FormData();
+    fetch(this.buttonTarget.parentElement.action, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(this.buttonTarget.parentElement)
+    })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+
+    this.buttonTarget.disabled = true;
+    this.buttonTarget.innerText = 'Added';
   }
  }

@@ -8,7 +8,8 @@ class MessagesController < ApplicationController
       ConnectionChannel.broadcast_to(
         @connection,
         message: render_to_string(partial: "message", locals: { message: @message }),
-        sender_id: @message.sender.id
+        sender_id: @message.sender.id,
+        sender_photo: @message.sender.photo.key
       )
       head :ok
     else
