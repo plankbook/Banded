@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="chatroom-subscription"
 export default class extends Controller {
-  static values = { connectionId: Number, currentUserId: Number }
+  static values = { connectionId: Number, currentUserId: Number, currentUserPhoto: String }
   static targets = ["messages"]
 
   connect() {
@@ -12,6 +12,7 @@ export default class extends Controller {
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
     console.log(`Subscribed to the connection with the id ${this.connectionIdValue}.`)
+    console.log(this.currentUserPhotoValue);
   }
 
   resetForm(event) {
@@ -20,14 +21,17 @@ export default class extends Controller {
 
   #insertMessageAndScrollDown(data) {
     const currentUserIsSender = this.currentUserIdValue === data.sender_id
-    const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
+    const messageElement = this.#buildMessageElement(currentUserIsSender, data.message, data.sender_photo)
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 
-  #buildMessageElement(currentUserIsSender, message) {
+  #buildMessageElement(currentUserIsSender, message, sender_photo) {
     return `
       <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
+        <div class='chat-avatar'>
+          <img class="avatar" src="http://res.cloudinary.com/djbfmxp9r/image/upload/v1/development/${sender_photo}">
+        </div>
         <div class="${this.#userStyleClass(currentUserIsSender)}">
           ${message}
         </div>

@@ -9,7 +9,7 @@
     data-controller="connection-subscription"
     data-connection-subscription-connection-id-value="<%= @connection.id %>"
     data-connection-subscription-current-user-id-value="<%= current_user.id %>"
-    data-connection-subscription-current-user-photo-value="<%= current_user.id %>"
+    data-connection-subscription-current-user-photo-value="<%= current_user.photo.key %>"
   >
     <h1><%= "Chat between #{@connection.receiver.name} and #{@connection.requester.name}" %></h1>
     <div class="messages" data-connection-subscription-target="messages">
