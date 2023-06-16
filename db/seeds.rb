@@ -108,10 +108,53 @@ puts "Creating user bios"
 project_banners = Dir.glob(Rails.root.join('app', 'assets', 'images', 'project-banners', '*.jpg'))
 puts "Creating projects"
   all_projects = []
+  project_bios = [
+    "Introducing 'Harmonic Fusion': A captivating musical journey that blends the richness of classical symphonies with the groove of contemporary beats. Prepare to be enchanted by the seamless harmony of strings and electronics, as we transcend genres and create a truly unique sonic experience.",
+
+    "Welcome to the realm of 'Rhythmic Reverie'! Join me as I unravel the threads of melodies and rhythms, weaving together a tapestry of sounds that will transport you to a world of euphoria. Embrace the fusion of electronic and acoustic elements as we embark on an unforgettable musical odyssey.",
+
+    "Dive into the vibrant universe of 'Sonic Kaleidoscope'! Drawing inspiration from a kaleidoscope's ever-changing patterns, I invite you to explore an eclectic mix of genres, from soulful jazz to pulsating electronic beats. Get ready to have your senses dazzled by a sonic explosion of colors and emotions.",
+
+    "Embark on a sonic adventure with 'Melodic Wanderlust'! As a musical explorer, I take you on a mesmerizing journey through enchanting melodies and exotic rhythms from around the world. Together, we'll traverse uncharted territories and discover the beauty of diverse musical cultures.",
+
+    "Welcome to 'Euphonic Rhapsody' – a symphony of emotions, meticulously crafted to touch your soul. Lose yourself in the intricate melodies, soaring harmonies, and deeply evocative lyrics that form the heart of this musical project. Let the music guide you to a place of pure bliss and profound introspection.",
+
+    "Introducing 'Pulse and Poetry': A spellbinding fusion of pulsating electronic beats and introspective lyrical narratives. Get ready to immerse yourself in a world where every rhythm carries a message and every word breathes life. Let the synergy of music and poetry ignite your imagination and awaken your spirit.",
+
+    "Enter the realm of 'Melodic Alchemy' where sound is transformed into pure magic. Witness the synthesis of diverse musical elements as they blend and evolve, creating something entirely new and captivating. Join me on this alchemical journey as we transmute melodies into gold.",
+
+    "Step into the enchanting world of 'Aural Chronicles' – a musical narrative that weaves tales of love, loss, and triumph. Through captivating melodies and heartfelt lyrics, I invite you to join me on an emotional expedition, where each song unravels a chapter in the book of life. Allow the music to guide you through the pages of our shared experiences.",
+
+    "Experience the hypnotic allure of 'Sonic Phantasmagoria' as we transcend the boundaries of conventional music. Delve into a swirling tapestry of sounds, where ethereal melodies and intricate rhythms merge to create an otherworldly experience. Get ready to lose yourself in this mesmerizing sonic dreamscape.",
+
+    "'Harmony Unleashed' invites you to surrender to the power of music and embrace its transformative energy. From soul-stirring ballads to adrenaline-pumping anthems, this project is a testament to the raw emotion and unbridled passion that lies within every note. Let the harmonies ignite your spirit and set your soul ablaze.",
+
+    "Welcome to the world of 'Rhythmic Visions' – a musical tapestry that blends diverse genres, rhythms, and cultures into a harmonious celebration of sound. Join me as we embark on an auditory voyage, where every beat and melody paints vivid pictures in your mind. Open your eyes, and let the music become your vision.",
+
+    "Introducing 'Melodic Fusion': A sonic laboratory where genres collide and boundaries are shattered. Witness the alchemical process of merging classical elements with contemporary beats, resulting in a symphony of innovation. Prepare to have your perception of music redefined as we explore uncharted sonic territories.",
+
+    "Enter a universe of sonic delights with 'Aural Escapades'! Immerse yourself in a mesmerizing blend of electronic soundscapes, ethereal vocals, and infectious rhythms that will transport you to a world of pure sonic euphoria. Get ready to escape the ordinary and let the music carry you away.",
+
+    "Journey with me into the realm of 'Sonic Serendipity' where chance encounters between melodies and rhythms give birth to musical marvels. Explore a vast spectrum of sonic landscapes, from hauntingly beautiful to irresistibly groovy. Let the serendipitous nature of this project guide you to new musical horizons.",
+
+    "'Melodic Reverie' beckons you to a dreamscape of enchanting melodies and captivating harmonies. Step into a world where music becomes a vessel for emotions, carrying you on a journey of introspection and self-discovery. Surrender to the power of the melodies and let your imagination run wild.",
+
+    "Welcome to 'Rhythmic Reflections' – a collection of songs that mirror the human experience through rhythm and melody. Each composition is a mirror reflecting emotions, stories, and moments of life. Join me as we explore the depths of our shared humanity through the language of music.",
+
+    "Unleash your senses with 'Sonic Awakening' – a project that defies musical conventions and embraces the limitless possibilities of sound. From ethereal melodies to pulsating beats, immerse yourself in a sonic awakening that will invigorate your spirit and ignite your passion for music.",
+
+    "Enter a realm where melodies transcend time and cultures with 'Universal Harmonies'. This project unites musical traditions from around the globe, weaving them into a tapestry of harmonious unity. Let the music bridge the gaps between us and celebrate the beauty of our shared humanity.",
+
+    "Prepare to be captivated by the enchanting melodies and ethereal vocals of 'Celestial Sonatas'. Inspired by the cosmos and the mysteries of the universe, this project takes you on a celestial journey through celestial harmonies. Embrace the celestial symphony and let it transport you to realms beyond imagination.",
+
+    "Step into the world of 'Sonic Odyssey' and embark on a musical adventure of epic proportions. Through soaring melodies, thunderous beats, and emotive lyrics, we'll traverse the highs and lows of the human experience. Join me on this sonic odyssey, where every note tells a story and every song becomes a chapter in our collective narrative."
+  ]
+
   20.times do
     project = Project.create(
       name: Faker::Music.band,
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      bio: project_bios.shuffle!.pop
+    )
     project.photo.attach(io: File.open(project_banners.shuffle!.pop), filename: "project_banner.jpg")
     all_projects << project
   end
