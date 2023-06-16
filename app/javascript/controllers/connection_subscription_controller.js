@@ -30,7 +30,7 @@ export default class extends Controller {
     return `
       <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
         <div class='chat-avatar'>
-          <img class="avatar" src="http://res.cloudinary.com/djbfmxp9r/image/upload/v1/development/${sender_photo}">
+          <img class="avatar" src="http://res.cloudinary.com/djbfmxp9r/image/upload/v1/production/${sender_photo}">
         </div>
         <div class="${this.#userStyleClass(currentUserIsSender)}">
           ${message}
