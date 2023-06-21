@@ -1,5 +1,26 @@
 .profile-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 33px;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+  /* grid-gap: 33px; */
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  /* align-content: space-around; */
+  justify-content: space-around;
+  /* column-gap: 1px; */
+  height: 380px;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1200px) {
+  .profile-cards {
+    justify-content: flex-start;
+  }
+
+  /* Hide the last card */
+  .profile-cards .profile-card:nth-last-child(1) {
+    display: none;
+  }
 }
